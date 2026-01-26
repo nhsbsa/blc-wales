@@ -1,8 +1,9 @@
-{% extends "layouts/main-wales.html" %}
+{% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{{ serviceName }}
 {% endblock %}
+
 
 {% block beforeContent %}
 <div class="govuk-width-container app-width-container">
@@ -66,7 +67,7 @@
 
     {{ govukButton({
       text: "Continue",
-      href: "check-your-answers-baby-details",
+      href: "check-your-answers-second-parent-details",
       isStartButton: false
       }) }}
 

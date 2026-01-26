@@ -1,7 +1,7 @@
-{% extends "layouts/main-wales.html" %}
+{% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{{ serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -16,7 +16,7 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form class="form" action="multiple-loss-pregnancy" method="post">
+    <form class="form" action="/number-of-babies-lost" method="post">
     <div class="govuk-form-group">
 
       <fieldset class="govuk-fieldset">

@@ -55,6 +55,27 @@ router.post('/confirm-post-address', function(request, response) {
     }
 })
 
+router.post('/add-parent', function(request, response) {
+    var method = request.session.data['parent']
+    if (method == "yes"){
+        response.redirect("/what-happens-next")
+    } else {
+        response.redirect("/babys-details")
+    }
+})
+
+router.post('/number-of-babies-lost', function(request, response) {
+    var method = request.session.data['loss-multiple']
+    if (method == "single"){
+        response.redirect("/date-of-loss-single")
+    } else if (method == "twin"){ 
+        response.redirect("/twin-loss")
+    } else{
+        response.redirect("/triplet-loss")
+    }
+})
+
+
 
 
 
