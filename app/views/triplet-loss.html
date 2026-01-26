@@ -6,10 +6,9 @@
 
 
 {% block beforeContent %}
-<div class="govuk-width-container app-width-container">
 
   {{ govukBackLink({
-  text: "Back",
+  text: t.global.back,
   href: "javascript:window.history.back()"
 }) }}
 {% endblock %}
@@ -24,9 +23,7 @@
 
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
         <h1 class="govuk-fieldset__heading">
-          Are you requesting a certificate for each triplet?
-
-
+          {% if data['languagePreference'] == "en" %}  Are you requesting a certificate for each triplet? {% else %} Ydych chi’n gwneud cais am dystysgrif ar gyfer pob tripled? {% endif %}
         </h1>
       </legend>
 
@@ -34,20 +31,25 @@
           <div class="govuk-radios__item">
             <input class="govuk-radios__input" id="triplet-loss" name="triplet-loss" type="radio" value="single">
             <label class="govuk-label govuk-radios__label" for="triplet-loss">
-              No, I'd like a certificate for one baby
+                {% if data['languagePreference'] == "en" %}  No, I'd like a certificate for one baby{% else %} Nac ydw, hoffwn dystysgrif ar gyfer un babi  {% endif %}
             </label>
           </div>
           <div class="govuk-radios__item">
             <input class="govuk-radios__input" id="triplet-loss-2" name="triplet-loss" type="radio" value="twin" data-aria-controls="conditional-contact">
             <label class="govuk-label govuk-radios__label" for="triplet-loss-2">
-              No, I'd like certificates for 2 babies
+                {% if data['languagePreference'] == "en" %} No, I'd like certificates for 2 babies{% else %} Nac ydw, hoffwn dystysgrif ar gyfer dau fabi  {% endif %}
             </label>
 
           </div>
           <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
             <div class="govuk-form-group">
               <label class="govuk-label" for="contact-by-email">
-                You'll receive a separate certificate for each baby. We'll ask for details about certificate 1 first, then for certificate 2. 
+                        {% if data['languagePreference'] == "en" %}
+                          You’ll receive a separate certificate for each baby. <br> We’ll ask for details about certificate 1 first, then for certificate 2.
+                          {% else %}
+                          Byddwch yn cael tystysgrif ar gyfer pob babi.<br> 
+                          Byddwn yn gofyn am fanylion ar gyfer tystysgrif 1 yn gyntaf, ac yna ar gyfer tystysgrif 2.
+                          {% endif %}
               </label>
             </div>
           </div>
@@ -55,13 +57,18 @@
           <div class="govuk-radios__item">
             <input class="govuk-radios__input" id="triplet-loss-3" name="triplet-loss" type="radio" value="triple" data-aria-controls="conditional-contact-2">
             <label class="govuk-label govuk-radios__label" for="triplet-loss-3">
-              Yes, I'd like certificates for all babies
+                {% if data['languagePreference'] == "en" %} Yes, I'd like certificates for all babies {% else %}  Ydw, hoffwn dystysgrif ar gyfer dau fabi  {% endif %}
             </label>
           </div>
           <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-2">
             <div class="govuk-form-group">
               <label class="govuk-label" for="contact-by-email">
-                You'll receive a separate certificate for each baby. We'll ask for details about certificate 1 first, then for certificate 2 and 3.   
+                          {% if data['languagePreference'] == "en" %}
+                          You’ll receive a separate certificate for each baby. <br> We’ll ask for details about certificate 1 first, then for certificate 2 and 3.
+                          {% else %}
+                          Byddwch yn cael tystysgrif ar gyfer pob babi.<br> 
+                          Byddwn yn gofyn am fanylion ar gyfer tystysgrif 1 yn gyntaf, ac yna ar gyfer tystysgrif 2 a 3.
+                          {% endif %}
               </label>
             </div>
           </div>
@@ -72,7 +79,7 @@
         </div>
 
         <button class="govuk-button" data-module="govuk-button" type="submit">
-          Continue
+          {{t.global.continue}}
         </button>
 
       </form>

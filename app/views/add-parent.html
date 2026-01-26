@@ -8,7 +8,7 @@
 <div class="govuk-width-container app-width-container">
 
   {{ govukBackLink({
-  text: "Back",
+  text: t.global.back,
   href: "javascript:window.history.back()"
 }) }}
 {% endblock %}
@@ -16,50 +16,101 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+
+
     <form class="form" action="add-parent" method="post">
-      <div class="govuk-form-group">
-        <span class="govuk-caption-l">Details on the certificate</span>
-        <fieldset class="govuk-fieldset">
-        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-          <h1 class="govuk-fieldset__heading">
-            Would you like to add another parent to the certificate?
-          </h1>
-        </legend>
 
-        <div class="govuk-body">You’ll need to let the other parent know that you’d like to add their name to the certificate.</div>
-        <div class="govuk-body">The section for the other parent's name will be blank on the certificate if you select 'No'.</div>
-        <div class="govuk-radios govuk-radios" data-module="govuk-radios">
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="add-parent" name="parent" type="radio" value="yes" data-aria-controls="conditional-contact">
-            <label class="govuk-label govuk-radios__label" for="yes">
-              Yes, I'd like to add another parent to the certificate
-            </label>
+      {% if data['languagePreference'] == "en" %} 
+            <div class="govuk-form-group">
+              <span class="govuk-caption-l">Details on the certificate</span>
+              <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                  Would you like to add another parent to the certificate?
+                </h1>
+              </legend>
+
+              <div class="govuk-body">You’ll need to let the other parent know that you’d like to add their name to the certificate.</div>
+              <div class="govuk-body">The section for the other parent's name will be blank on the certificate if you select 'No'.</div>
+              <div class="govuk-radios govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="add-parent" name="parent" type="radio" value="yes" data-aria-controls="conditional-contact">
+                  <label class="govuk-label govuk-radios__label" for="yes">
+                    Yes, I'd like to add another parent to the certificate
+                  </label>
+                </div>
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+
+                  <label class="govuk-label" for="contact-by-email">
+
+                    We’ll ask you for the other parent’s email address so we can send them a link. They’ll have up to 7 days to:<br>
+                    <br><ul class="govuk-list govuk-list--bullet">
+                      <li>confirm their details, including their date of birth</li>
+                      <li>give their permission to be named on the certificate</li>
+                    </ul>
+                    <p>You'll need to <a href="/Beta/v12/contact">contact us</a> if the other parent does not have an email address or has died.</p>
+                  </label>
+                </div>
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="add-parent" name="parent" type="radio" value="no">
+                  <label class="govuk-label govuk-radios__label" for="no">
+                    No, I do not want to add another parent
+                  </label>
+                </div>
+              </div>
+            </fieldset>
           </div>
-          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
 
-            <label class="govuk-label" for="contact-by-email">
+      {% else %}
 
-              We’ll ask you for the other parent’s email address so we can send them a link. They’ll have up to 7 days to:<br>
-              <br><ul class="govuk-list govuk-list--bullet">
-                <li>confirm their details, including their date of birth</li>
-                <li>give their permission to be named on the certificate</li>
-              </ul>
-              <p>You'll need to <a href="/Beta/v12/contact">contact us</a> if the other parent does not have an email address or has died.</p>
-            </label>
+
+        <div class="govuk-form-group">
+              <span class="govuk-caption-l">Manylion ar y dystysgrif</span>
+              <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                  Hoffech chi ychwanegu rhiant arall at y dystysgrif?
+                </h1>
+              </legend>
+
+              <div class="govuk-body">Bydd angen ichi roi gwybod i’r rhiant arall eich bod yn dymuno ychwanegu ei enw neu ei henw at y dystysgrif.</div>
+              <div class="govuk-body">Bydd yr adran ar gyfer enw rhiant arall yn wag os dewiswch 'Na hoffwn'.</div>
+              <div class="govuk-radios govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="add-parent" name="parent" type="radio" value="yes" data-aria-controls="conditional-contact">
+                  <label class="govuk-label govuk-radios__label" for="yes">
+                   Hoffwn
+                  </label>
+                </div>
+                <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+
+                  <label class="govuk-label" for="contact-by-email">
+
+                    Byddwn yn gofyn ichi am gyfeiriad e-bost y rhiant arall fel y gallwn anfon dolen ato neu ati. Bydd gan y rhiant arall 7 diwrnod i wneud y canlynol:<br>
+                    <br><ul class="govuk-list govuk-list--bullet">
+                      <li>cadarnhau manylion, gan gynnwys ei ddyddiad neu ei dyddiad geni</li>
+                      <li>rhoi caniatâd i gael ei enwi neu ei henwi ar y dystysgrif</li>
+                    </ul>
+                    <p>Bydd angen <a href="">ichi gysylltu â ni</a> os nad oes gan y rhiant arall gyfeiriad e-bost neu os yw wedi marw.</p>
+                  </label>
+                </div>
+
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="add-parent" name="parent" type="radio" value="no">
+                  <label class="govuk-label govuk-radios__label" for="no">
+                    Na hoffwn 
+                  </label>
+                </div>
+              </div>
+            </fieldset>
           </div>
 
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="add-parent" name="parent" type="radio" value="no">
-            <label class="govuk-label govuk-radios__label" for="no">
-              No, I do not want to add another parent
-            </label>
-          </div>
-        </div>
-      </fieldset>
-    </div>
+      {% endif %}
+
 
     <button class="govuk-button" data-module="govuk-button" type="submit">
-      Continue
+      {{t.global.continue}}
     </button>
 
   </form>

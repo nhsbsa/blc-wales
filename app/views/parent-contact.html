@@ -6,7 +6,7 @@
 
 {% block beforeContent %}
 {{ govukBackLink({
-text: "Back",
+text: t.global.back,
 href: "javascript:window.history.back()"
 }) }}
 {% endblock %}
@@ -18,20 +18,38 @@ href: "javascript:window.history.back()"
       <!--<h1 class="govuk-fieldset__heading">What's your name?</h1>-->
 
       <h1 class="govuk-heading-l">
+        {% if data['languagePreference'] == "en" %} 
           <span class="govuk-caption-l">Other parent's details</span>
           What is the other parent's email address?
+          
+          {% else %}
+
+           <span class="govuk-caption-l">Manylion y rhiant arall</span>
+       Beth yw cyfeiriad e-bost y rhiant arall?
+
+        {% endif %}
       </h1>
+
+     
 
         <div class="govuk-form-group">
           <label class="govuk-label" for="full-name">
+            {% if data['languagePreference'] == "en" %} 
             Enter email address
+            {% else %}
+            Rhowch gyfeiriad e-bost
+             {% endif %}
           </label>
           <input class="govuk-input" id="full-name" name="full-name" type="text" autocomplete="name" spellcheck="false">
         </div>
 
         <div class="govuk-form-group">
           <label class="govuk-label" for="full-name">
-            Confirm email address
+             {% if data['languagePreference'] == "en" %} 
+             Confirm email address
+            {% else %}
+            Cadarnhewch y cyfeiriad e-bost
+             {% endif %}
           </label>
           <input class="govuk-input" id="full-name" name="full-name" type="text" autocomplete="name" spellcheck="false">
         
@@ -39,7 +57,7 @@ href: "javascript:window.history.back()"
        
         
         {{ govukButton({
-          text: "Continue",
+          text: t.global.continue,
           href: "enter-date-of-birth-parent",
           isStartButton: false
           }) }}

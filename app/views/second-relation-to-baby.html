@@ -6,9 +6,8 @@
 
 
 {% block beforeContent %}
-<div class="govuk-width-container app-width-container">
   {{ govukBackLink({
-  text: "Back",
+  text: t.global.back,
   href: "javascript:window.history.back()"
 }) }}
 {% endblock %}
@@ -16,42 +15,52 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-  <span class="govuk-caption-l">Other parent's details</span>
+  <span class="govuk-caption-l">{% if data['languagePreference'] == "en" %} Other parent's details {% else %}Manylion y rhiant arall {% endif %}</span>
   <fieldset class="govuk-fieldset">
 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
   <h1 class="govuk-fieldset__heading">
-    What is the other parent's relationship to your baby?
+
+      {% if data['languagePreference'] == "en" %} 
+        What is the other parent's relationship to your baby?
+      {% else %}
+        Beth yw perthynas y rhiant arall â’ch babi neu’ch babanod?
+      {% endif %}
+  
 
   </h1>
 </legend>
   <div class="govuk-form-group">
       <form class="form" action="added-parent" method="post">
-        <div class="govuk-body">
-          This will be shown on the certificate.
-        </div>
+        <p class="govuk-body">
+          {% if data['languagePreference'] == "en" %} 
+              This will be shown on the certificate.
+          {% else %}
+            Dangosir hyn ar y dystysgrif.
+          {% endif %}
+        </p>
         <div class="govuk-radios" data-module="govuk-radios">
           <div class="govuk-radios__item">
             <input class="govuk-radios__input" id="Biological mother" name="parent-2" type="radio" value="Biological mother">
             <label class="govuk-label govuk-radios__label" for="where-do-you-live">
-              Mother
+              {% if data['languagePreference'] == "en" %} Mother {% else %}  Mam {% endif %}
             </label>
           </div>
           <div class="govuk-radios__item">
             <input class="govuk-radios__input" id="Biological father" name="parent-2" type="radio" value="Biological father">
             <label class="govuk-label govuk-radios__label" for="Biological father">
-              Father
+              {% if data['languagePreference'] == "en" %} Father {% else %}  Tad {% endif %}
             </label>
           </div>
           <div class="govuk-radios__item">
             <input class="govuk-radios__input" id="Non biological father" name="parent-2" type="radio" value="Non biological father">
             <label class="govuk-label govuk-radios__label" for="Non biological father">
-              Parent
+              {% if data['languagePreference'] == "en" %} Parent {% else %}  Rhiant {% endif %}
             </label>
           </div>
           <div class="govuk-radios__item">
             <input class="govuk-radios__input" id="Non biological mother" name="parent-2" type="radio" value="Non biological mother">
             <label class="govuk-label govuk-radios__label" for="Non biological mother">
-              Surrogate
+                {% if data['languagePreference'] == "en" %} Surrogate {% else %}  Rhiant benthyg {% endif %}
             </label>
           </div>
 
