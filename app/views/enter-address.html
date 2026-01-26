@@ -1,0 +1,57 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  {{ t.serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "enter-date-of-birth"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-width-container app-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <span class="govuk-caption-l">Your details</span>
+              <h1 class="govuk-fieldset__heading">
+                What is your postcode?
+              </h1>
+            </legend>
+            <p>You must enter the home postcode you registered with your GP surgery.</p>
+            <p>This is the address your certificate will be sent to.</p>
+            <p class="govuk-hint">For example, EN1 1BE</p>
+            <form class="form" action="check-your-details-full" method="post">
+                {{ govukInput({
+                  label: {
+                    text: "Postcode"
+                  },
+                  id: "postcode",
+                  classes: "govuk-input--width-10",
+                  name: "postcode",
+                  value: data['postcode']
+                }) }}
+              <button class="govuk-button" data-module="govuk-button" type="submit">
+                Continue
+              </button>
+            </form>
+        </fieldset>
+
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .govuk-input {
+    margin-bottom: 15px;
+  }
+
+</style>
+{% endblock %}

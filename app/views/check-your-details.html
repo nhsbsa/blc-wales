@@ -1,0 +1,87 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{{ t.serviceName }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <span class="govuk-caption-l">Your details</span>
+      <h1 class="govuk-heading-l">Check your details</h1>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Relationship to baby"
+            },
+            value: {
+              text: data['relationshipToBaby'] | capitalise
+            },
+            actions: {
+              items: [
+                {
+                  href: "/relation-to-baby",
+                  text: "Change",
+                  visuallyHiddenText: "Question 1"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Do you know your NHS number?"
+            },
+            value: {
+              text: data['knowNhsNumber'] | capitalise
+            },
+            actions: {
+              items: [
+                {
+                  href: "/nhs-number",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "NHS number"
+            },
+            value: {
+              text: data['enterNhsNumber']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/enter-nhs-number",
+                  text: "Change",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <p>By continuing you agree to let us use your details to:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>check who you are</li>
+        <li>find your contact details from your NHS health records so we can send you a security code</li>
+      </ul>
+
+      <form action="get-security-code" method="post" novalidate>
+        
+      {{ govukButton({
+          text: "Agree and continue",
+          isStartButton: false
+      }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

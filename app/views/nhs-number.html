@@ -1,0 +1,118 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  {{ t.serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "relation-to-baby"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/know-nhs-number" method="post">
+
+      {% if data['languagePreference'] == "cy" %}
+
+
+       <span class="govuk-caption-l">Your details</span>
+        <h1 class="govuk-heading-l">Do you know your NHS number?</h1>
+        <p>Telling us your NHS number will give us the best chance of matching you to your GP record.</p>
+        <p>This will help us identify you so we can send the certificate to the correct address.</p>
+        <p>You do not need to know your NHS number to continue. If you do not know it, you can tell us your full name, date of birth and postcode instead.</p>
+        {{ govukDetails({
+        summaryText: "Where to find your NHS number",
+        html: '
+            <p>If you’re registered with a GP, you will have a 10 digit NHS number unique to you.</p>
+            <p>You can find it on the NHS app or <a href="">use our online NHS number finder (opens in a new tab)</a>.</p>
+            <p>It is also on any letters or documents you receive from the NHS, such as:</p>
+            <ul>
+            <li>prescriptions</li>
+            <li>test results</li>
+            <li>appointment letters</li>
+            <li>maternity notes</li>
+            </ul>'
+        }) }}
+        {{ govukDetails({
+        summaryText: "If the name on your GP record was not your name at the time of loss",
+        html: '<p>You can only request your certificate online using the name on your GP record.</p>
+              <p>You can <a href="contact">contact us to request a certificate with a different name</a>, for example a maiden name.</p>'
+        }) }}
+        {{ govukRadios({
+            name: "knowNhsNumber",
+            value: data['knowNhsNumber'],
+            items: [
+                {
+                value: "yes",
+                text: "Yes, I know my NHS number"
+                },
+                {
+                value: "no",
+                text: "No, continue with my full name, date of birth and postcode"
+                }
+            ]
+            }) }}
+
+      {% else %}
+
+      
+        <span class="govuk-caption-l">Your details</span>
+        <h1 class="govuk-heading-l">Do you know your NHS number?</h1>
+        <p>Telling us your NHS number will give us the best chance of matching you to your GP record.</p>
+        <p>This will help us identify you so we can send the certificate to the correct address.</p>
+        <p>You do not need to know your NHS number to continue. If you do not know it, you can tell us your full name, date of birth and postcode instead.</p>
+        {{ govukDetails({
+        summaryText: "Where to find your NHS number",
+        html: '
+            <p>If you’re registered with a GP, you will have a 10 digit NHS number unique to you.</p>
+            <p>You can find it on the NHS app or <a href="">use our online NHS number finder (opens in a new tab)</a>.</p>
+            <p>It is also on any letters or documents you receive from the NHS, such as:</p>
+            <ul>
+            <li>prescriptions</li>
+            <li>test results</li>
+            <li>appointment letters</li>
+            <li>maternity notes</li>
+            </ul>'
+        }) }}
+        {{ govukDetails({
+        summaryText: "If the name on your GP record was not your name at the time of loss",
+        html: '<p>You can only request your certificate online using the name on your GP record.</p>
+              <p>You can <a href="contact">contact us to request a certificate with a different name</a>, for example a maiden name.</p>'
+        }) }}
+        {{ govukRadios({
+            name: "knowNhsNumber",
+            value: data['knowNhsNumber'],
+            items: [
+                {
+                value: "yes",
+                text: "Yes, I know my NHS number"
+                },
+                {
+                value: "no",
+                text: "No, continue with my full name, date of birth and postcode"
+                }
+            ]
+            }) }}
+
+
+
+            
+      {% endif %}
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

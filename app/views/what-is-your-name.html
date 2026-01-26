@@ -1,0 +1,76 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  {{ t.serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "nhs-number"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="/enter-date-of-birth" method="post">
+      <span class="govuk-caption-l">Your details</span>
+        {% call govukFieldset({
+          legend: {
+            text: "What is your name?",
+            classes: "govuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+
+        <p>You must enter the names you registered with your GP.</p>
+        <p class="govuk-hint"> This is the name that will be printed on the certificate.</p>
+
+          {{ govukInput({
+            label: {
+              text: "First name"
+            },
+            id: "p1-first-name",
+            classes: "govuk-!-width-two-thirds",
+            name: "p1FirstName",
+            value: data['p1FirstName']
+          }) }}
+          {{ govukInput({
+            label: {
+              text: "Last name"
+            },
+            id: "p1-last-name",
+            classes: "govuk-!-width-two-thirds",
+            name: "p1LastName",
+            value: data['p1LastName']
+          }) }}
+
+            <div class="govuk-inset-text">
+          The certificate will not go on your GP record.
+        </div>
+
+        {% endcall %}
+
+
+      <button type="submit" class="govuk-button">
+        Continue
+      </button>
+
+  </form>
+
+</div>
+</div>
+<style>
+  .govuk-radios {
+    margin-bottom: 30px;
+  }
+
+  .govuk-details {
+    margin-top: 30px;
+  }
+</style>
+
+{% endblock %}

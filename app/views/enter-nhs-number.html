@@ -1,0 +1,80 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{{ t.serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "nhs-number"
+}) }}
+{% endblock %}
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="/check-your-details" method="post">
+
+         <!--//////  WELSH //////// -->
+
+      {% if data['languagePreference'] == "cy" %}
+
+        <span class="govuk-caption-l">Your details</span>
+        <h1 class="govuk-heading-l">What is your NHS number?</h1>
+        <p>Your NHS number is a 10 digit number that you find on any letter the NHS has sent you.</p>
+        <p>For example, 485 777 3456</p>
+
+        {{ govukInput({
+          label: {
+            text: "NHS number"
+          },
+          classes: "govuk-input--width-10",
+          id: "nhsNumber",
+          name: "enterNhsNumber",
+          value : data['enterNhsNumber']
+        }) }}
+
+        {{ govukInsetText({
+        text: "The certificate will not go on your GP record."
+        }) }}
+
+
+      {% else %}
+
+      <!--//////  ENG //////// -->
+
+        <span class="govuk-caption-l">Your details</span>
+        <h1 class="govuk-heading-l">What is your NHS number?</h1>
+        <p>Your NHS number is a 10 digit number that you find on any letter the NHS has sent you.</p>
+        <p>For example, 485 777 3456</p>
+
+        {{ govukInput({
+        label: {
+        text: "NHS number"
+        },
+        classes: "govuk-input--width-10",
+        id: "nhsNumber",
+        name: "enterNhsNumber",
+        value : data['enterNhsNumber']
+        }) }}
+
+        {{ govukInsetText({
+        text: "The certificate will not go on your GP record."
+        }) }}
+
+      {% endif %}
+
+      <!--//////  END LANG //////// -->
+
+
+      {{ govukButton({
+      text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
