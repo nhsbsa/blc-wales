@@ -14,41 +14,72 @@ href: "javascript:window.history.back()"
 {% block content %}
 <div class="govuk-form-group">
   <div class="govuk-grid-column-two-thirds">
-    <span class="govuk-caption-l">Your details</span>
+    <span class="govuk-caption-l">{{t.global.details}}</span>
     <div class="govuk-form-group">
       <fieldset class="govuk-fieldset">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
           <h1 class="govuk-fieldset__heading">
-            Get your security code
-
+            {% if data['languagePreference'] == "en" %} 
+              Get your security code 
+            {% else %} 
+              Cael eich cod diogelwch 
+            {% endif %}
           </h1>
         </legend>
 
         <form class="form" action="/security-code-method" method="post">
-          <p>With the details you gave us, we think we've found your contact details from your health records.</p>
-          <p>We now need to send you a security code. After 30 minutes your security code will not work.</p>
+            {% if data['languagePreference'] == "en" %} 
+                <p>With the details you gave us, we think we've found your contact details from your health records.</p>
+                <p>We now need to send you a security code. After 30 minutes your security code will not work.</p>
 
-          {{ govukRadios({
-            name: "seccode",
-            value: data['seccode'],
-            items: [
-              {
-                value: "email",
-                text: "By email to Sa********@gmail.com"
-              },
-              {
-                value: "text",
-                text: "By text to ********009"
-              }
-            ]
-          }) }}
+                {{ govukRadios({
+                  name: "seccode",
+                  value: data['seccode'],
+                  items: [
+                    {
+                      value: "email",
+                      text: "By email to Sa********@gmail.com"
+                    },
+                    {
+                      value: "text",
+                      text: "By text to ********009"
+                    }
+                  ]
+                }) }}
+            {% else %} 
+              <p>Gyda’r manylion a wnaethoch chi eu rhoi inni, credwn ein bod wedi dod o hyd i’ch manylion cyswllt o’ch cofnodion iechyd.</p>
+              <p>Byddwn yn anfon cod diogelwch atoch nawr. Ni fydd eich cod diogelwch yn gweithio ar ôl 30 munud.</p>
+
+                {{ govukRadios({
+                name: "seccode",
+                value: data['seccode'],
+                items: [
+                  {
+                    value: "email",
+                    text: "Trwy e-bost i Sa********@gmail.com"
+                  },
+                  {
+                    value: "text",
+                    text: "Trwy neges destun i ********009"
+                  }
+                ]
+              }) }}
+            {% endif %}
+
+            
+
+     
       </fieldset>
     </div>
 
     <details class="govuk-details" data-module="govuk-details">
       <summary class="govuk-details__summary">
         <span class="govuk-details__summary-text">
-          What to do if you think these contact details are wrong
+          {% if data['languagePreference'] == "en" %} 
+            What to do if you think these contact details are wrong
+          {% else %}
+            Beth i’w wneud os ydych chi’n meddwl bod y manylion cyswllt hyn yn anghywir
+          {% endif%}
         </span>
       </summary>
       <div class="govuk-details__text">

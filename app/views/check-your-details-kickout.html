@@ -15,11 +15,20 @@ href: "javascript:window.history.back()"
   {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+
+      {% if data['languagePreference'] == "en" %} 
+
           <h1 class="govuk-heading-l"> You have told us the address is wrong</h1>
-          <p class="govuk-body">You’ll need to contact your GP practice and ask them to update your details before you
-            can request a certificate. </p>
-          <h2 class="govuk-heading-m">Support organisations</h2>
-          <p>The following organisations give support and advice:</p>
+          <p class="govuk-body">You can contact your GP surgery to correct your address.</p>
+          <h2 class="govuk-heading-m">Support organisations</h2> 
+
+        {% else %}
+
+          <h1 class="govuk-heading-l"> Rydych chi wedi dweud wrthym fod y cyfeiriad yn anghywir</h1>
+          <p class="govuk-body">Gallwch gysylltu â’ch practis meddyg teulu i gywiro’ch cyfeiriad</p>
+          <h2 class="govuk-heading-m">Sefydliadau sy’n rhoi cymorth </h2>   
+
+        {% endif %}
           <ul class="govuk-list govuk-list--bullet">
             <li><a href="www.nhs.uk/mental-health/social-care-and-your-rights/how-to-access-mental-health-services/">NHS How
                 to access mental health services</a></li>

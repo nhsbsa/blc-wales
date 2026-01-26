@@ -30,10 +30,13 @@ router.post('/main-relation-to-baby', function(request, response) {
 
 router.post('/know-nhs-number', function(request, response) {
     var knowNHSNum = request.session.data['knowNhsNumber']
-    if (knowNHSNum == "yes"){
+  
+    if (knowNHSNum == "yes" || knowNHSNum == "ydw"  ){
+          console.log(request.session.data);
         response.redirect("/enter-nhs-number")
     } else {
         response.redirect("/what-is-your-name")
+          console.log(request.session.data);
     }
 })
 

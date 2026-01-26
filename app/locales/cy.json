@@ -9,7 +9,10 @@
     "continue": "Parhau",
     "back": "Nôl",
     "details": "Eich manylion",
-    "checkDetails": "Gwiriwch eich manylion"
+    "checkDetails": "Gwiriwch eich manylion",
+    "agreeContinue":"Cytuno a pharhau",
+    "change": "Newid",
+    "example": "Er enghraifft"
   },
   "pages": {
     "day": "Diwrnod",
