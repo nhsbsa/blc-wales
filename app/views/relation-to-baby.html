@@ -22,74 +22,43 @@
         <h1 class="govuk-heading-l">What is your relationship to your baby or babies?</h1>
         <p>This will be shown on the certificate.</p>
 
-        {{ govukRadios({
+         {% else %}
+      
+        <span class="govuk-caption-l">Cadarnhewch eich cymhwystra:</span>
+        <h1 class="govuk-heading-l">Beth yw eich perthynas â’ch babi neu’ch babanod?</h1>
+        <p>Dangosir hyn ar y dystysgrif</p>
+        {% endif %}
+
+
+                {{ govukRadios({
             name: "relationshipToBaby",
             value: data['relationshipToBaby'],
             items: [
                 {
                 value: "mother",
-                text: "Mother"
+                text: t.pages.mother
                 },
                 {
                 value: "father",
-                text: "Father"
+                text: t.pages.father
                 },
                 {
                 value: "parent",
-                text: "Parent"
+                text: t.pages.parent
                 },
                 {
                 value: "surrogate",
-                text: "Surrogate"
+                text: t.pages.surrogate
                 },
                 {
                 divider: "or"
                 },
                 {
                 value: "none",
-                text: "None of these"
+                text: t.pages.noneOfThese
                 }
             ]
             }) }}
-      {% else %}
-      
-        <span class="govuk-caption-l">Cadarnhewch eich cymhwystra:</span>
-        <h1 class="govuk-heading-l">Beth yw eich perthynas â’ch babi neu’ch babanod?</h1>
-
-        <p>Dangosir hyn ar y dystysgrif</p>
-
-       {{ govukRadios({
-            name: "relationshipToBaby",
-            value: data['relationshipToBaby'],
-            items: [
-                {
-                value: "mam",
-                text: "Mam"
-                },
-                {
-                value: "tad",
-                text: "Tad"
-                },
-                {
-                value: "rhiant",
-                text: "Rhiant"
-                },
-                {
-                value: "rhiant benthyg",
-                text: "Rhiant benthyg"
-                },
-                {
-                divider: "or"
-                },
-                {
-                value: "Neu dim un o’r rhain",
-                text: "Neu dim un o’r rhain"
-                }
-            ]
-            }) }}
-
-
-      {% endif %}
 
         {{ govukButton({
           text:  t.global.continue

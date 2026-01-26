@@ -1,4 +1,4 @@
-{% extends "layouts/main-wales.html" %}
+{% extends "layouts/main.html" %}
 
 {% block pageTitle %}
   Question page template – {{ serviceName }} – GOV.UK Prototype Kit
@@ -15,30 +15,56 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form class="form" action="baby-gender-version1" method="post">
-      <span class="govuk-caption-l">Details on the certificate 1</span>
+    <form class="form" action="/baby-sex-choice" method="post">
+        <span class="govuk-caption-l"> {% if data['languagePreference'] == "en" %} Details on certificate 1 {% else %}
+          Manylion ar dystysgrif 1 {% endif %}</span>
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
+                 {% if data['languagePreference'] == "en" %} 
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
           <h1 class="govuk-fieldset__heading">
+     
             Would you like the sex of your baby on the certificate?
-
+         
           </h1>
         </legend>
         <p>You may not know the sex of your baby.</p>
         <p>If you select ‘No’ or ‘I do not know the sex of my baby’, this section will be blank on the certificate.</p>
+ {% else %}
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+            Hoffech chi gynnwys rhyw eich babi ar y dystysgrif?
+          </h1>
+        </legend>
+        <p>Efallai na fyddwch chi’n gwybod beth oedd rhyw eich babi.</p>
+        <p>Bydd yr adran hon yn wag ar y dystysgrif os byddwch chi’n dewis ‘Na hoffwn’ neu ‘Nid wyf yn gwybod beth oedd rhyw fy mabi’.</p>
 
+
+          {% endif %}
          <div class="govuk-radios" data-module="govuk-radios">
           <div class="govuk-radios__item">
             <input class="govuk-radios__input" id="baby-gender-version1" name="gender" type="radio" value="yes">
             <label class="govuk-label govuk-radios__label" for="yes">
-              Yes, I’d like the sex on the certificate
+
+          {% if data['languagePreference'] == "en" %} 
+             Yes, I’d like the sex on the certificate
+
+          {% else %}
+          Hoffwn gynnwys rhyw y babi ar y dystysgrif
+          {% endif %}
+
             </label>
           </div>
           <div class="govuk-radios__item">
             <input class="govuk-radios__input" id="baby-gender-version1" name="gender" type="radio" value="no">
             <label class="govuk-label govuk-radios__label" for="no">
-              No, I do not want the sex on the certificate
+            
+                  {% if data['languagePreference'] == "en" %} 
+                         No, I do not want the sex on the certificate
+
+          {% else %}
+            Na hoffwn, nid wyf eisiau cynnwys rhyw y babi ar y dystysgrif
+          {% endif %}
 
             </label>
           </div>
@@ -47,7 +73,13 @@
           <div class="govuk-radios__item">
             <input class="govuk-radios__input" id="baby-gender-version1" name="gender" type="radio" value="unknown">
             <label class="govuk-label govuk-radios__label" for="unknown">
-              I do not know the sex and I’d like ‘Unknown’ on the certificate
+             
+           {% if data['languagePreference'] == "en" %} 
+               I do not know the sex and I’d like ‘Unknown’ on the certificate
+
+          {% else %}
+          Neu, nid wyf yn gwybod beth oedd rhyw y babi a hoffwn i ‘anhysbys’ gael ei roi ar y dystysgrif
+          {% endif %}
             </label>
           </div>
 
@@ -56,7 +88,7 @@
 
 
         <button class="govuk-button" data-module="govuk-button" type="submit">
-          Continue
+           {{t.global.continue}}
         </button>
 
       </form>

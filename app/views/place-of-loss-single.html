@@ -1,0 +1,140 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-width-container app-width-container">
+  {{ govukBackLink({
+  text: t.global.back,
+  href: "date-of-loss-single"
+  }) }}
+  {% endblock %}
+
+  {% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" action="sex-of-baby-single" method="post">
+        <span class="govuk-caption-l"> {% if data['languagePreference'] == "en" %} Details on certificate 1 {% else %}
+          Manylion ar dystysgrif 1 {% endif %}</span>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+
+            {% if data['languagePreference'] == "en" %}
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Would you like the place of your baby loss on the certificate?
+              </h1>
+            </legend>
+            <p>You may not know the place of your baby loss.</p>
+            <div class="govuk-inset-text">This does not need to be a full address. You can enter a town, city or
+              hospital.</div>
+
+            <p>This section will be blank on the certificate if you select ‘No’ or ‘I do not know the place of my baby
+              loss’.</p>
+
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="years-yes" name="years" type="radio" value="yes"
+                  data-aria-controls="conditional-contact">
+                <label class="govuk-label govuk-radios__label" for="contact">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+                <div class="govuk-form-group">
+                  <label class="govuk-label">
+                    Place of baby loss
+                  </label>
+                  <div id="passport-issued-hint" class="govuk-hint">
+
+                    For example, Canterbury, Kent
+                  </div>
+
+                  <input class="govuk-input" id="baby-name" name="place" type="text">
+                </div>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="babys" name="years" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="contact-2">
+                  No
+                </label>
+              </div>
+              <div class="govuk-radios__divider">or</div>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="baby-gender-version1" name="years" type="radio" value="unknown">
+              <label class="govuk-label govuk-radios__label" for="unknown">
+                I do not know the place of my baby loss
+              </label>
+            </div>
+
+            {% else %}
+
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Hoffech chi gynnwys man colli eich babi ar y dystysgrif?
+              </h1>
+            </legend>
+            <p>Efallai na fyddwch chi’n gwybod y man lle collwyd eich babi.</p>
+            <div class="govuk-inset-text">Nid oes angen i hwn fod yn gyfeiriad llawn. Gallwch roi enw tref, dinas neu
+              ysbyty.</div>
+
+            <p>Bydd yr adran hon yn wag ar y dystysgrif os byddwch chi’n dewis ‘Na hoffwn’ neu ‘Nid wyf yn gwybod man
+              colli fy mabi’.</p>
+
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="years-yes" name="years" type="radio" value="yes"
+                  data-aria-controls="conditional-contact">
+                <label class="govuk-label govuk-radios__label" for="contact">
+                  Hoffwn
+                </label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+                <div class="govuk-form-group">
+                  <label class="govuk-label">
+                    Man colli’r babi
+                  </label>
+                  <div id="passport-issued-hint" class="govuk-hint">
+                    {{t.global.example}}, Canterbury, Kent
+                  </div>
+
+                  <input class="govuk-input" id="baby-name" name="place" type="text">
+                </div>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="babys" name="years" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="contact-2">
+                  Na hoffwn
+                </label>
+              </div>
+              <div class="govuk-radios__divider">or</div>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="baby-gender-version1" name="years" type="radio" value="unknown">
+              <label class="govuk-label govuk-radios__label" for="unknown">
+                Neu, Nid wyf yn gwybod man colli fy mabi
+              </label>
+            </div>
+
+            {% endif %}
+
+          </fieldset>
+        </div>
+        <button class="govuk-button" data-module="govuk-button" type="submit">
+          {{t.global.continue}}
+        </button>
+
+      </form>
+    </div>
+  </div>
+</div>
+<style>
+
+</style>
+
+{% endblock %}

@@ -1,7 +1,7 @@
-{% extends "layouts/main-wales.html" %}
+{% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Confirmation page template – {{ serviceName }} – GOV.UK Prototype Kit
+  {{ serviceName }}
 {% endblock %}
 
 {% block content %}
@@ -42,7 +42,7 @@
 <h2 class="govuk-heading-m"> Would you like to request a <br> certificates for another baby loss?</h2>
 
 
-<form class="form" action="single-cert-reccurrent" method="post">
+<form class="form" action="/confirmation-single-another-cert" method="post">
 
 <div class="govuk-radios" data-module="govuk-radios">
   <div class="govuk-radios__item">

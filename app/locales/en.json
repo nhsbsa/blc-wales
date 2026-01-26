@@ -19,6 +19,14 @@
     "day": "Day",
     "month": "Month",
     "year": "Year",
-    "dateOfBirthQ": "What is your date of birth?"
+    "dateOfBirthQ": "What is your date of birth?",
+    "mother": "Mother",
+    "father": "Father",
+    "parent": "Parent",
+    "surrogate": "Surrogate",
+    "noneOfThese": "None of these",
+    "male": "Male",
+    "female": "Female"
   }
+  
 }

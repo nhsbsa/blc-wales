@@ -1,0 +1,86 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: t.global.back,
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+ 
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds-from-desktop">
+        <div class="govuk-width-container">
+          <form action="/live/confirmation-page" method="post" novalidate></form>
+
+              {% if data['languagePreference'] == "en" %}
+
+              <h1 class="govuk-heading-l">Declaration</h1>
+              
+              <p>I declare that the information I have provided is true and correct.</p>
+              <p>I certify that I have read, understood and agree to the  <a href="">Terms of Use and Privacy Policy</a>.</p>
+              <p>I consent to my personal information provided in this application to be used to verify my identity.</p>
+              <p>I acknowledge the ‘Certificate of Baby Loss’ I receive is not a legal document.</p>
+              
+            
+                    <div class="govuk-form-group">
+                          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                                <div class="govuk-checkboxes__item">
+                                  <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses">
+                                  <label class="govuk-label govuk-checkboxes__label" for="waste">
+                                    I agree and confirm
+                                  </label>
+                                </div>
+                        </div>
+                    </div>
+            
+              {% else %}
+
+              <h1 class="govuk-heading-l">Datganiad</h1>
+              
+              <p>Rwy’n cadarnhau bod yr wybodaeth yr wyf wedi’i rhoi yn wir ac yn gywir</p>
+              <p>Rwy’n ardystio fy mod wedi darllen, deall a chytuno â’r <a href="#">Telerau Defnyddio a’r Polisi Preifatrwydd</a>.</p>
+              <p>Rwy’n cydsynio i’m gwybodaeth bersonol a ddarperir yn y cais hwn gael ei defnyddio i wirio fy hunaniaeth.</p>
+              <p>Rwy’n cydsynio i’m henw gael ei gynnwys fel rhiant y babi ar y ‘Tystysgrif Colli Babi’ y ceisir amdani drwy’r cais hwn.</p>
+              
+            
+                    <div class="govuk-form-group">
+                          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                                <div class="govuk-checkboxes__item">
+                                  <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses">
+                                  <label class="govuk-label govuk-checkboxes__label" for="waste">
+                                    Rwy’n cytuno ac yn cadarnhau
+                                  </label>
+                                </div>
+                        </div>
+                    </div>
+            
+        
+
+
+
+              {% endif %}
+                {{ govukButton({
+                  text: t.global.agreeContinue,
+                  href: "confirmation-page-single",
+                  isStartButton: false
+                  }) }}
+              
+        
+                </form>
+      </div>
+    </div>
+</div>
+<style>
+  .govuk-checkboxes {
+    margin-bottom: 20px;
+  }
+
+</style>
+{% endblock %}

@@ -18,6 +18,13 @@
     "day": "Diwrnod",
     "month": "Mis",
     "year": "Blwyddyn",
-    "dateOfBirthQ": "Beth yw eich dyddiad geni?"
+    "dateOfBirthQ": "Beth yw eich dyddiad geni?",
+    "mother": "Mam",
+    "father": "Tad",
+    "parent": "Rhiant",
+    "surrogate": "Rhiant benthyg",
+    "noneOfThese": "Neu dim un o’r rhain",
+    "male": "Gwryw",
+    "female": "Benyw"
   }
 }

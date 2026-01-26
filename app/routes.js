@@ -32,11 +32,11 @@ router.post('/know-nhs-number', function(request, response) {
     var knowNHSNum = request.session.data['knowNhsNumber']
   
     if (knowNHSNum == "yes" || knowNHSNum == "ydw"  ){
-          console.log(request.session.data);
+      
         response.redirect("/enter-nhs-number")
     } else {
         response.redirect("/what-is-your-name")
-          console.log(request.session.data);
+        
     }
 })
 
@@ -75,6 +75,25 @@ router.post('/number-of-babies-lost', function(request, response) {
         response.redirect("/twin-loss")
     } else{
         response.redirect("/triplet-loss")
+    }
+})
+
+router.post('/baby-sex-choice-single', function(request, response) {
+    var method = request.session.data['gender']
+    if (method == "yes"){
+        response.redirect("/enter-baby-gender-single")
+    }  else{
+        response.redirect("/babys-name-single")
+    }
+})
+
+
+router.post('/confirmation-single-another-cert', function(request, response) {
+    var method = request.session.data['certreq']
+    if (method == "yes"){
+        response.redirect("/add-other-parent")
+    }  else{
+        response.redirect("/confirmation-page-new-single")
     }
 })
 
