@@ -17,45 +17,9 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form class="form" action="/main-relation-to-baby" method="post">
-      {% if data['languagePreference'] == "cy" %}
-       <span class="govuk-caption-l">Confirm your eligibility</span>
-        <h1 class="govuk-heading-l">Something in Welsh</h1>
-
-       {{ govukRadios({
-            name: "relationshipToBaby",
-            value: data['relationshipToBaby'],
-            items: [
-                {
-                value: "mother",
-                text: "Mother"
-                },
-                {
-                value: "father",
-                text: "Father"
-                },
-                {
-                value: "parent",
-                text: "Parent"
-                },
-                {
-                value: "surrogate",
-                text: "Surrogate"
-                },
-                {
-                divider: "or"
-                },
-                {
-                value: "none",
-                text: "None of these"
-                }
-            ]
-            }) }}
-
-      {% else %}
-      
-        <span class="govuk-caption-l">Confirm your eligibility</span>
-        <h1 class="govuk-heading-l">What is your relationship to your baby?</h1>
-
+      {% if data['languagePreference'] == "en" %}
+         <span class="govuk-caption-l">Confirm your eligibility</span>
+        <h1 class="govuk-heading-l">What is your relationship to your baby or babies?</h1>
         <p>This will be shown on the certificate.</p>
 
         {{ govukRadios({
@@ -87,11 +51,48 @@
                 }
             ]
             }) }}
+      {% else %}
+      
+        <span class="govuk-caption-l">Cadarnhewch eich cymhwystra:</span>
+        <h1 class="govuk-heading-l">Beth yw eich perthynas â’ch babi neu’ch babanod?</h1>
+
+        <p>Dangosir hyn ar y dystysgrif</p>
+
+       {{ govukRadios({
+            name: "relationshipToBaby",
+            value: data['relationshipToBaby'],
+            items: [
+                {
+                value: "mother",
+                text: "Mam"
+                },
+                {
+                value: "father",
+                text: "Tad"
+                },
+                {
+                value: "parent",
+                text: "Rhiant"
+                },
+                {
+                value: "surrogate",
+                text: "Rhiant benthyg"
+                },
+                {
+                divider: "or"
+                },
+                {
+                value: "none",
+                text: "Neu dim un o’r rhain"
+                }
+            ]
+            }) }}
+
 
       {% endif %}
 
         {{ govukButton({
-          text: "Continue"
+          text:  t.global.continue
         }) }}
 
       </form>

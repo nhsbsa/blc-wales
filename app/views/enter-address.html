@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  {{ t.serviceName }}
+{{ t.serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -19,29 +19,67 @@ href: "enter-date-of-birth"
     <div class="govuk-grid-column-two-thirds">
       <div class="govuk-form-group">
         <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <span class="govuk-caption-l">Your details</span>
-              <h1 class="govuk-fieldset__heading">
-                What is your postcode?
-              </h1>
-            </legend>
-            <p>You must enter the home postcode you registered with your GP surgery.</p>
-            <p>This is the address your certificate will be sent to.</p>
-            <p class="govuk-hint">For example, EN1 1BE</p>
-            <form class="form" action="check-your-details-full" method="post">
-                {{ govukInput({
-                  label: {
-                    text: "Postcode"
-                  },
-                  id: "postcode",
-                  classes: "govuk-input--width-10",
-                  name: "postcode",
-                  value: data['postcode']
-                }) }}
-              <button class="govuk-button" data-module="govuk-button" type="submit">
-                Continue
-              </button>
-            </form>
+
+
+          <!--//////  EN //////// -->
+
+          {% if data['languagePreference'] == "en" %}
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">Your details</span>
+            <h1 class="govuk-fieldset__heading">
+              What is your postcode?
+            </h1>
+          </legend>
+          <p>You must enter the home postcode you registered with your GP surgery.</p>
+          <p>This is the address your certificate will be sent to.</p>
+          <p class="govuk-hint">For example, EN1 1BE</p>
+          <form class="form" action="check-your-details-full" method="post">
+            {{ govukInput({
+            label: {
+            text: "Postcode"
+            },
+            id: "postcode",
+            classes: "govuk-input--width-10",
+            name: "postcode",
+            value: data['postcode']
+            }) }}
+            <button class="govuk-button" data-module="govuk-button" type="submit">
+                {{t.global.continue}}
+            </button>
+          </form>
+
+
+
+          {% else %}
+
+          <!--//////  WELSH //////// -->
+
+
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <span class="govuk-caption-l">Eich manylion</span>
+            <h1 class="govuk-fieldset__heading">
+             Beth yw eich cod post?
+            </h1>
+          </legend>
+          <p>Rhaid ichi roi’r cod post cartref a ddefnyddioch wrth gofrestru â’ch practis meddyg teulu</p>
+          <p>Dyma’r cyfeiriad y bydd eich tystysgrif yn cael ei hanfon iddo:</p>
+          <p class="govuk-hint">Er enghraifft: CF10 3NQ</p>
+          <form class="form" action="check-your-details-full" method="post">
+            {{ govukInput({
+            label: {
+            text: "Cod post"
+            },
+            id: "postcode",
+            classes: "govuk-input--width-10",
+            name: "postcode",
+            value: data['postcode']
+            }) }}
+            <button class="govuk-button" data-module="govuk-button" type="submit">
+              {{t.global.continue}}
+            </button>
+          </form>
+
+          {% endif %}
         </fieldset>
 
       </div>
@@ -52,6 +90,5 @@ href: "enter-date-of-birth"
   .govuk-input {
     margin-bottom: 15px;
   }
-
 </style>
 {% endblock %}

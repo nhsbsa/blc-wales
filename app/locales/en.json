@@ -2,43 +2,21 @@
 
 {
   "serviceName": "Request a baby loss certificate",
-    "button": {
-        "continue": "Continue"
-    },
-    
-    "country": {
-        "caption": "Confirm your eligibility",
-        "title": "Where do you live?",
-        "f-england": "England",
-        "f-wales": "Wales",
-        "non": "None of these"
-    },
-
   "nav": {
     "language": "Cymraeg",
     "currentLanguage": "English"
   },
   "global": {
     "continue": "Continue",
-    "back": "Back"
+    "back": "Back",
+    "details":"Your details",
+    "checkDetails": "Check your details",
+    "agreeContinue":"Agree and continue"
   },
   "pages": {
-    "home": {
-      "title": "Start your task",
-      "lede": "This is a bilingual prototype example using a simple t() helper."
-    },
-    "step1": {
-      "title": "Your details",
-      "hint": "Enter your name as it appears on your NHS record",
-      "label": "Full name"
-    },
-    "step2": {
-      "title": "Confirm your answers",
-      "summaryName": "Name"
-    },
-    "done": {
-      "title": "Application complete",
-      "lede": "We’ve received your information."
-    }
+    "day": "Day",
+    "month": "Month",
+    "year": "Year",
+    "dateOfBirthQ": "What is your date of birth?"
   }
 }

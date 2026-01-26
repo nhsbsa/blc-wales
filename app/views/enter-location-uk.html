@@ -16,6 +16,7 @@ href: "start-page"
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <form class="form" action="/location-answer" method="post">
+     {% if data['languagePreference'] == "en" %}
       <span class="govuk-caption-l">
         Confirm your eligibility
       </span>
@@ -48,6 +49,45 @@ href: "start-page"
             }
           ]
         }) }}
+
+        {% else %}
+
+      <span class="govuk-caption-l">
+      Cadarnhewch eich cymhwystra:
+      </span>
+
+        {{ govukRadios({
+          name: "country-location",
+          value: data['country-location'],
+          fieldset: {
+            legend: {
+              text: "Where do you live?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "england",
+              text: "England"
+            },
+            {
+              value: "wales",
+              text: "Wales"
+            },
+            {
+              divider: "or"
+            },
+            {
+              value: "other",
+              text: "Somewhere else"
+            }
+          ]
+        }) }}
+
+
+
+        {% endif %}
 
       <button class="govuk-button" data-module="govuk-button" type="submit">
         {{t.global.continue}}

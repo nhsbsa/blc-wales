@@ -18,23 +18,45 @@ href: "what-is-your-name"
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
   <form class="form" action="/enter-address" method="post">
-  <span class="govuk-caption-l">Your details</span>
+
+
+
+  <span class="govuk-caption-l">{{t.global.details}}</span>
 
       {{ govukDateInput({
         id: "date-of-birth",
         namePrefix: "date-of-birth",
         fieldset: {
           legend: {
-            text: "What is your date of birth?",
+            text: t.pages.dateOfBirthQ,
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }
         },
         hint: {
           text: "For example, 27 3 2007"
-        }
-      }) }}
+        },
 
+        items:[
+          {
+            name: "day",
+            label: t.pages.day,
+            classes: "govuk-input--width-2"
+          },
+           {
+            name: "month",
+            label: t.pages.month,
+            classes: "govuk-input--width-2"
+          },
+           {
+            name: "year",
+            label: t.pages.year,
+            classes: "govuk-input--width-4"
+          }
+        ]
+
+
+      }) }}
 
 
 

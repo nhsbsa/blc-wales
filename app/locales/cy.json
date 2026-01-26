@@ -1,44 +1,20 @@
 
 {
   "serviceName": "Gwneud cais am dystysgrif colled babanod",
-
-      "button": {
-        "continue": "Continue"
-    },
-
-  "country": {
-      "caption": "Gwneud cais am dystysgrif",
-      "title": "Deewhrau nawr",
-      "f-england": "England",
-      "f-wales": "Wales",
-      "non": "None of these"
-  },
-    
   "nav": {
     "language": "English",
     "currentLanguage": "Cymraeg"
   },
   "global": {
     "continue": "Parhau",
-    "back": "Nôl"
+    "back": "Nôl",
+    "details": "Eich manylion",
+    "checkDetails": "Gwiriwch eich manylion"
   },
   "pages": {
-    "home": {
-      "title": "Dechrau eich tasg",
-      "lede": "Enghraifft dwyieithog gan ddefnyddio swyddogaeth t() syml."
-    },
-    "step1": {
-      "title": "Eich manylion",
-      "hint": "Rhowch eich enw fel mae’n ymddangos ar eich cofnod NHS",
-      "label": "Enw llawn"
-    },
-    "step2": {
-      "title": "Cadarnhewch eich atebion",
-      "summaryName": "Enw"
-    },
-    "done": {
-      "title": "Cais wedi’i gwblhau",
-      "lede": "Rydym wedi derbyn eich gwybodaeth."
-    }
+    "day": "Diwrnod",
+    "month": "Mis",
+    "year": "Blwyddyn",
+    "dateOfBirthQ": "Beth yw eich dyddiad geni?"
   }
 }
