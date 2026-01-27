@@ -16,7 +16,7 @@
   <div class="govuk-grid-column-two-thirds">
     <form class="form" action="/baby-sex-choice-1-cert" method="post">
         <span class="govuk-caption-l"> {% if data['languagePreference'] == "en" %} Details on the certificate{% else %}
-          Manylion ar dystysgrif 1 {% endif %}</span>
+          Manylion ar y dystysgrif {% endif %}</span>
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
                  {% if data['languagePreference'] == "en" %} 
@@ -67,7 +67,7 @@
 
             </label>
           </div>
-          <div class="govuk-radios__divider">or</div>
+          <div class="govuk-radios__divider">Neu</div>
         </div>
           <div class="govuk-radios__item">
             <input class="govuk-radios__input" id="baby-gender-version1" name="gender" type="radio" value="unknown">
@@ -77,7 +77,7 @@
                I do not know the sex and I’d like ‘Unknown’ on the certificate
 
           {% else %}
-          Neu, nid wyf yn gwybod beth oedd rhyw y babi a hoffwn i ‘anhysbys’ gael ei roi ar y dystysgrif
+          Nid wyf yn gwybod beth oedd rhyw y babi a hoffwn i ‘anhysbys’ gael ei roi ar y dystysgrif
           {% endif %}
             </label>
           </div>

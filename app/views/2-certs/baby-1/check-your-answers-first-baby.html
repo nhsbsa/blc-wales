@@ -52,17 +52,17 @@
           </div>
           </dl>
         
-          <h3 class="govuk-heading-s">Parent 2</h3>
+          <h3 class="govuk-heading-s">{% if data['languagePreference'] == "en" %} Parent 2{% else %} Rhiant 2{% endif %}</h3>
           <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                Their name
+              {% if data['languagePreference'] == "en" %}  Their name {% else %} Ei enw neu ei henw {% endif %}
               </dt>
               <dd class="govuk-summary-list__value"> To be added once the other parent confirms their details  </dd>
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                Their relationship to your baby
+                 {% if data['languagePreference'] == "en" %} Their relationship to your baby {% else %} Ei berthynas neu ei pherthynas â’ch babi {% endif %}
               </dt>
               <dd class="govuk-summary-list__value">
                 {% if data['parent-2'] %}
@@ -73,18 +73,19 @@
               </dd>
               <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/2-certs/baby-1/check-your-answers-first-baby">
-                  Change<span class="govuk-visually-hidden"> name</span>
+                  {{t.global.change}}<span class="govuk-visually-hidden"> name</span>
                  
                 </a>
               </dd>
             </div>
             </dl>
          
-            <h3 class="govuk-heading-s">Baby's details</h3>
+            <h3 class="govuk-heading-s">{% if data['languagePreference'] == "en" %} Baby's details {% else %} Manylion am y babi {% endif %}
+</h3>
             <dl class="govuk-summary-list govuk-!-margin-bottom-9">
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                  Date of baby loss
+                 {% if data['languagePreference'] == "en" %}  Date of baby loss{% else %} Dyddiad colli’r babi {% endif %}
                 </dt>
                 <dd class="govuk-summary-list__value">
                   {% if data['dol-day'] %}
@@ -95,13 +96,13 @@
                 </dd>
                 <dd class="govuk-summary-list__actions">
                   <a class="govuk-link" href="/2-certs/baby-1/check-your-answers-first-baby">
-                    Change<span class="govuk-visually-hidden"> name</span>
+                    {{t.global.change}}<span class="govuk-visually-hidden"> name</span>
                   </a>
                 </dd>
               </div>
               <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">
-                  Place of baby loss
+                   {% if data['languagePreference'] == "en" %}Place of baby loss{% else %} Man colli’r babi {% endif %}
                 </dt>
                 <dd class="govuk-summary-list__value">
                   {% if data['place'] %}
@@ -112,13 +113,13 @@
                 </dd>
                 <dd class="govuk-summary-list__actions">
                   <a class="govuk-link" href="/2-certs/baby-1/check-your-answers-first-baby">
-                    Change<span class="govuk-visually-hidden"> name</span>
+                    {{t.global.change}}<span class="govuk-visually-hidden"> name</span>
                   </a>
                 </dd>
               </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Baby's sex
+         {% if data['languagePreference'] == "en" %}Baby's sex{% else %} Rhyw y babi {% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {% if data['baby-gender'] %}
@@ -129,7 +130,7 @@
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="/2-certs/baby-1/check-your-answers-first-baby">
-                Change<span class="govuk-visually-hidden"> name</span>
+                {{t.global.change}}<span class="govuk-visually-hidden"> name</span>
               </a>
             </dd>
           </div>
@@ -137,7 +138,7 @@
          
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Baby's name
+              {% if data['languagePreference'] == "en" %}Baby's name{% else %} Enw’r babi  {% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {% if data['baby-firstname'] %}
@@ -148,7 +149,7 @@
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="/2-certs/baby-1/check-your-answers-first-baby">
-                Change<span class="govuk-visually-hidden"> name</span>
+                {{t.global.change}}<span class="govuk-visually-hidden"> name</span>
               </a>
             </dd>
           </div>
@@ -158,19 +159,18 @@
           </div>
         </dl>
         
-        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+        <div class="govuk-checkboxes govuk-!-margin-bottom-5" data-module="govuk-checkboxes">
           <div class="govuk-checkboxes__item">
             <input class="govuk-checkboxes__input" id="nationality" name="nationality" type="checkbox" value="british" aria-describedby="nationality-item-hint">
             <label class="govuk-label govuk-checkboxes__label" for="nationality">
-             I confirm these details are correct
+             {% if data['languagePreference'] == "en" %}I confirm these details are correct{% else %} Rwy’n cadarnhau bod y manylion hyn yn gywir {% endif %} 
             </label>
-       
           </div>
-          <br>
+        </div>
         <form  method="post" novalidate>
           <input type="hidden" name="answers-checked" value="true">
           {{ govukButton({
-            text: "Accept and continue",
+            text: t.global.acceptContinue,
             href: "/2-certs/baby-2/date-of-loss",
             isStartButton: false
             }) }}

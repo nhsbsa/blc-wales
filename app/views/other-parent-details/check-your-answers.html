@@ -15,18 +15,24 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds-from-desktop">
 
-        <h1 class="govuk-heading-l">Check your answers</h1>
-        <h2 class="govuk-heading-m">Your details</h2>
+        <h1 class="govuk-heading-l">
+          {% if data['languagePreference'] == "en" %} Check your answers
+          {% else %} Gwiriwch eich atebion {% endif %}
+        </h1>
+        <h2 class="govuk-heading-m">
+          {{t.global.details}}
+        </h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Name
+              {% if data['languagePreference'] == "en" %} Name
+              {% else %} Enw {% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               {% if data['parent1-firstname'] %}
               {{ data['parent1-firstname'] }} {{ data['parent1-lastname'] }}
               {% else %}
-              Example name
+              {{t.global.example}}
               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
@@ -37,7 +43,9 @@
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Address
+              
+              {% if data['languagePreference'] == "en" %} Address
+              {% else %} Cyfeiriad {% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
               4 Albert Road<br>Newcastle<br>NE1 3JA
@@ -47,43 +55,55 @@
             </dd>
           </div>
         </dl>
-        <h2 class="govuk-heading-m">Other parent's details</h2>
+        <h2 class="govuk-heading-m">
+          {% if data['languagePreference'] == "en" %} Other parent's details
+          {% else %} Manylion y rhiant arall {% endif %}
+        </h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Do you want to add another parent?
+               {% if data['languagePreference'] == "en" %} Do you want to add another parent?
+                {% else %} Ydych chi eisiau ychwanegu rhiant arall?  {% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
-            Yes
+             {% if data['languagePreference'] == "en" %} Yes
+              {% else %} Ydw {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
 
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="/other-parent-details/add-parent">
-                Change<span class="govuk-visually-hidden"> name</span>
+                {{t.global.change}}<span class="govuk-visually-hidden"> name</span>
               </a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
+              {% if data['languagePreference'] == "en" %} 
               Would you still like to receive the certificate if the other parent does not respond?
+              {% else %} 
+              Hoffech chi ddal i gael y dystysgrif os nad yw’r rhiant arall yn ymateb? {% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
-            Yes
+             {% if data['languagePreference'] == "en" %} Yes
+              {% else %} Ydw {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
 
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="/other-parent-details/continue-if-no-response">
-                Change<span class="govuk-visually-hidden"> name</span>
+                {{t.global.change}}<span class="govuk-visually-hidden"> name</span>
               </a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
+               {% if data['languagePreference'] == "en" %} 
               Email address
+              {% else %} 
+              Cyfeiriad e-bost{% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
              Test@test.com
@@ -93,13 +113,16 @@
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="/other-parent-details/email">
-                Change<span class="govuk-visually-hidden"> name</span>
+                {{t.global.change}}<span class="govuk-visually-hidden"> name</span>
               </a>
             </dd>
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-             Date of birth
+              {% if data['languagePreference'] == "en" %} 
+              Date of birth
+              {% else %} 
+              Dyddiad geni{% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
              1 January 1998
@@ -109,7 +132,7 @@
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="/other-parent-details/date-of-birth">
-                Change<span class="govuk-visually-hidden"> name</span>
+                {{t.global.change}}<span class="govuk-visually-hidden"> name</span>
               </a>
             </dd>
           </div>

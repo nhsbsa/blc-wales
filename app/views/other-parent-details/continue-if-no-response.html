@@ -20,16 +20,32 @@
         <fieldset class="govuk-fieldset">
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
         <h1 class="govuk-fieldset__heading">
-          Would you still like to receive the certificate if the other parent does not respond?  </h1>
+          {% if data['languagePreference'] == "en" %}
+          Would you still like to receive the certificate if the other parent does not respond?  
+          {% else %}
+          Hoffech chi ddal i gael y dystysgrif os nad yw’r rhiant arall yn ymateb?
+          {% endif %}
+        
+        </h1>
       </legend>
 
-        <div class="govuk-body">You can still receive a certificate that shows only your name as a parent of your baby, if the other parent does not confirm their details.</div>
-
+        <p class="govuk-body">
+          
+         {% if data['languagePreference'] == "en" %}
+          You can still receive a certificate that shows only your name as a parent of your baby, if the other parent does not confirm their details.
+          {% else %}
+          Os nad yw’r rhiant arall yn cadarnhau ei fanylion neu ei manylion, gallwch barhau i gael tystysgrif a fydd dim ond yn dangos eich enw chi fel rhiant eich babi.
+          {% endif %}
+        </p>
         <div class="govuk-radios" data-module="govuk-radios">
           <div class="govuk-radios__item">
             <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="email" data-aria-controls="conditional-contact">
             <label class="govuk-label govuk-radios__label" for="contact">
-              Yes
+               {% if data['languagePreference'] == "en" %}
+               Yes
+                {% else %}
+                Hoffwn
+                {% endif %}
             </label>
           </div>
           <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
@@ -42,13 +58,21 @@
           <div class="govuk-radios__item">
             <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="phone" data-aria-controls="conditional-contact-2">
             <label class="govuk-label govuk-radios__label" for="contact-2">
+              {% if data['languagePreference'] == "en" %}
               No
+              {% else %}
+              Na hoffwn
+              {% endif %}
             </label>
           </div>
           <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-2">
             <div class="govuk-form-group">
               <label class="govuk-label" for="contact-by-phone">
-                If the other parent does not respond, your request for a certificate will be cancelled.
+                {% if data['languagePreference'] == "en" %}
+               If the other parent does not respond, your request for a certificate will be cancelled.
+                {% else %}
+                Os nad yw’r rhiant arall yn ymateb, bydd eich cais am dystysgrif yn cael ei ddileu.
+                {% endif %} 
               </label>
             </div>
           </div>
@@ -56,7 +80,7 @@
         </div>
 
         {{ govukButton({
-          text: "Continue",
+          text: t.global.continue,
           href: "/other-parent-details/email",
           isStartButton: false
           }) }}

@@ -106,6 +106,15 @@ router.post('/twin-losses', function(request, response) {
     }
 })
 
+router.post('/triplet-losses', function(request, response) {
+    var method = request.session.data['triplet-loss']
+    if (method == "single"){
+         response.redirect("/1-cert/date-of-loss")
+    }  else{
+        response.redirect("/2-certs/baby-1/date-of-loss")
+    }
+})
+
 router.post('/2-certs/baby-1-include-sex', function(request, response) {
     var method = request.session.data['include-sex']
     if (method == "yes"){

@@ -16,7 +16,7 @@
   <div class="govuk-grid-column-two-thirds">
     <form class="form" action="/1-cert/place-of-loss" method="post">
     <span class="govuk-caption-l">
-        {% if data['languagePreference'] == "en" %} Details on the certificate {% else %} Manylion ar dystysgrif 1 {% endif %}
+        {% if data['languagePreference'] == "en" %} Details on the certificate {% else %} Manylion ar y dystysgrif {% endif %}
       </span>
     <fieldset class="govuk-fieldset">
       <div class="govuk-form-group">
@@ -98,7 +98,7 @@
                   {% if data['languagePreference'] == "en" %} No {% else %} Na hoffwn  {% endif %}
               </label>
             </div>
-            <div class="govuk-radios__divider">or</div>
+            <div class="govuk-radios__divider">Neu</div>
             </div>
 
 
@@ -106,7 +106,7 @@
             <input class="govuk-radios__input" id="baby-gender-version1" name="contact" type="radio" value="unknown">
             <label class="govuk-label govuk-radios__label" for="unknown">
              
-                {% if data['languagePreference'] == "en" %}  I do not know the date of my baby loss {% else %} Neu, Nid wyf yn gwybod dyddiad colli fy mabi {% endif %}
+                {% if data['languagePreference'] == "en" %}  I do not know the date of my baby loss {% else %} Nid wyf yn gwybod dyddiad colli fy mabi {% endif %}
             </label>
           </div>
 

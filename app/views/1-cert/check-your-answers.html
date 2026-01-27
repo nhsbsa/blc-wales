@@ -146,7 +146,6 @@
             </dd>
           </div>
 
-
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               {% if data['languagePreference'] == "en" %}Baby's name{% else %} Enw’r babi  {% endif %}
@@ -165,17 +164,21 @@
               </a>
             </dd>
           </div>
-          </div>
-
-
-          </div>
         </dl>
-
+    
+        <div class="govuk-checkboxes govuk-!-margin-bottom-5" data-module="govuk-checkboxes">
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="nationality" name="nationality" type="checkbox" value="british" aria-describedby="nationality-item-hint">
+            <label class="govuk-label govuk-checkboxes__label" for="nationality">
+             {% if data['languagePreference'] == "en" %}I confirm these details are correct{% else %} Rwy’n cadarnhau bod y manylion hyn yn gywir {% endif %} 
+            </label>
+          </div>
+        </div>
 
         <form method="post" novalidate>
           <input type="hidden" name="answers-checked" value="true">
           {{ govukButton({
-            text: t.global.agreeContinue,
+            text: t.global.acceptContinue,
             href: "/1-cert/email-updates",
             isStartButton: false
             }) }}
