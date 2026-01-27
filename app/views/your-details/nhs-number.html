@@ -1,0 +1,114 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  {{ t.serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: t.global.back,
+href: "/eligibility/relation-to-baby"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/know-nhs-number" method="post">
+
+      {% if data['languagePreference'] == "en" %}
+
+
+       <span class="govuk-caption-l">Your details</span>
+        <h1 class="govuk-heading-l">Do you know your NHS number?</h1>
+
+        <p>Telling us your NHS number will give us the best chance of matching you to your GP record.</p>
+       <!-- <p>This will help us identify you so we can send the certificate to the correct address.</p> -->
+        <p>You do not need to know your NHS number to continue. If you do not know it, you can tell us your full name, date of birth and postcode instead.</p>
+        {{ govukDetails({
+        summaryText: "Where to find your NHS number",
+        html: '
+            <p>If you’re registered with a GP, you will have a 10 digit NHS number unique to you.</p>
+            <p>You can find it on the NHS app or <a href="">use our online NHS number finder (opens in a new tab)</a>.</p>
+            <p>It is also on any letters or documents you receive from the NHS, such as:</p>
+            <ul>
+            <li>prescriptions</li>
+            <li>test results</li>
+            <li>appointment letters</li>
+            <li>maternity notes</li>
+            </ul>'
+        }) }}
+        <!-- {{ govukDetails({
+        summaryText: "If the name on your GP record was not your name at the time of loss",
+        html: '<p>You can only request your certificate online using the name on your GP record.</p>
+              <p>You can <a href="contact">contact us to request a certificate with a different name</a>, for example a maiden name.</p>'
+        }) }} -->
+        {{ govukRadios({
+            name: "knowNhsNumber",
+            value: data['knowNhsNumber'],
+            items: [
+                {
+                value: "yes",
+                text: "Yes, I know my NHS number"
+                },
+                {
+                value: "no",
+                text: "No, continue with my full name, date of birth and postcode"
+                }
+            ]
+            }) }}
+
+      {% else %}
+
+      
+        <span class="govuk-caption-l">{{t.global.details}}</span>
+        <h1 class="govuk-heading-l">Ydych chi’n gwybod beth yw eich rhif GIG?</h1>
+        <p>Bydd dweud eich rhif GIG wrthym yn rhoi’r cyfle gorau inni eich paru â’ch cofnod GIG.</p>
+
+        <p>Nid oes angen ichi wybod beth yw eich rhif GIG i barhau. Os nad ydych chi’n ei wybod, gallwch yn hytrach, ddweud wrthym eich enw llawn, eich dyddiad geni a’ch cod post.</p>
+        
+        {{ govukDetails({
+        summaryText: "Ble i ddod o hyd i’ch rhif GIG",
+        html: '
+            <p>Os ydych chi wedi cofrestru â meddyg teulu, bydd gennych rif GIG 10 digid sy’n unigryw i chi.</p>
+            <p><a href="">Gallwch ddod o hyd iddo ar ap y GIG neu ddefnyddio ein hadnodd dod o hyd i rif GIG ar-lein</a> (bydd yn agor mewn tab newydd)</p>
+            <p>Mae hefyd ar lythyrau neu ddogfennau rydych chi’n eu cael gan y GIG, er enghraifft:</p>
+            <ul>
+            <li>presgripsiynau</li>
+            <li>canlyniadau profion</li>
+            <li>llythyrau apwyntiadau</li>
+            </ul>'
+        }) }}
+        {{ govukRadios({
+            name: "knowNhsNumber",
+            value: data['knowNhsNumber'],
+            items: [
+                {
+                value: "ydw",
+                text: "Ydw, rwy’n gwybod fy rhif GIG"
+                },
+                {
+                value: "nac",
+                text: "Nac ydw, parhau gan ddefnyddio fy enw llawn, fy nyddiad geni a’m cod post"
+                }
+            ]
+            }) }}
+
+
+
+            
+      {% endif %}
+
+
+        {{ govukButton({
+          text:  t.global.continue
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

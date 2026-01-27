@@ -1,0 +1,81 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{{ t.serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: t.global.back,
+href: "/verification/get-security-code"
+}) }}
+{% endblock %}
+
+{% block content %}
+ <span class="govuk-caption-l">{{t.global.details}}</span>
+<form class="form" action="/verification/confirm-address" method="post">
+  <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+
+      {% if data['languagePreference'] == "en" %}
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+          Enter your security code
+        </h1>
+      </legend>
+      
+      <div class="govuk-body">
+        We sent your security code by text to ********009
+      </div>
+      
+      <input class="govuk-input govuk-input--width-10" id="security-code" name="entercode" type="text"
+        aria-describedby="nhs-number-hint" inputmode="numeric">
+      </div>
+       
+      </fieldset>
+      <p>Didn't get your security code? <a href="">Resend code</a></p>
+      
+      {% else %}
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+           Rhowch eich cod diogelwch
+        </h1>
+      </legend>
+      
+      
+      <div class="govuk-body">
+        Gwnaethom anfon eich cod diogelwch drwy neges destun i ********009
+      </div>
+      
+      
+      <input class="govuk-input govuk-input--width-10" id="security-code" name="entercode" type="text"
+        aria-describedby="nhs-number-hint" inputmode="numeric">
+      </div>
+      
+      
+      </fieldset>
+        <p>Heb gael eich cod diogelwch? 
+          <a href="">Ailanfon cod </a>
+        </p>
+
+      
+      
+      {% endif%}
+
+
+
+  {{ govukButton({
+  text: t.global.continue,
+  href: "/verification/confirm-address",
+  isStartButton: false
+  }) }}
+
+</form>
+
+</div>
+</div>
+<style>
+
+
+</style>
+{% endblock %}

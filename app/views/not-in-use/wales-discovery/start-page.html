@@ -1,9 +1,11 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-wales.html" %}
 
 {% block pageTitle %}
-{{ serviceName }}
+Start page template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
+
 {% block beforeContent %}
+ 
 {{ govukBreadcrumbs({
   items: [
     {
@@ -64,7 +66,7 @@
     </ul>
     {{ govukButton({
       text: "Start now",
-      href: "eligibility/enter-location-uk",
+      href: "enter-location-uk",
       isStartButton: true
       }) }}
     <p>You can request a separate certificate for each baby if you’ve lost:

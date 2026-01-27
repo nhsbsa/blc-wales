@@ -1,0 +1,83 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{{ serviceName }}
+{% endblock %}
+{% block beforeContent %}
+{{ govukBackLink({
+text: t.global.back,
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-form-group">
+      <form class="form" action="/twin-losses" method="post">
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                  <h1 class="govuk-fieldset__heading">
+                  {% if data['languagePreference'] == "en" %} Are you requesting certificates for both babies from your twin pregnancy? {% else %} Ydych chi’n gwneud cais am dystysgrif ar gyfer y ddau fabi o’ch beichiogrwydd gefeilliaid? {% endif %}
+                  </h1>
+                </legend>
+
+
+                  <div class="govuk-radios govuk-radios" data-module="govuk-radios">
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="twin-losses" name="bothbabies" type="radio" value="yes"
+                        data-aria-controls="conditional-contact">
+                      <label class="govuk-label govuk-radios__label" for="twin-losses">
+                       {% if data['languagePreference'] == "en" %} Yes{% else %} Ydw  {% endif %}
+                      </label>
+                    </div>
+                    <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="contact-by-email">
+
+                          {% if data['languagePreference'] == "en" %}
+                          You’ll receive a separate certificate for each baby. <br> We’ll ask for details about certificate 1 first, then for certificate 2.
+                          {% else %}
+                          Byddwch yn cael tystysgrif ar gyfer pob babi.<br> 
+                          Byddwn yn gofyn am fanylion ar gyfer tystysgrif 1 yn gyntaf, ac yna ar gyfer tystysgrif 2.
+                          {% endif %}
+                        </label>
+
+                      </div>
+                    </div>
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="twin-losses" name="bothbabies" type="radio" value="no">
+                      <label class="govuk-label govuk-radios__label" for="twin-losses">
+                         {% if data['languagePreference'] == "en" %} No {% else %} Nac ydw  {% endif %}
+                      </label>
+                    </div>
+
+                  </div>
+
+              </fieldset>
+
+    <button class="govuk-button" data-module="govuk-button" type="submit">
+      Continue
+    </button>
+
+    </form>
+  </div>
+</div>
+
+</div>
+<style>
+  .govuk-fieldset__legend--l {
+    margin-bottom: 30px;
+  }
+
+  .govuk-radios--inline {
+    margin-bottom: 30px;
+  }
+
+  .govuk-button {
+    margin-top: 30px;
+  }
+</style>
+
+{% endblock %}

@@ -12,9 +12,9 @@ const router = govukPrototypeKit.requests.setupRouter()
 router.post('/location-answer', function(request, response) {
     var location = request.session.data['country-location']
     if (location == "other"){
-        response.redirect("/location-kickout-uk")
+        response.redirect("eligibility/location-kickout-uk")
     } else {
-        response.redirect("/relation-to-baby")
+        response.redirect("eligibility/relation-to-baby")
     }
 })
 
@@ -22,9 +22,9 @@ router.post('/location-answer', function(request, response) {
 router.post('/main-relation-to-baby', function(request, response) {
     var relation = request.session.data['relationshipToBaby']
     if (relation == "none"){
-        response.redirect("/relation-kickout")
+        response.redirect("/eligibility/relation-kickout")
     } else {
-        response.redirect("/nhs-number")
+        response.redirect("/your-details/nhs-number")
     }
 })
 
@@ -33,9 +33,9 @@ router.post('/know-nhs-number', function(request, response) {
   
     if (knowNHSNum == "yes" || knowNHSNum == "ydw"  ){
       
-        response.redirect("/enter-nhs-number")
+        response.redirect("/your-details/enter-nhs-number")
     } else {
-        response.redirect("/what-is-your-name")
+        response.redirect("/your-details/what-is-your-name")
         
     }
 })
@@ -43,57 +43,84 @@ router.post('/know-nhs-number', function(request, response) {
 router.post('/security-code-method', function(request, response) {
     var method = request.session.data['seccode']
     if (method == "email"){
-        response.redirect("/enter-security-code-email")
+        response.redirect("/verification/enter-security-code-email")
     } else {
-        response.redirect("/enter-security-code-text")
+        response.redirect("/verification/enter-security-code-text")
     }
 })
 
 router.post('/confirm-post-address', function(request, response) {
     var method = request.session.data['confirmAddress']
     if (method == "yes"){
-        response.redirect("/add-parent")
+        response.redirect("/other-parent-details/add-parent")
     } else {
-        response.redirect("/check-your-details-kickout")
+        response.redirect("/your-details/check-your-details-kickout")
     }
 })
 
-router.post('/add-parent', function(request, response) {
+router.post('/add-another-parent', function(request, response) {
     var method = request.session.data['parent']
     if (method == "yes"){
-        response.redirect("/what-happens-next")
+        response.redirect("/other-parent-details/what-happens-next")
     } else {
-        response.redirect("/babys-details")
+        response.redirect("/pregnancy-details/what-happens-next")
     }
 })
 
 router.post('/number-of-babies-lost', function(request, response) {
     var method = request.session.data['loss-multiple']
-    if (method == "single"){
-        response.redirect("/date-of-loss-single")
+    if (method == "1-cert"){
+        response.redirect("/1-cert/date-of-loss")
     } else if (method == "twin"){ 
-        response.redirect("/twin-loss")
+        response.redirect("/pregnancy-details/twin-loss")
     } else{
-        response.redirect("/triplet-loss")
+        response.redirect("/pregnancy-details/triplet-loss")
     }
 })
 
-router.post('/baby-sex-choice-single', function(request, response) {
+router.post('/baby-sex-choice-1-cert', function(request, response) {
     var method = request.session.data['gender']
     if (method == "yes"){
-        response.redirect("/enter-baby-gender-single")
+        response.redirect("/1-cert/sex-of-baby")
     }  else{
-        response.redirect("/babys-name-single")
+        response.redirect("/1-cert/name-of-baby")
     }
 })
 
 
-router.post('/confirmation-single-another-cert', function(request, response) {
+router.post('/confirmation-1-cert-another-cert', function(request, response) {
     var method = request.session.data['certreq']
     if (method == "yes"){
         response.redirect("/add-other-parent")
     }  else{
-        response.redirect("/confirmation-page-new-single")
+        response.redirect("/confirmation-page-new-1-cert")
+    }
+})
+
+router.post('/twin-losses', function(request, response) {
+    var method = request.session.data['bothbabies']
+    if (method == "yes"){
+        response.redirect("/2-certs/baby-1/date-of-loss")
+    }  else{
+        response.redirect("/1-cert/date-of-loss")
+    }
+})
+
+router.post('/2-certs/baby-1-include-sex', function(request, response) {
+    var method = request.session.data['include-sex']
+    if (method == "yes"){
+        response.redirect("/2-certs/baby-1/sex-of-baby")
+    }  else{
+        response.redirect("/2-certs/baby-1/name-of-baby")
+    }
+})
+
+router.post('/2-certs/baby-2-include-sex', function(request, response) {
+    var method = request.session.data['include-sex']
+    if (method == "yes"){
+        response.redirect("/2-certs/baby-2/sex-of-baby")
+    }  else{
+        response.redirect("/2-certs/baby-2/name-of-baby")
     }
 })
 
