@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block content %}
-
+<form action="/pregnancy-details/what-happens-next" method="post" novalidate>
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds-from-desktop">
@@ -106,7 +106,7 @@
               Cyfeiriad e-bost{% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
-             Test@test.com
+             {{data['other-email']}}
             </dd>
             <dd class="govuk-summary-list__actions">
 
@@ -138,10 +138,10 @@
           </div>
         </dl>
 
-        <form action="/pregnancy-details/what-happens-next" method="post" novalidate>
+        
           <input type="hidden" name="answers-checked" value="true">
           {{ govukButton({
-            text: "Accept and continue",
+            text: t.global.acceptContinue,
             href: "/pregnancy-details/what-happens-next",
             isStartButton: false
             }) }}
