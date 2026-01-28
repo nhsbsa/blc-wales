@@ -116,7 +116,7 @@
         rows: [
           {
             key: {
-              text: "Do you know your NHS number?"
+              text: "Ydych chi’n gwybod beth yw eich rhif GIG?"
             },
             value: {
               text: data['knowNhsNumber'] | capitalise
@@ -125,7 +125,7 @@
               items: [
                 {
                   href: "/your-details/nhs-number",
-                  text: "Change",
+                  text: t.global.change,
                   visuallyHiddenText: "Question 2"
                 }
               ]
@@ -133,7 +133,7 @@
           },
           {
             key: {
-              text: "Name"
+              text: "Enw"
             },
             value: {
               text: data['p1FirstName'] + ' ' + data['p1LastName'] 
@@ -142,7 +142,7 @@
               items: [
                 {
                   href: "/your-details/what-is-your-name",
-                  text: "Change",
+                  text: t.global.change,
                   visuallyHiddenText: "Question 3"
                 }
               ]
@@ -150,7 +150,7 @@
           },
           {
             key: {
-              text: "Date of birth"
+              text: "Dyddiad geni"
             },
             value: {
               text: dobFormatted
@@ -159,7 +159,7 @@
               items: [
                 {
                   href: "/your-details/enter-date-of-birth",
-                  text: "Change",
+                  text: t.global.change,
                   visuallyHiddenText: "Question 1"
                 }
               ]
@@ -167,7 +167,7 @@
           },
           {
             key: {
-              text: "Postcode"
+              text: "Cod post"
             },
             value: {
               text: data['postcode']
@@ -176,7 +176,7 @@
               items: [
                 {
                   href: "/your-details/postcode",
-                  text: "Change",
+                  text: t.global.change,
                   visuallyHiddenText: "Question 1"
                 }
               ]
@@ -185,10 +185,10 @@
         ]
       }) }}
 
-      <p>By continuing you agree to let us use your details to:</p>
+      <p>Trwy barhau, rydych chi’n caniatáu inni ddefnyddio eich manylion i wneud y canlynol:</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>check who you are</li>
-        <li>find your contact details from your NHS health records so we can send you a security code</li>
+        <li>Gwirio pwy ydych chi</li>
+        <li>Dod o hyd i’ch manylion cyswllt o’ch cofnodion iechyd y GIG fel y gallwn anfon cod diogelwch atoch</li>
       </ul>
 
 

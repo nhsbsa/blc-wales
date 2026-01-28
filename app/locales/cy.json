@@ -27,5 +27,11 @@
     "noneOfThese": "Neu dim un o’r rhain",
     "male": "Gwryw",
     "female": "Benyw"
+  },
+   "confirmation":{
+    "requestPending": "Request pending",
+    "applicationNumber": "Your application number",
+    "certRef": "Cyfeirnodau’r dystysgrif",
+    "certificate":"Tystysgrif"
   }
 }

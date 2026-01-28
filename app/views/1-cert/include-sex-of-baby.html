@@ -67,7 +67,9 @@
 
             </label>
           </div>
-          <div class="govuk-radios__divider">Neu</div>
+          <div class="govuk-radios__divider">
+            {% if data['languagePreference'] == "en" %}   or  {% else %}  neu {% endif %}
+          </div>
         </div>
           <div class="govuk-radios__item">
             <input class="govuk-radios__input" id="baby-gender-version1" name="gender" type="radio" value="unknown">
