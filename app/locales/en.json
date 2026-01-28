@@ -21,6 +21,7 @@
     "month": "Month",
     "year": "Year",
     "dateOfBirthQ": "What is your date of birth?",
+    "otherDateOfBirthQ": "What is the other parent's date of birth?",
     "mother": "Mother",
     "father": "Father",
     "parent": "Parent",

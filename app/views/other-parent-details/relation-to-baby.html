@@ -6,82 +6,69 @@
 
 
 {% block beforeContent %}
-  {{ govukBackLink({
-  text: t.global.back,
-  href: "/other-parent-details/date-of-birth"
+{{ govukBackLink({
+text: t.global.back,
+href: "/other-parent-details/date-of-birth"
 }) }}
 {% endblock %}
 
 {% block content %}
+<form class="form" action="/other-parent-details/check-your-answers" method="post">
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-  <span class="govuk-caption-l">{% if data['languagePreference'] == "en" %} Other parent's details {% else %}Manylion y rhiant arall {% endif %}</span>
-  <fieldset class="govuk-fieldset">
-<legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-  <h1 class="govuk-fieldset__heading">
-
-      {% if data['languagePreference'] == "en" %} 
-        What is the other parent's relationship to your baby?
-      {% else %}
-        Beth yw perthynas y rhiant arall â’ch babi neu’ch babanod?
-      {% endif %}
-  
-
-  </h1>
-</legend>
-  <div class="govuk-form-group">
-      <form class="form" action="added-parent" method="post">
-        <p class="govuk-body">
-          {% if data['languagePreference'] == "en" %} 
-              This will be shown on the certificate.
+    <span class="govuk-caption-l">{% if data['languagePreference'] == "en" %} Other parent's details {% else %}Manylion
+      y rhiant arall {% endif %}</span>
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+          {% if data['languagePreference'] == "en" %}
+          What is the other parent's relationship to your baby?
           {% else %}
-            Dangosir hyn ar y dystysgrif.
+          Beth yw perthynas y rhiant arall â’ch babi neu’ch babanod?
           {% endif %}
-        </p>
-        {{ govukRadios({
-            name: "secondRelationshipToBaby",
-            value: data['secondRelationshipToBaby'],
-            items: [
-                {
-                value: "mother",
-                text: t.pages.mother
-                },
-                {
-                value: "father",
-                text: t.pages.father
-                },
-                {
-                value: "parent",
-                text: t.pages.parent
-                },
-                {
-                value: "surrogate",
-                text: t.pages.surrogate
-                }
-            ]
-            }) }}
-          </div>
-          </fieldset>
-        </div>
-    </div>
-
-
-
-
-    {{ govukButton({
-      text: "Continue",
-      href: "/other-parent-details/check-your-answers",
-      isStartButton: false
+        </h1>
+      </legend>
+      <p class="govuk-body">
+        {% if data['languagePreference'] == "en" %}
+        This will be shown on the certificate.
+        {% else %}
+        Dangosir hyn ar y dystysgrif.
+        {% endif %}
+      </p>
+      {{ govukRadios({
+      name: "secondRelationshipToBaby",
+      value: data['secondRelationshipToBaby'],
+      items: [
+      {
+      value: "mother",
+      text: t.pages.mother
+      },
+      {
+      value: "father",
+      text: t.pages.father
+      },
+      {
+      value: "parent",
+      text: t.pages.parent
+      },
+      {
+      value: "surrogate",
+      text: t.pages.surrogate
+      }
+      ]
       }) }}
-
-      </form>
-
-    </div>
+    </fieldset>
   </div>
-  <style>
+</div>
+ <button class="govuk-button" data-module="govuk-button" type="submit">
+    {{t.global.continue}}
+  </button>
 
-    .govuk-details {
-      margin-left:10px;
-    }
-  </style>
+</form>
+
+<style>
+  .govuk-details {
+    margin-left: 10px;
+  }
+</style>
 {% endblock %}

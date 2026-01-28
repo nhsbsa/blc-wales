@@ -59,7 +59,7 @@ router.post('/confirm-post-address', function(request, response) {
 })
 
 router.post('/add-another-parent', function(request, response) {
-    var method = request.session.data['parent']
+    var method = request.session.data['addAnotherParent']
     if (method == "yes"){
         response.redirect("/other-parent-details/what-happens-next")
     } else {

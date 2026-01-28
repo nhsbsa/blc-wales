@@ -1,48 +1,61 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  {{ t.serviceName }}
+{{ t.serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
 {{ govukBackLink({
 text: t.global.back,
-href: "javascript:window.history.back()"
+href: "/verification/confirm-address"
 }) }}
 {% endblock %}
 
 
-  {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-      {% if data['languagePreference'] == "en" %} 
+    {% if data['languagePreference'] == "en" %}
 
-          <h1 class="govuk-heading-l"> You have told us the address is wrong</h1>
-          <p class="govuk-body">You can contact your GP surgery to correct your address.</p>
-          <h2 class="govuk-heading-m">Support organisations</h2> 
+    <h1 class="govuk-heading-l"> You have told us the address is wrong</h1>
+    <p class="govuk-body">You’ll need to contact your GP practice and ask them to update your details before you can
+      request a certificate.</p>
+    <h2 class="govuk-heading-m">Support organisations</h2>
+    <p>The following organisations give support and advice:</p>
 
-        {% else %}
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="https://www.sands.org.uk/" target="_blank">Sands</a></li>
+      <li><a href="https://www.tommys.org" target="_blank">Tommy's</a></li>
+      <li><a href="https://www.arc-uk.org" target="_blank">Antenatal Results and Choices (ARC)</a></li>
+      <li><a href="https://www.sayinggoodbye.org" target="_blank">Saying Goodbye</a></li>
+      <li><a href="https://www.miscarriageassociation.org.uk" target="_blank"> Miscarriage Association</a></li>
+      <li><a href="https://www.petalscharity.org " target="_blank">Petals</a></li>
+       <li><a href="https://www.nhs.uk/mental-health/social-care-and-your-rights/how-to-access-mental-health-services/" target="_blank">
+        NHS How to access mental health services</a></li>
 
-          <h1 class="govuk-heading-l"> Rydych chi wedi dweud wrthym fod y cyfeiriad yn anghywir</h1>
-          <p class="govuk-body">Gallwch gysylltu â’ch practis meddyg teulu i gywiro’ch cyfeiriad</p>
-          <h2 class="govuk-heading-m">Sefydliadau sy’n rhoi cymorth </h2>   
+    </ul>
 
-        {% endif %}
-          <ul class="govuk-list govuk-list--bullet">
-            <li><a href="www.nhs.uk/mental-health/social-care-and-your-rights/how-to-access-mental-health-services/">NHS How
-                to access mental health services</a></li>
-            <li><a href="www.arc-uk.org">Antenatal Results and Choices (ARC)</a></li>
-            <li><a href="www.daddyswithangels.org">Daddy’s with Angels</a></li>
-            <li><a href=“https://www.sands.org.uk/”>Sands</a></li>
-            <li><a href="www.sayinggoodbye.org">Saying Goodbye</a></li>
-            <li><a href="https://ectopic.org.uk/">The Ectopic Pregnancy Trust</a></li>
-            <li><a href="www.miscarriageassociation.org.uk">The Miscarriage Association</a></li>
-            <li><a href=“www.tommys.org”>Tommy's</a></li>
-            <li><a href=“https://twinstrust.org/”>Twins Trust</a></li>
-          </ul>  
-    </div>
+    {% else %}
+
+    <h1 class="govuk-heading-l"> Rydych chi wedi dweud wrthym fod y cyfeiriad yn anghywir</h1>
+    <p class="govuk-body">Gallwch gysylltu â’ch practis meddyg teulu i gywiro’ch cyfeiriad</p>
+    <h2 class="govuk-heading-m">Sefydliadau sy’n rhoi cymorth </h2>
+    <p>Mae’r sefydliadau a ganlyn yn rhoi cymorth a chyngor:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="https://www.sands.org.uk/" target="_blank">Sands</a></li>
+      <li><a href="https://www.tommys.org" target="_blank">Tommy's</a></li>
+      <li><a href="https://www.arc-uk.org" target="_blank">Antenatal Results and Choices (ARC)</a></li>
+      <li><a href="https://www.sayinggoodbye.org" target="_blank">Saying Goodbye</a></li>
+      <li><a href="https://www.miscarriageassociation.org.uk" target="_blank"> Miscarriage Association</a></li>
+      <li><a href="https://www.petalscharity.org " target="_blank">Petals</a></li>
+      <li><a href="https://www.nhs.uk/mental-health/social-care-and-your-rights/how-to-access-mental-health-services/" target="_blank">
+          Sut i gael gwasanaethau iechyd meddwl - GIG</a></li>
+    </ul>
+
+    {% endif %}
   </div>
+</div>
 
 
 {% endblock %}

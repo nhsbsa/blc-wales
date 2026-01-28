@@ -1,5 +1,17 @@
 {% extends "layouts/main.html" %}
 
+{% set months = [
+  "", "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+] %}
+
+{% set day = data['other-parent-date-of-birth-day'] %}
+{% set month = months[ data['other-parent-date-of-birth-month'] | int ] %}
+{% set year = data['other-parent-date-of-birth-year'] %}
+
+{% set dobFormatted = day + " " + month + " " + year %}
+
+
 {% block pageTitle %}
 {{ serviceName }}
 {% endblock %}
@@ -22,6 +34,7 @@
         <h2 class="govuk-heading-m">
           {{t.global.details}}
         </h2>
+
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -32,7 +45,7 @@
               {% if data['parent1-firstname'] %}
               {{ data['parent1-firstname'] }} {{ data['parent1-lastname'] }}
               {% else %}
-              {{t.global.example}}
+              Jane Bloggs
               {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
@@ -48,7 +61,7 @@
               {% else %} Cyfeiriad {% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
-              4 Albert Road<br>Newcastle<br>NE1 3JA
+               10 Example Road<br>Cardiff<br>CF10 1AA 
             </dd>
             <dd class="govuk-summary-list__actions">
 
@@ -67,11 +80,9 @@
             </dt>
             <dd class="govuk-summary-list__value">
              {% if data['languagePreference'] == "en" %} Yes
-              {% else %} Ydw {% endif %}
+              {% else %} Hoffwn {% endif %}
             </dd>
-            <dd class="govuk-summary-list__actions">
 
-            </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="/other-parent-details/add-parent">
                 {{t.global.change}}<span class="govuk-visually-hidden"> name</span>
@@ -87,10 +98,7 @@
             </dt>
             <dd class="govuk-summary-list__value">
              {% if data['languagePreference'] == "en" %} Yes
-              {% else %} Ydw {% endif %}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-
+              {% else %} Hoffwn {% endif %}
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="/other-parent-details/continue-if-no-response">
@@ -109,9 +117,6 @@
              {{data['other-email']}}
             </dd>
             <dd class="govuk-summary-list__actions">
-
-            </dd>
-            <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="/other-parent-details/email">
                 {{t.global.change}}<span class="govuk-visually-hidden"> name</span>
               </a>
@@ -125,11 +130,27 @@
               Dyddiad geni{% endif %}
             </dt>
             <dd class="govuk-summary-list__value">
-             1 January 1998
+            {{dobFormatted}}
             </dd>
+    
             <dd class="govuk-summary-list__actions">
-
+              <a class="govuk-link" href="/other-parent-details/date-of-birth">
+                {{t.global.change}}<span class="govuk-visually-hidden"> name</span>
+              </a>
             </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              {% if data['languagePreference'] == "en" %} 
+              Relationship to baby
+              {% else %} 
+              Ei berthynas neu ei pherthynas â’ch babi
+              {% endif %}
+            </dt>
+            <dd class="govuk-summary-list__value">
+            {{ data['secondRelationshipToBaby'] | capitalise }}
+            </dd>
+    
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="/other-parent-details/date-of-birth">
                 {{t.global.change}}<span class="govuk-visually-hidden"> name</span>

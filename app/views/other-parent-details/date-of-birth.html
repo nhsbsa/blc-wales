@@ -1,20 +1,28 @@
 {% extends "layouts/main.html" %}
 
+{% if data['languagePreference'] == 'cy' %}
+  {% set dobLabel = "Rhowch gyfeiriad e-bost" %}
+{% else %}
+    {% set dobLabel = "Enter email address" %}
+{% endif %}
+
 {% block pageTitle %}
 {{ serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
 
- 
-  {{ govukBackLink({
+ {{ govukBackLink({
   text: t.global.back,
   href: "/other-parent-details/email"
 }) }}
 {% endblock %}
 
+
+
 {% block content %}
 <div class="govuk-grid-row">
+
   <div class="govuk-grid-column-two-thirds">
       {% if data['languagePreference'] == "en" %} 
       <span class="govuk-caption-l">Other parent's details</span>
@@ -22,65 +30,53 @@
         <span class="govuk-caption-l">Manylion y rhiant arall</span>
     {% endif %}
 
-  <fieldset class="govuk-fieldset">
+     <form class="form" action="/other-parent-details/relation-to-baby" method="post">
+      {{ govukDateInput({
+        id: "other-parent-date-of-birth",
+        namePrefix: "other-parent-date-of-birth",
+        fieldset: {
+          legend: {
+            text: t.pages.otherDateOfBirthQ,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: t.global.example + " 27 3 2007"
+        },
+        items:[
+          {
+            name: "day",
+            label: t.pages.day,
+            classes: "govuk-input--width-2",
+            value: data['other-parent-date-of-birth-day']
+          },
+           {
+            name: "month",
+            label: t.pages.month,
+            classes: "govuk-input--width-2",
+            value: data['other-parent-date-of-birth-month']
+          },
+           {
+            name: "year",
+            label: t.pages.year,
+            classes: "govuk-input--width-4",
+            value: data['other-parent-date-of-birth-year']
+          }
+        ]
 
-      <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
-        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-          <h1 class="govuk-fieldset__heading">
-             {% if data['languagePreference'] == "en" %} 
-            What is the other parent's date of birth?
-            {% else %}
-            Beth yw dyddiad geni’r rhiant arall?
-             {% endif %}
-           
-          </h1>
-        </legend>
-        <form class="form" action="date-of-birth" method="post">
+      }) }}
 
+        <button class="govuk-button" data-module="govuk-button" type="submit">
+          {{t.global.continue}}
+        </button>
 
-
-        <div id="dob-enter" class="govuk-hint">
-          {{t.global.example}}, 27 3 2007
-        </div>
-
-          <div class="govuk-date-input" id="date-of-birth">
-            <div class="govuk-date-input__item">
-              <div class="govuk-form-group">
-                <label class="govuk-label govuk-date-input__label" for="date-of-birth">
-                  {{t.pages.day}}
-                </label>
-                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-of-birth" name="dob-day" type="text" inputmode="numeric">
-              </div>
-            </div>
-          <div class="govuk-date-input__item">
-            <div class="govuk-form-group">
-              <label class="govuk-label govuk-date-input__label" for="date-of-birth">
-                  {{t.pages.month}}
-              </label>
-              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="date-of-birth" name="dob-month" type="text" inputmode="numeric">
-            </div>
-          </div>
-          <div class="govuk-date-input__item">
-            <div class="govuk-form-group">
-              <label class="govuk-label govuk-date-input__label" for="date-of-birth">
-                  {{t.pages.year}}
-              </label>
-              <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="date-of-birth" name="dob-year" type="text" inputmode="numeric"> 1998
-            </div>
-          </div>
-        </div>
-      </fieldset>
+      </form>
 
     </div>
   </div>
 
-  {{ govukButton({
-    text: t.global.continue,
-    href: "/other-parent-details/relation-to-baby",
-    isStartButton: false
-    }) }}
-
-      </form>
+ 
 
   </div>
 
