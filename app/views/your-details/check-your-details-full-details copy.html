@@ -82,7 +82,7 @@
               ]
             }
           },
-          {
+                    {
             key: {
               text: "Postcode"
             },
@@ -112,54 +112,20 @@
 
 {% else %}
 
-      {{ govukSummaryList({
+   {{ govukSummaryList({
         rows: [
           {
             key: {
-              text: "Do you know your NHS number?"
+              text: "Perthynas â’ch babi"
             },
             value: {
-              text: data['knowNhsNumber'] | capitalise
+              text: data['relationshipToBaby'] | capitalise
             },
             actions: {
               items: [
                 {
-                  href: "/your-details/nhs-number",
-                  text: "Change",
-                  visuallyHiddenText: "Question 2"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Name"
-            },
-            value: {
-              text: data['p1FirstName'] + ' ' + data['p1LastName'] 
-            },
-            actions: {
-              items: [
-                {
-                  href: "/your-details/what-is-your-name",
-                  text: "Change",
-                  visuallyHiddenText: "Question 3"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Date of birth"
-            },
-            value: {
-              text: dobFormatted
-            },
-            actions: {
-              items: [
-                {
-                  href: "/your-details/enter-date-of-birth",
-                  text: "Change",
+                  href: "/relation-to-baby",
+                  text:  t.global.change,
                   visuallyHiddenText: "Question 1"
                 }
               ]
@@ -167,7 +133,58 @@
           },
           {
             key: {
-              text: "Postcode"
+              text: "Ydych chi’n gwybod beth yw eich rhif GIG?"
+            },
+            value: {
+              text: data['knowNhsNumber'] | capitalise
+            },
+            actions: {
+              items: [
+                {
+                  href: "/nhs-number",
+                  text: t.global.change,
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Enw"
+            },
+            value: {
+              text: data['p1FirstName'] + ' ' + data['p1LastName'] 
+            },
+            actions: {
+              items: [
+                {
+                  href: "/what-is-your-name",
+                  text:  t.global.change,
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Dyddiad geni"
+            },
+            value: {
+              text: dobFormatted
+            },
+            actions: {
+              items: [
+                {
+                  href: "/enter-date-of-birth",
+                  text:  t.global.change,
+                  visuallyHiddenText: "Question 1"
+                }
+              ]
+            }
+          },
+                    {
+            key: {
+              text: "Cod post"
             },
             value: {
               text: data['postcode']
@@ -175,8 +192,8 @@
             actions: {
               items: [
                 {
-                  href: "/your-details/postcode",
-                  text: "Change",
+                  href: "/postcode",
+                  text:  t.global.change,
                   visuallyHiddenText: "Question 1"
                 }
               ]
@@ -185,10 +202,14 @@
         ]
       }) }}
 
-      <p>By continuing you agree to let us use your details to:</p>
+
+
+
+
+      <p>Trwy barhau, rydych chi’n caniatáu inni ddefnyddio eich manylion i wneud y canlynol:</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>check who you are</li>
-        <li>find your contact details from your NHS health records so we can send you a security code</li>
+        <li>Gwirio pwy ydych chi</li>
+        <li>Dod o hyd i’ch manylion cyswllt o’ch cofnodion iechyd y GIG fel y gallwn anfon cod diogelwch atoch</li>
       </ul>
 
 
@@ -196,7 +217,7 @@
 
 
 
-      <form action="/verification/get-security-code" method="post" novalidate>
+      <form action="get-security-code" method="post" novalidate>
         
       {{ govukButton({
           text: t.global.agreeContinue,
