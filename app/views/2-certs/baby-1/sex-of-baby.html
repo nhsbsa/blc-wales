@@ -1,71 +1,69 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-{{ serviceName }} 
+{{ serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
-  {{ govukBackLink({
-  text: t.global.back,
-  href: "javascript:window.history.back()"
-  }) }}
-  {% endblock %}
+{{ govukBackLink({
+text: t.global.back,
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
 
-  {% block content %}
-  <span class="govuk-caption-l"> {% if data['languagePreference'] == "en" %} Details on certificate 1 {% else %}
-    Manylion ar dystysgrif 1 {% endif %}</span>
-  <div class="govuk-form-group">
-    <fieldset class="govuk-fieldset">
-      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-        <h1 class="govuk-fieldset__heading">
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-          {% if data['languagePreference'] == "en" %}
-          Baby's sex
-          {% else %}
-          Rhyw y babi
-          {% endif %}
-        </h1>
-      </legend>
-
-      <form class="form" action="" method="post">
-
-        <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="baby-gender" name="baby-gender" type="radio" value="Male">
-            <label class="govuk-label govuk-radios__label" for="yes">
+    <form class="form" action="/2-certs/baby-1/name-of-baby" method="post">
+      <span class="govuk-caption-l"> {% if data['languagePreference'] == "en" %} Details on certificate 1 {% else %}
+        Manylion ar dystysgrif 1 {% endif %}
+      </span>
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
 
               {% if data['languagePreference'] == "en" %}
-              Male
+              Baby's sex
               {% else %}
-              Gwryw
+              Rhyw y babi
               {% endif %}
-            </label>
-          </div>
-          <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="baby-gender" name="baby-gender" type="radio" value="Female">
-            <label class="govuk-label govuk-radios__label" for="no">
+            </h1>
+          </legend>
 
-              {% if data['languagePreference'] == "en" %}
-              Female
-              {% else %}
-              Benyw
-              {% endif %}
-            </label>
-          </div>
-        </div>
+         
+      {{ govukRadios({
+      name: "baby-sex",
+      value: data['baby-sex'],
+      classes: "govuk-radios--inline",
+      fieldset: {
+      legend: {
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--l"
+      }
+      },
+      items: [
+      {
+      value: "male",
+      text: t.pages.male
+      },
+      {
+      value: "female",
+      text: t.pages.female
+      }
+      ]
+      }) }}
+        </fieldset>
+      </div>
+
+
+      <button class="govuk-button" data-module="govuk-button">
+        {{t.global.continue}}
+      </button>
+    </form>
+
   </div>
-  </fieldset>
-
-
-  {{ govukButton({
-  text: t.global.continue,
-  href: "/2-certs/baby-1/name-of-baby",
-  isStartButton: false
-  }) }}
-
-  </form>
-
-</div>
 </div>
 
 {% endblock %}
