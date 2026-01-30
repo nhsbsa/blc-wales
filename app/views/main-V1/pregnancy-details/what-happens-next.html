@@ -1,0 +1,70 @@
+{% extends "/main-V1/layouts/main.html" %}
+
+{% block pageTitle %}
+{{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{ govukBackLink({
+text: t.global.back,
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-form-group">
+
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">{% if data['languagePreference'] == "en" %} Your baby's details {% else %}
+            Manylion eich babi neu’ch babanod {% endif %}</h1>
+        </legend>
+        <form class="form" method="post">
+          <div class="govuk-form-group">
+            {% if data['languagePreference'] == "en" %}
+            <p> The next questions are about your baby. You can add these details to the certificate:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>date of baby loss</li>
+              <li>place of baby loss</li>
+              <li>baby's sex</li>
+              <li>baby's name or nickname</li>
+            </ul>
+            <p>If you choose not to answer these questions, the sections will be blank on the certificate.</p>
+            <h2 class="govuk-heading-m" id="subsection-title"> Blank sample certificate </h2>
+            <p class="govuk-inset-text">You might find it helpful to<a href="sample-cert.html " target="_blank"> view a
+                blank sample of the certificate alongside a text-only version (opens in new tab)</a>.</p>
+            {% else %}
+            <p> Mae’r cwestiynau nesaf yn ymwneud â’ch babi neu’ch babanod. Gellir ychwanegu’r manylion a ganlyn at bob
+              tystysgrif:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>dyddiad colli’r babi</li>
+              <li>man colli’r babi</li>
+              <li>rhyw y babi</li>
+              <li>enw neu lysenw y babi</li>
+            </ul>
+            <p>Os dewiswch beidio ag ateb y cwestiynau hyn, bydd yr adrannau yn wag ar y dystysgrif</p>
+            <h2 class="govuk-heading-m" id="subsection-title"> Tystysgrif enghreifftiol wag </h2>
+            <p class="govuk-inset-text">Efallai y byddai o fudd ichi <a href="sample-cert.html" target="_blank">weld
+                tystysgrif enghreifftiol wag ochr yn ochr â fersiwn testun yn unig (bydd yn agor mewn tab newydd)</a>.
+            </p>
+            {% endif %}
+
+            {{ govukButton({
+            text: t.global.continue,
+            href: "/main-V1/pregnancy-details/babies-lost",
+            isStartButton: false
+            }) }}
+
+          </div>
+        </form>
+      </fieldset>
+
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

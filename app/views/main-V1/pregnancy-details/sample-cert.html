@@ -1,0 +1,42 @@
+{% extends "/main-V1/layouts/main.html" %}
+
+{% block pageTitle %}
+{{ serviceName }}
+{% endblock %}
+
+
+{% block content %}
+<div class="govuk-form-group">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l ">Blank sample certificate</h1>
+    <img src="https://pregnancy-loss-certificate.herokuapp.com/public/images/blank-cert-copy.jpg" alt="User icon"
+      style="height: 800px;">
+  </div>
+  <div class="govuk-grid-column-one-third">
+    <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+      <div class="govuk-body">
+        <p>The baby loss certificate is an official document issued on behalf of the Secretary of State for Health and
+          Social Care. It will be printed on watermarked paper.</p>
+        <p>The wording on the certificate is as follows:</p>
+        <p>Certificate of baby loss under 24 weeks gestation.</p>
+        <p>Issued on behalf of the Secretary of State for Health and Social Care.</p>
+        <ul class="govuk-list govuk-list--number">
+          <li>Certificate reference</li>
+          <li>Date of issue</li>
+          <li>Name and surname of parent</li>
+          <li>Name and surname of any other parent</li>
+          <li>Name of baby (optional)</li>
+          <li>Sex (if known)</li>
+          <li>Date of loss (if known)</li>
+          <li>Place of loss (if known)</li>
+        </ul>
+        <p>Information: This certificate is produced following a self-declaration by the parent.</p>
+        <p>This certificate cannot be used as evidence of identity and does not allow any entitlement to any services or
+          benefits.</p>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+{% endblock %}

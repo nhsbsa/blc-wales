@@ -1,0 +1,74 @@
+{% extends "/main-V1/layouts/main.html" %}
+
+{% block pageTitle %}
+{{ serviceName }}
+{% endblock %}
+
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: t.global.back,
+href: "/main-V1/other-parent-details/date-of-birth"
+}) }}
+{% endblock %}
+
+{% block content %}
+<form class="form" action="/main-V1/other-parent-details/check-your-answers" method="post">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <span class="govuk-caption-l">{% if data['languagePreference'] == "en" %} Other parent's details {% else %}Manylion
+      y rhiant arall {% endif %}</span>
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+          {% if data['languagePreference'] == "en" %}
+          What is the other parent's relationship to your baby?
+          {% else %}
+          Beth yw perthynas y rhiant arall â’ch babi neu’ch babanod?
+          {% endif %}
+        </h1>
+      </legend>
+      <p class="govuk-body">
+        {% if data['languagePreference'] == "en" %}
+        This will be shown on the certificate.
+        {% else %}
+        Dangosir hyn ar y dystysgrif.
+        {% endif %}
+      </p>
+      {{ govukRadios({
+      name: "secondRelationshipToBaby",
+      value: data['secondRelationshipToBaby'],
+      items: [
+      {
+      value: "mother",
+      text: t.pages.mother
+      },
+      {
+      value: "father",
+      text: t.pages.father
+      },
+      {
+      value: "parent",
+      text: t.pages.parent
+      },
+      {
+      value: "surrogate",
+      text: t.pages.surrogate
+      }
+      ]
+      }) }}
+    </fieldset>
+  </div>
+</div>
+ <button class="govuk-button" data-module="govuk-button" type="submit">
+    {{t.global.continue}}
+  </button>
+
+</form>
+
+<style>
+  .govuk-details {
+    margin-left: 10px;
+  }
+</style>
+{% endblock %}

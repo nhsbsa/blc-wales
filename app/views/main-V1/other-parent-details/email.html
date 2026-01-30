@@ -1,0 +1,71 @@
+{% extends "/main-V1/layouts/main.html" %}
+
+{% block pageTitle %}
+{{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: t.global.back,
+href: "/main-V1/other-parent-details/continue-if-no-response"
+}) }}
+{% endblock %}
+
+
+{% if data['languagePreference'] == 'cy' %}
+  {% set emailLabel = "Rhowch gyfeiriad e-bost" %}
+   {% set emailConfirmLabel = "Cadarnhewch y cyfeiriad e-bost" %}
+{% else %}
+    {% set emailLabel = "Enter email address" %}
+   {% set emailConfirmLabel = "Confirm email address" %}
+{% endif %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!--<h1 class="govuk-fieldset__heading">What's your name?</h1>-->
+
+      <h1 class="govuk-heading-l">
+        {% if data['languagePreference'] == "en" %} 
+          <span class="govuk-caption-l">Other parent's details</span>
+          What is the other parent's email address?
+          
+          {% else %}
+           <span class="govuk-caption-l">Manylion y rhiant arall</span>
+          Beth yw cyfeiriad e-bost y rhiant arall?
+
+        {% endif %}
+      </h1>
+
+
+      <form class="form" action="/main-V1/other-parent-details/date-of-birth" method="post">
+            {{ govukInput({
+            label: {
+            text: emailLabel
+            },
+            id: "email",
+            name: "other-email",
+            value: data['other-email']
+            }) }}
+
+             {{ govukInput({
+            label: {
+            text: emailConfirmLabel
+            },
+            id: "email-confirm",
+            name: "other-email-confirm",
+            value: data['other-email-confirm']
+            }) }}
+            <button class="govuk-button" data-module="govuk-button" type="submit">
+                {{t.global.continue}}
+            </button>
+          </form>
+
+      
+      
+
+    </div>
+  </div>
+{% endblock %}

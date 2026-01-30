@@ -1,0 +1,151 @@
+{% extends "/main-V1/layouts/main.html" %}
+
+{% block pageTitle %}
+  {{ t.serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: t.global.back,
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+<span class="govuk-caption-l">{{t.global.details}}</span>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+
+    {% if data['languagePreference'] == "en" %} 
+
+
+        <h1 class="govuk-heading-l">Confirm your postal address</h1>
+        <p>This is the address your certificate will be sent to.</p>
+        <p>If this is not the correct address, you will need to contact your GP surgery.</p>
+        <form class="form" action="/confirm-post-address" method="post">
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Name
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['p1FirstName'] %}
+                {{ data['p1FirstName'] }} {{ data['p1LastName'] }}
+                {% else %}
+                Jane Bloggs
+                {% endif %}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+
+              </dd>
+            </div>
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Address
+              </dt>
+              <dd class="govuk-summary-list__value">
+                10 Example Road<br>Cardiff<br>CF10 1AA 
+              </dd>
+              <dd class="govuk-summary-list__actions">
+
+              </dd>
+            </div>
+          </dl>
+
+            {{ govukRadios({
+              classes: "govuk-radios--inline",
+              name: "confirmAddress",
+              fieldset: {
+                legend: {
+                  text: "Is this address correct?",
+                  isPageHeading: false,
+                  classes: "govuk-fieldset__legend--m"
+                }
+              },
+              items: [
+                {
+                  value: "yes",
+                  text: "Yes"
+                },
+                {
+                  value: "no",
+                  text: "No"
+                }
+              ]
+            }) }}
+
+          {% else %}
+    
+              <h1 class="govuk-heading-l">Cadarnhewch eich cyfeiriad post</h1>
+              <p>Dyma’r cyfeiriad y bydd eich tystysgrif yn cael ei hanfon iddo.</p>
+              <p>Os nad eich cyfeiriad cywir yw hwn, bydd angen ichi gysylltu â’ch practis meddyg teulu</p>
+              <form class="form" action="/confirm-post-address" method="post">
+                <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Enw
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      {% if data['p1FirstName'] %}
+                      {{ data['p1FirstName'] }} {{ data['p1LastName'] }}
+                      {% else %}
+                      Example name
+                      {% endif %}
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+
+                    </dd>
+                  </div>
+
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      Cyfeiriad
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      10 Example Road<br>Cardiff<br>CF10 1AA 
+                    </dd>
+                    <dd class="govuk-summary-list__actions">
+
+                    </dd>
+                  </div>
+                </dl>
+
+                  {{ govukRadios({
+                    classes: "govuk-radios--inline",
+                    name: "confirmAddress",
+                    fieldset: {
+                      legend: {
+                        text: "A yw’r manylion hyn yn gywir?",
+                        isPageHeading: false,
+                        classes: "govuk-fieldset__legend--m"
+                      }
+                    },
+                    items: [
+                      {
+                        value: "yes",
+                        text: "Ydyn"
+                      },
+                      {
+                        value: "no",
+                        text: "Nac ydyn"
+                      }
+                    ]
+                  }) }}
+
+
+          {% endif%}
+                    
+            <button class="govuk-button" data-module="govuk-button" type="submit">
+              {{t.global.continue}}
+            </button>
+            </form>
+
+
+         
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends "/main-V1/layouts/main.html" %}
+
+{% if data['languagePreference'] == 'cy' %}
+  {% set dobLabel = "Rhowch gyfeiriad e-bost" %}
+{% else %}
+    {% set dobLabel = "Enter email address" %}
+{% endif %}
+
+{% block pageTitle %}
+{{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+ {{ govukBackLink({
+  text: t.global.back,
+  href: "/main-V1/other-parent-details/email"
+}) }}
+{% endblock %}
+
+
+
+{% block content %}
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-two-thirds">
+      {% if data['languagePreference'] == "en" %} 
+      <span class="govuk-caption-l">Other parent's details</span>
+      {% else %}
+        <span class="govuk-caption-l">Manylion y rhiant arall</span>
+    {% endif %}
+
+     <form class="form" action="/main-V1/other-parent-details/relation-to-baby" method="post">
+      {{ govukDateInput({
+        id: "other-parent-date-of-birth",
+        namePrefix: "other-parent-date-of-birth",
+        fieldset: {
+          legend: {
+            text: t.pages.otherDateOfBirthQ,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: t.global.example + " 27 3 2007"
+        },
+        items:[
+          {
+            name: "day",
+            label: t.pages.day,
+            classes: "govuk-input--width-2",
+            value: data['other-parent-date-of-birth-day']
+          },
+           {
+            name: "month",
+            label: t.pages.month,
+            classes: "govuk-input--width-2",
+            value: data['other-parent-date-of-birth-month']
+          },
+           {
+            name: "year",
+            label: t.pages.year,
+            classes: "govuk-input--width-4",
+            value: data['other-parent-date-of-birth-year']
+          }
+        ]
+
+      }) }}
+
+        <button class="govuk-button" data-module="govuk-button" type="submit">
+          {{t.global.continue}}
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+ 
+
+  </div>
+
+
+{% endblock %}

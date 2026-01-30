@@ -1,0 +1,82 @@
+{% extends "/main-V1/layouts/main.html" %}
+
+{% block pageTitle %}
+{{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+
+{{ govukBackLink({
+text: t.global.back,
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="/number-of-babies-lost" method="post">
+      <div class="govuk-form-group">
+
+        <fieldset class="govuk-fieldset">
+
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              {% if data['languagePreference'] == "en" %} Did you have a single, twin or triplet pregnancy?{% else %} A
+              oedd eich beichiogrwydd yn feichiogrwydd sengl, gefeilliaid neu dripledi? {% endif %}
+            </h1>
+          </legend>
+
+          <div class="govuk-radios govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="multiple-loss-pregnancy" name="loss-multiple" type="radio"
+                value="1-cert">
+              <label class="govuk-label govuk-radios__label" for="multiple-loss-pregnancy">
+
+                {% if data['languagePreference'] == "en" %} Single pregnancy {% else %} Beichiogrwydd sengl {% endif %}
+
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="multiple-loss-pregnancy" name="loss-multiple" type="radio"
+                value="twin">
+              <label class="govuk-label govuk-radios__label" for="multiple-loss-pregnancy">
+                {% if data['languagePreference'] == "en" %} Twin pregnancy {% else %}Beichiogrwydd gefeilliaid {% endif
+                %}
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="multiple-loss-pregnancy" name="loss-multiple" type="radio"
+                value="triplet">
+              <label class="govuk-label govuk-radios__label" for="multiple-loss-pregnancy">
+                {% if data['languagePreference'] == "en" %} Triplet pregnancy {% else %} Beichiogrwydd tripledi {% endif
+                %}
+              </label>
+            </div>
+
+          </div>
+
+        </fieldset>
+      </div>
+
+      <button class="govuk-button" data-module="govuk-button" type="submit">
+        {{t.global.continue}}
+      </button>
+
+    </form>
+  </div>
+</div>
+<style>
+  .govuk-fieldset__legend--l {
+    margin-bottom: 30px;
+  }
+
+  .govuk-radios--inline {
+    margin-bottom: 30px;
+  }
+</style>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "/main-V1/layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: t.global.back,
+  href: "javascript:window.history.back()"
+}) }}
+
+
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      {% if data['languagePreference'] == "cy" %}
+        <h1 class="govuk-heading-l">Sut mae’r togl yn gweithio</h1>
+        <p>Enter your Welsh language here, eg: Pan ddewisir y Gymraeg, mae’r holl gynnwys yn Gymraeg.</p>
+      {% else %}
+      <h1 class="govuk-heading-l">
+        What is the sex?
+      </h1>
+  
+      {% endif %}
+
+
+      <form class="form" action="/check-answers" method="post">
+
+        <p>
+          [Insert question content here - see the
+          <a href="https://design-system.service.gov.uk">GOV.UK Design System</a>
+          for examples]
+        </p>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

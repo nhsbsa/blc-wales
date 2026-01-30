@@ -1,0 +1,122 @@
+{% extends "/main-V1/layouts/main.html" %}
+
+{% block pageTitle %}
+{{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: t.global.back,
+href: "/main-V1/1-cert/date-of-loss"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="/main-V1/1-cert/include-sex-of-baby" method="post">
+      <span class="govuk-caption-l"> {% if data['languagePreference'] == "en" %} Details on the certificate {% else %}
+        Manylion ar y dystysgrif {% endif %}</span>
+
+      <h1 class="govuk-heading-l">
+        {% if data['languagePreference'] == "en" %}
+        Would you like the place of your baby loss on the certificate?
+        {% else %}
+        Hoffech chi gynnwys man colli eich babi ar y dystysgrif?
+        {% endif %}
+      </h1>
+      <p class="govuk-body">
+        {% if data['languagePreference'] == "en" %}
+        You may not know the place of your baby loss.
+        {% else %}
+        Efallai na fyddwch chi’n gwybod y man lle collwyd eich babi.
+        {% endif %}
+      </p>
+      <div class="govuk-inset-text">
+        {% if data['languagePreference'] == "en" %}
+        This does not need to be a full address. You can enter a town, city or hospital.
+        {% else %}
+        Nid oes angen i hwn fod yn gyfeiriad llawn. Gallwch roi enw tref, dinas neu
+        ysbyty.
+        {% endif %}
+      </div>
+
+      <p class="govuk-body">
+        {% if data['languagePreference'] == "en" %}
+        This section will be blank on the certificate if you select ‘No’ or ‘I do not know the place of my baby loss’.
+        {% else %}
+        Bydd yr adran hon yn wag ar y dystysgrif os byddwch chi’n dewis ‘Na hoffwn’ neu ‘Nid wyf yn gwybod man
+        colli fy mabi’.
+        {% endif %}
+      </p>
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="place-of-loss-choice" name="place-of-loss-choice" type="radio"
+                value="yes" data-aria-controls="place-of-loss-conditional">
+              <label class="govuk-label govuk-radios__label" for="contact">
+                {% if data['languagePreference'] == "en" %}
+                Yes
+                {% else %}
+                Hoffwn
+                {% endif %}
+              </label>
+            </div>
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="place-of-loss-conditional">
+              <div class="govuk-form-group">
+                <label class="govuk-label">
+                  {% if data['languagePreference'] == "en" %}
+                  Place of baby loss
+                  {% else %}
+                  Man colli’r babi
+                  {% endif %}
+                </label>
+                <div id="passport-issued-hint" class="govuk-hint">
+                  {{t.global.example}}, Cardiff
+                </div>
+                <input class="govuk-input" id="place-of-loss" name="place-of-loss" type="text"
+                  value="{{data['place-of-loss']}}">
+              </div>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="babys" name="years" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="contact-2">
+                {% if data['languagePreference'] == "en" %}
+                No
+                {% else %}
+                Na hoffwn
+                {% endif %}
+              </label>
+            </div>
+            <div class="govuk-radios__divider">
+              {% if data['languagePreference'] == "en" %} or {% else %} neu {% endif %}</div>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="baby-gender-version1" name="years" type="radio" value="unknown">
+            <label class="govuk-label govuk-radios__label" for="unknown">
+
+              {% if data['languagePreference'] == "en" %}
+              I do not know the place of my baby loss
+              {% else %}
+              Nid wyf yn gwybod man colli fy mabi
+              {% endif %}
+            </label>
+          </div>
+
+
+        </fieldset>
+      </div>
+      <button class="govuk-button" data-module="govuk-button" type="submit">
+        {{t.global.continue}}
+      </button>
+
+    </form>
+  </div>
+</div>
+<style>
+
+</style>
+
+{% endblock %}

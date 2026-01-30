@@ -1,0 +1,129 @@
+{% extends "/main-V1/layouts/main.html" %}
+
+{% block pageTitle %}
+  {{ t.serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: t.global.back,
+href: "/main-V1/your-details/nhs-number"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="/main-V1/your-details/enter-date-of-birth" method="post">
+
+
+         <!--//////  EN //////// -->
+
+      {% if data['languagePreference'] == "en" %}
+
+
+      <span class="govuk-caption-l">Your details</span>
+        {% call govukFieldset({
+          legend: {
+            text: "What is your name?",
+            classes: "govuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+
+        <p>You must enter the names you registered with your GP. If  you’ve changed your name, you will need to contact your GP</p>
+        <p class="govuk-hint"> This is the name that will be printed on the certificate.</p>
+
+          {{ govukInput({
+            label: {
+              text: "First name"
+            },
+            id: "p1-first-name",
+            classes: "govuk-!-width-two-thirds",
+            name: "p1FirstName",
+            value: data['p1FirstName']
+          }) }}
+          {{ govukInput({
+            label: {
+              text: "Last name"
+            },
+            id: "p1-last-name",
+            classes: "govuk-!-width-two-thirds",
+            name: "p1LastName",
+            value: data['p1LastName']
+          }) }}
+
+            <div class="govuk-inset-text">
+          The certificate will not go on your GP record.
+        </div>
+
+        {% endcall %}
+
+
+      {% else %}
+
+      <!--//////  WELSH //////// -->
+
+ <span class="govuk-caption-l">Eich manylion</span>
+        {% call govukFieldset({
+          legend: {
+            text: "Beth yw eich enw?",
+            classes: "govuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+
+        <p>Rhaid ichi nodi’r enwau rydych chi wedi’u cofrestru â’ch meddyg teulu. Os ydych chi wedi newid eich enw, bydd angen ichi gysylltu â’ch meddyg teulu.</p>
+        <p class="govuk-hint">Dyma’r enw a fydd yn cael ei argraffu ar y dystysgrif.</p>
+
+          {{ govukInput({
+            label: {
+              text: "Enw cyntaf"
+            },
+            id: "p1-first-name",
+            classes: "govuk-!-width-two-thirds",
+            name: "p1FirstName",
+            value: data['p1FirstName']
+          }) }}
+          {{ govukInput({
+            label: {
+              text: "Cyfenw"
+            },
+            id: "p1-last-name",
+            classes: "govuk-!-width-two-thirds",
+            name: "p1LastName",
+            value: data['p1LastName']
+          }) }}
+
+            <div class="govuk-inset-text">
+          Ni fydd y dystysgrif yn cael ei chynnwys ar eich cofnod meddyg teulu
+        </div>
+
+        {% endcall %}
+
+
+
+         {% endif %}
+
+
+      <button type="submit" class="govuk-button">
+        {{t.global.continue}}
+      </button>
+
+  </form>
+
+</div>
+</div>
+<style>
+  .govuk-radios {
+    margin-bottom: 30px;
+  }
+
+  .govuk-details {
+    margin-top: 30px;
+  }
+</style>
+
+{% endblock %}

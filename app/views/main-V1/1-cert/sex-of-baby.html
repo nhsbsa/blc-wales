@@ -1,0 +1,62 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: t.global.back,
+href: "/main-V1/1-cert/include-sex-of-baby"
+}) }}
+{% endblock %}
+
+{% block content %}
+<form class="form" action="/main-V1/1-cert/name-of-baby" method="post">
+  <span class="govuk-caption-l"> {% if data['languagePreference'] == "en" %} Details on the certificate {% else %}
+    Manylion ar y dystysgrif {% endif %}</span>
+  <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+
+          {% if data['languagePreference'] == "en" %}
+          Baby's sex
+          {% else %}
+          Rhyw y babi
+          {% endif %}
+        </h1>
+      </legend>
+
+      {{ govukRadios({
+      name: "baby-sex",
+      value: data['baby-sex'],
+      classes: "govuk-radios--inline",
+      fieldset: {
+      legend: {
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--l"
+      }
+      },
+      items: [
+      {
+      value: "male",
+      text: t.pages.male
+      },
+      {
+      value: "female",
+      text: t.pages.female
+      }
+      ]
+      }) }}
+
+  </fieldset>
+  </div>
+ 
+  <button class="govuk-button" data-module="govuk-button">
+    {{t.global.continue}}
+  </button>
+
+</form>
+
+{% endblock %}

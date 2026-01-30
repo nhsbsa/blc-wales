@@ -1,0 +1,72 @@
+{% extends "/main-V1/layouts/main.html" %}
+
+{% block pageTitle %}
+  {{ t.serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: t.global.back,
+  href: "/main-V1/eligibility/enter-location-uk"
+}) }}
+
+
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" action="/mainV1-main-relation-to-baby" method="post">
+      {% if data['languagePreference'] == "en" %}
+         <span class="govuk-caption-l">Confirm your eligibility</span>
+        <h1 class="govuk-heading-l">What is your relationship to your baby or babies?</h1>
+        <p>This will be shown on the certificate.</p>
+
+         {% else %}
+      
+        <span class="govuk-caption-l">Cadarnhewch eich cymhwystra:</span>
+        <h1 class="govuk-heading-l">Beth yw eich perthynas â’ch babi neu’ch babanod?</h1>
+        <p>Dangosir hyn ar y dystysgrif</p>
+        {% endif %}
+
+
+                {{ govukRadios({
+            name: "relationshipToBaby",
+            value: data['relationshipToBaby'],
+            items: [
+                {
+                value: "mother",
+                text: t.pages.mother
+                },
+                {
+                value: "father",
+                text: t.pages.father
+                },
+                {
+                value: "parent",
+                text: t.pages.parent
+                },
+                {
+                value: "surrogate",
+                text: t.pages.surrogate
+                },
+                {
+                divider: "or"
+                },
+                {
+                value: "none",
+                text: t.pages.noneOfThese
+                }
+            ]
+            }) }}
+
+        {{ govukButton({
+          text:  t.global.continue
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

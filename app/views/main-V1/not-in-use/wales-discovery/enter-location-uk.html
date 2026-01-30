@@ -1,0 +1,68 @@
+{% extends "layouts/main-wales.html" %}
+
+{% block pageTitle %}
+Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: t.global.back,
+href: "start-page"
+}) }}
+
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="/where-do-you-live" method="post">
+      <span class="govuk-caption-l">
+        {{t.enterLocation.caption}}
+      </span>
+    {{ govukRadios({
+      name: "whereDoYouLive",
+      fieldset: {
+        legend: {
+          text: t.enterLocation.question,
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      items: [
+        {
+          value: "england",
+          text: t.enterLocation.england
+        },
+        {
+          value: "wales",
+          text: t.enterLocation.wales
+        },
+        {
+          divider: "or"
+        },
+        {
+          value: "other",
+          text: t.enterLocation.other
+        }
+      ]
+    }) }}
+      <button class="govuk-button" data-module="govuk-button" type="submit">
+        {{t.global.continue}}
+      </button>
+    </form>
+  </div>
+</div>
+</div>
+<style>
+  .govuk-fieldset__legend--l {
+    margin-bottom: 30px;
+  }
+
+  .govuk-radios--inline {
+    margin-bottom: 30px;
+  }
+</style>
+
+{% endblock %}

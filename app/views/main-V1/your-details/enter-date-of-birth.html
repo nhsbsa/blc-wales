@@ -1,0 +1,77 @@
+{% extends "/main-V1/layouts/main.html" %}
+
+{% block pageTitle %}
+  {{ t.serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: t.global.back,
+href: "/main-V1/your-details/what-is-your-name"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+  <form class="form" action="/main-V1/your-details/postcode" method="post">
+
+
+
+  <span class="govuk-caption-l">{{t.global.details}}</span>
+
+      {{ govukDateInput({
+        id: "date-of-birth",
+        namePrefix: "date-of-birth",
+        fieldset: {
+          legend: {
+            text: t.pages.dateOfBirthQ,
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: t.global.example + " 27 3 2007"
+        },
+
+        items:[
+          {
+            name: "day",
+            label: t.pages.day,
+            classes: "govuk-input--width-2",
+            value: data['date-of-birth-day']
+          },
+           {
+            name: "month",
+            label: t.pages.month,
+            classes: "govuk-input--width-2",
+            value: data['date-of-birth-month']
+          },
+           {
+            name: "year",
+            label: t.pages.year,
+            classes: "govuk-input--width-4",
+            value: data['date-of-birth-year']
+          }
+        ]
+
+
+      }) }}
+
+
+    <button class="govuk-button" data-module="govuk-button" type="submit">
+      {{t.global.continue}}
+    </button>
+
+      </form>
+</div>
+</div>
+</div>
+
+  <style>
+
+  </style>
+
+{% endblock %}
