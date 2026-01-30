@@ -1,7 +1,7 @@
 {% extends "/main-V1/layouts/main.html" %}
 
 {% block pageTitle %}
-  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{{ serviceName }} 
 {% endblock %}
 
 {% block beforeContent %}
@@ -14,7 +14,7 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form class="form" action="/main-V1/2-certs/baby-2-include-sex" method="post">
+    <form class="form" action="/mainV1-2-certs-baby-2-include-sex" method="post">
         <span class="govuk-caption-l"> {% if data['languagePreference'] == "en" %} Details on certificate 2 {% else %}
           Manylion ar dystysgrif 2 {% endif %}</span>
         <div class="govuk-form-group">

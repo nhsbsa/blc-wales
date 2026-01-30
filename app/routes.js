@@ -248,7 +248,7 @@ router.post('/mainV1-triplet-losses', function(request, response) {
     }
 })
 
-router.post('/mainV1-2-certs/baby-1-include-sex', function(request, response) {
+router.post('/mainV1-2-certs-baby-1-include-sex', function(request, response) {
     var method = request.session.data['include-sex']
     if (method == "yes"){
         response.redirect("/main-V1/2-certs/baby-1/sex-of-baby")
@@ -257,7 +257,7 @@ router.post('/mainV1-2-certs/baby-1-include-sex', function(request, response) {
     }
 })
 
-router.post('/mainV1-2-certs/baby-2-include-sex', function(request, response) {
+router.post('/mainV1-2-certs-baby-2-include-sex', function(request, response) {
     var method = request.session.data['include-sex']
     if (method == "yes"){
         response.redirect("/main-V1/2-certs/baby-2/sex-of-baby")
