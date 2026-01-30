@@ -20,6 +20,23 @@
         rows: [
           {
             key: {
+              text: "Relationship to baby"
+            },
+            value: {
+              text: data['relationshipToBaby'] | capitalise
+            },
+            actions: {
+              items: [
+                {
+                  href: "/main-V1/eligibility/relation-to-baby",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          },
+          {
+            key: {
               text: "Do you know your NHS number?"
             },
             value: {
@@ -28,13 +45,14 @@
             actions: {
               items: [
                 {
-                  href: "/nhs-number",
+                  href: "/main-V1/your-details/nhs-number",
                   text: "Change",
                   visuallyHiddenText: "Question 2"
                 }
               ]
             }
           },
+
           {
             key: {
               text: "NHS number"
@@ -45,7 +63,7 @@
             actions: {
               items: [
                 {
-                  href: "/enter-nhs-number",
+                  href: "/main-V1/your-details/enter-nhs-number",
                   text: "Change",
                   visuallyHiddenText: "Question 3"
                 }
@@ -68,8 +86,24 @@
 
 
       {{ govukSummaryList({
-        rows: [
-        
+       rows: [
+          {
+            key: {
+              text: "Eich perthynas â’ch babi"
+            },
+            value: {
+              text: t.pages[data['relationshipToBaby']] 
+            },
+            actions: {
+              items: [
+                {
+                  href: "/main-V1/eligibility/relation-to-baby",
+                  text: t.global.change,
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          },
           {
             key: {
               text: "Ydych chi’n gwybod beth yw eich rhif GIG?"
@@ -81,7 +115,7 @@
               items: [
                 {
                   href: "/main-V1/your-details/nhs-number",
-                  text:  t.global.change,
+                  text: t.global.change,
                   visuallyHiddenText: "Question 2"
                 }
               ]

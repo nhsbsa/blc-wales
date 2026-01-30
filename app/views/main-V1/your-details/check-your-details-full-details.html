@@ -31,6 +31,23 @@
 
       {{ govukSummaryList({
         rows: [
+            {
+            key: {
+              text: "Relationship to baby"
+            },
+            value: {
+              text: data['relationshipToBaby'] | capitalise
+            },
+            actions: {
+              items: [
+                {
+                  href: "/main-V1/eligibility/relation-to-baby",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          },
           {
             key: {
               text: "Do you know your NHS number?"
@@ -108,13 +125,28 @@
         <li>find your contact details from your NHS health records so we can send you a security code</li>
       </ul>
 
-
-
 {% else %}
 
       {{ govukSummaryList({
         rows: [
           {
+            key: {
+              text: "Eich perthynas â’ch babi"
+            },
+            value: {
+              text: t.pages[data['relationshipToBaby']] 
+            },
+            actions: {
+              items: [
+                {
+                  href: "/main-V1/eligibility/relation-to-baby",
+                  text: t.global.change,
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          },
+             {
             key: {
               text: "Ydych chi’n gwybod beth yw eich rhif GIG?"
             },
@@ -131,6 +163,7 @@
               ]
             }
           },
+ 
           {
             key: {
               text: "Enw"
