@@ -265,3 +265,75 @@ router.post('/mainV1-2-certs-baby-2-include-sex', function(request, response) {
         response.redirect("/main-V1/2-certs/baby-2/name-of-baby")
     }
 })
+
+
+router.post('/otherV1-know-nhs-number', function(request, response) {
+    var knowNHSNum = request.session.data['knowNhsNumber']
+  
+    if (knowNHSNum == "yes" || knowNHSNum == "ydw"  ){
+      
+        response.redirect("/other-V1/your-details/enter-nhs-number")
+    } else {
+        response.redirect("/other-V1/your-details/what-is-your-name")
+        
+    }
+})
+
+router.post('/otherV1-security-code-method', function(request, response) {
+    var method = request.session.data['seccode']
+    if (method == "email"){
+        response.redirect("/other-V1/verification/enter-security-code-email")
+    } else {
+        response.redirect("/other-V1/verification/enter-security-code-text")
+    }
+})
+
+
+router.post('/otherV1-confirm-post-address', function(request, response) {
+    var method = request.session.data['confirmAddress']
+    if (method == "yes"){
+        response.redirect("/other-V1/other-parent-details/add-parent")
+    } else {
+        response.redirect("/other-V1/your-details/check-your-details-kickout")
+    }
+})
+
+
+router.post('/areDetailsCorrect', function(request, response) {
+    var method = request.session.data['areDetailsCorrect']
+    if (method == "yes"){
+        response.redirect("/other-V1/confirmation/declaration")
+    } else {
+        response.redirect("/other-V1/confirmation/check-answers-details-incorrect")
+    }
+})
+
+
+router.post('/cancelCert', function(request, response) {
+    var method = request.session.data['cancelCert']
+    if (method == "yes"){
+        response.redirect("/other-V1/confirmation/check-your-answers-kickout")
+    } else {
+        response.redirect("/other-V1/confirmation/check-your-answers")
+    }
+})
+
+
+router.post('/doAnotherCert', function(request, response) {
+    var method = request.session.data['doAnotherCert']
+    if (method == "yes"){
+         response.redirect("/other-V1/reference-number")
+    } else {
+       response.redirect("/other-V1/confirmation/confirmation-page")
+    }
+})
+
+
+
+
+
+
+
+
+
+

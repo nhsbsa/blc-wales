@@ -1,41 +1,27 @@
-{% extends "/main-V1/layouts/main.html" %}
+{% extends "/other-V1/layouts/main.html" %}
 
 {% block pageTitle %}
-Confirmation page template – {{ serviceName }} – GOV.UK Prototype Kit
+  {{ t.serviceName }}
 {% endblock %}
 
 {% block content %}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-    {% if data['languagePreference'] == "en" %}
+   {% if data['languagePreference'] == "en" %}
     {{ govukPanel({
     titleText: "Request complete",
-    html: "Your application number<br><strong>J4R-8H5-2K9F1</strong>"
+    html: "Your reference number<br><strong>J4R-8H5-2K9F1</strong>"
     }) }}
     {% else %}
     {{ govukPanel({
     titleText: "Cais wedi’i gwblhau",
-    html: "Rhif eich cais<br><strong>J4R-8H5-2K9F1</strong>"
+    html: "Your reference number<br><strong>J4R-8H5-2K9F1</strong>"
     }) }}
     {% endif %}
 
-    <dl class="govuk-summary-list">
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          {{t.confirmation.certRef}}
-        </dt>
-        <dd class="govuk-summary-list__value">
-          ABC-DEF-2K9F1
-        </dd>
-      </div>
-    </dl>
-
-    <form class="form" method="post">
-
-
-      {% if data['languagePreference'] == "en" %}
+  {% if data['languagePreference'] == "en" %}
       <h3 class="govuk-heading-m">Support organisations</h3>
       <p>The following organisations give support and advice:</p>
     <ul class="govuk-list govuk-list--bullet">
@@ -49,16 +35,7 @@ Confirmation page template – {{ serviceName }} – GOV.UK Prototype Kit
         NHS How to access mental health services</a></li>
     </ul>
       <p> <a href="#"> What did you think of this service?</a> (takes 30 seconds) </p>
-      <h2 class="govuk-heading-m">Contact the Baby Loss Certificate Service</h2>
-      <div class="contact">
-        <p>Email: <a href="mailto:babylosscertificate@nhsbsa.nhs.uk">
-          babylosscertificate@nhsbsa.nhs.uk</a> <br>
-          Telephone: 0300 330 9445
-          <br>Monday to Friday, 9am to 5pm
-        </p>
-        <p><a href="/call-charges">Find out about call charges</a></p>
-      </div>
-
+   
 
        {% else %}
 
@@ -75,37 +52,11 @@ Confirmation page template – {{ serviceName }} – GOV.UK Prototype Kit
           Sut i gael gwasanaethau iechyd meddwl - GIG</a></li>
     </ul>
       <p> <a href="#"> Beth yw eich barn am y gwasanaeth hwn? </a> (cymerir 30 eiliad i ateb)</p>
-      <h2 class="govuk-heading-m">Cysylltwch â’r Gwasanaeth Tystysgrifau Colli Babi</h2>
-      <div class="contact">
-        <p>E-bost: <a href="mailto:babylosscertificate@nhsbsa.nhs.uk">
-          babylosscertificate@nhsbsa.nhs.uk</a> <br>
-          Rhif ffôn: 0300 330 9445
-          <br>Dydd Llun i ddydd Gwener, 9am to 5pm
-        </p>
-        <p><a href="#">Gwybodaeth am gostau galwadau</a></p>
-      </div>
+    
 
       {% endif %}
 
-    </form>
+    </div>
   </div>
-</div>
 
-<style>
-  .contact {
-    border-left: 1px solid #b1b4b6;
-    padding-left: 15px;
-    margin-bottom: 30px;
-    margin-top: 30px;
-  }
-
-  user agent stylesheet div {
-    display: block;
-  }
-
-  .govspeak .contact,
-  .gem-c-govspeak .contact {
-    position: relative
-  }
-</style>
 {% endblock %}

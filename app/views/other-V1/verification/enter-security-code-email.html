@@ -1,0 +1,98 @@
+{% extends "/other-V1/layouts/main.html" %}
+
+{% block pageTitle %}
+  {{ t.serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: t.global.back,
+href: "/other-V1/verification/get-security-code"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <span class="govuk-caption-l">{{t.global.details}}</span>
+    <div class="govuk-grid-column-two-thirds">
+      <fieldset class="govuk-fieldset">
+
+
+        {% if data['languagePreference'] == "en" %} 
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Enter your security code
+              </h1>
+            </legend>
+            
+            <div class="govuk-form-group">
+            
+              <p>We sent your security code by email to Sa********@gmail.com</p>
+            
+              <p class="govuk-hint">
+                If you do not receive the email within a few minutes, check your spam or junk mail folder.
+              </p>
+            
+              {{ govukInput({
+              classes: "govuk-input--width-10",
+              id: "emailCode",
+              name: "emailCode"
+              }) }}
+            
+            </div>
+            
+            <p>Didn't get your security code?
+              <a href="">Resend code
+              </a>
+            </p>
+
+        {% else %}
+           
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+             Rhowch eich cod diogelwch
+          </h1>
+        </legend>
+        
+        <div class="govuk-form-group">
+          <p>Gwnaethom anfon eich cod diogelwch i Sa********@gmail.com</p>
+        
+          <p class="govuk-hint">
+       Os na fyddwch yn cael yr e-bost o fewn ychydig funudau, gwiriwch eich ffolder sbam neu ffolder post sothach.
+          </p>
+        
+          {{ govukInput({
+          classes: "govuk-input--width-10",
+          id: "emailCode",
+          name: "emailCode"
+          }) }}
+        
+        </div>
+        
+        <p>Heb gael eich cod diogelwch? 
+          <a href="">Ailanfon cod </a>
+        </p>
+
+          {% endif%}
+
+      {{ govukButton({
+      text: t.global.continue,
+      href: "/other-V1/confirmation/contact-email",
+      isStartButton: false
+      }) }}
+    </fieldset>
+    </div>
+</div>
+</div>
+<style>
+  .govuk-caption-l {
+    margin-left: 15px;
+  }
+  .govuk-input {
+    margin-bottom: 10px;
+  }
+</style>
+
+
+    {% endblock %}

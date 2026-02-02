@@ -1,0 +1,175 @@
+{% extends "/other-V1/layouts/main.html" %}
+
+{% block pageTitle %}
+{{ t.serviceName }}
+{% endblock %}
+
+{% set months = [
+  "", "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+] %}
+
+{% set day = data['date-of-birth-day'] %}
+{% set month = months[ data['date-of-birth-month'] | int ] %}
+{% set year = data['date-of-birth-year'] %}
+
+{% set dobFormatted = day + " " + month + " " + year %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <span class="govuk-caption-l">{{t.global.details}}</span>
+      <h1 class="govuk-heading-l">{{t.global.checkDetails}}</h1>
+
+
+    <!--//////  EN //////// -->
+
+      {% if data['languagePreference'] == "en" %}
+
+      {{ govukSummaryList({
+        rows: [
+
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: data['p1FirstName'] + ' ' + data['p1LastName'] 
+            },
+            actions: {
+              items: [
+                {
+                  href: "/other-V1/your-details/what-is-your-name",
+                  text: "Change",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Date of birth"
+            },
+            value: {
+              text: dobFormatted
+            },
+            actions: {
+              items: [
+                {
+                  href: "/other-V1/your-details/enter-date-of-birth",
+                  text: "Change",
+                  visuallyHiddenText: "Question 1"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Postcode"
+            },
+            value: {
+              text: data['postcode']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/other-V1/your-details/postcode",
+                  text: "Change",
+                  visuallyHiddenText: "Question 1"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <p>By continuing you agree to let us use your details to:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>check who you are</li>
+        <li>find your contact details from your NHS health records so we can send you a security code</li>
+      </ul>
+
+{% else %}
+
+      {{ govukSummaryList({
+        rows: [
+ 
+          {
+            key: {
+              text: "Enw"
+            },
+            value: {
+              text: data['p1FirstName'] + ' ' + data['p1LastName'] 
+            },
+            actions: {
+              items: [
+                {
+                  href: "/other-V1/your-details/what-is-your-name",
+                  text: t.global.change,
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Dyddiad geni"
+            },
+            value: {
+              text: dobFormatted
+            },
+            actions: {
+              items: [
+                {
+                  href: "/other-V1/your-details/enter-date-of-birth",
+                  text: t.global.change,
+                  visuallyHiddenText: "Question 1"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Cod post"
+            },
+            value: {
+              text: data['postcode']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/other-V1/your-details/postcode",
+                  text: t.global.change,
+                  visuallyHiddenText: "Question 1"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <p>Trwy barhau, rydych chi’n caniatáu inni ddefnyddio eich manylion i wneud y canlynol:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Gwirio pwy ydych chi</li>
+        <li>Dod o hyd i’ch manylion cyswllt o’ch cofnodion iechyd y GIG fel y gallwn anfon cod diogelwch atoch</li>
+      </ul>
+
+
+{% endif %}
+
+
+
+      <form action="/other-V1/verification/get-security-code" method="post" novalidate>
+        
+      {{ govukButton({
+          text: t.global.agreeContinue,
+          isStartButton: false
+      }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

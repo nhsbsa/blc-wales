@@ -1,0 +1,248 @@
+{% extends "/other-V1/layouts/main.html" %}
+
+{% block pageTitle %}
+  {{ t.serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: t.global.back,
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+
+{% block content %}
+
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds-from-desktop">
+
+        <h1 class="govuk-heading-l">Your details</h1>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Receive confirmation email
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['contactByEmail'] %}
+              {{ data['contactByEmail'] }}
+             {% else %}
+             No
+             {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="contact-email">
+                  {{t.global.change}}<span class="govuk-visually-hidden"> name</span>
+                </a>
+            </dd>
+          </div>
+        </dl>
+
+        {% if data['twins'] == 'true' %}
+        <h2 class="govuk-heading-m">Confirm the details on certificate 1</h2>
+        {% else %}
+        <h2 class="govuk-heading-m">Confirm the details on the certificate</h2>
+        {% endif %}
+
+        <h3 class="govuk-heading-s">Parent 1</h3>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Their name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['first-name'] %}
+              {{ data['first-name'] }}
+             {% else %}
+             Example name
+             {% endif %}
+            </dd>
+
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Their relationship to your baby
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['relation-baby'] %}
+              {{ data['relation-baby'] }}
+             {% else %}
+             Example relation
+             {% endif %}
+            </dd>
+
+          </div>
+          </dl>
+          <h3 class="govuk-heading-s">Parent 2</h3>
+
+          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+            <div class="govuk-summary-list__row">
+
+              <dt class="govuk-summary-list__key">
+              Your name
+              </dt>
+              <dd class="govuk-summary-list__value">
+
+                  {% if data['parent2-firstname'] %}
+                  {{ data['parent2-firstname'] }} {{ data['parent2-lastname'] }}
+                  {% else %}
+                  Example name
+                  {% endif %}
+
+              </dd>
+
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Your relationship to your baby
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['parent-2'] %}
+                {{ data['parent-2'] }}
+               {% else %}
+               Example relation
+               {% endif %}
+              </dd>
+
+            </div>
+            </dl>
+            <h3 class="govuk-heading-s">Baby's details</h3>
+            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Baby's name
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['baby-firstname'] %}
+               {{ data['baby-firstname'] }}
+              {% else %}
+              Example name
+              {% endif %}
+            </dd>
+
+          </div>
+
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Baby's sex
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['baby-gender'] %}
+              {{ data['baby-gender'] }}
+             {% else %}
+             Example sex
+             {% endif %}
+            </dd>
+
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Date of baby loss
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['dol-day'] %}
+                    {{ data['dol-day'] }} <span class="cya-month">{{ data['dol-month'] }}</span> {{ data['dol-year'] }}
+                    {% else %}
+                  Example date of loss
+                  {% endif %}
+            </dd>
+
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Place of baby loss
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['place'] %}
+              {{ data['place'] }}
+             {% else %}
+             Example place
+             {% endif %}
+            </dd>
+
+          </div>
+
+
+        </dl>
+          <form class="form" action="/areDetailsCorrect" method="post">
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset" aria-describedby="areDetailsCorrect-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                  <h1 class="govuk-fieldset__heading">
+                    Are these details correct?
+                  </h1>
+                </legend>
+                <div id="areDetailsCorrect-body" class="govuk-body">
+                  If the details are incorrect, the request for all certificates will be cancelled and the main applicant will
+                  need to start a new request.
+                </div>
+                <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="areDetailsCorrect-1" name="areDetailsCorrect" type="radio" value="yes">
+                    <label class="govuk-label govuk-radios__label" for="areDetailsCorrect-1">
+                      Yes
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="areDetailsCorrect-2" name="areDetailsCorrect" type="radio" value="no">
+                    <label class="govuk-label govuk-radios__label" for="areDetailsCorrect-2">
+                      No
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+
+          <button class="govuk-button" data-module="govuk-button" type="submit">
+            Continue
+          </button>
+
+                  </form>
+            
+     
+      </div>
+      
+
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+        $(document).ready(function() {
+            const months = {
+                "01": "January",
+                "02": "February",
+                "03": "March",
+                "04": "April",
+                "05": "May",
+                "06": "June",
+                "07": "July",
+                "08": "August",
+                "09": "September",
+                "10": "October",
+                "11": "November",
+                "12": "December",
+                "1": "January",
+                "2": "February",
+                "3": "March",
+                "4": "April",
+                "5": "May",
+                "6": "June",
+                "7": "July",
+                "8": "August",
+                "9": "September",
+
+            };
+
+ 
+
+            $(".cya-month").text(function () {
+                const month = $(this).text();
+                console.log("month:", month);
+                console.log("months[month]:", months[month]);
+                return months[month];
+            });
+        });
+</script>
+{% endblock %}

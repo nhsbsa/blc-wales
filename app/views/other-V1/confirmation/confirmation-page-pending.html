@@ -1,0 +1,82 @@
+{% extends "/other-V1/layouts/main.html" %}
+
+{% block pageTitle %}
+{{ t.serviceName }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-form-group">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    {% if data['languagePreference'] == "en" %}
+    {{ govukPanel({
+    titleText: "Request complete",
+    html: "Your application number<br><strong>J4R-8H5-2K9F1</strong>"
+    }) }}
+    {% else %}
+    {{ govukPanel({
+    titleText: "Cais wedi’i gwblhau",
+    html: "Rhif eich cais<br><strong>J4R-8H5-2K9F1</strong>"
+    }) }}
+    {% endif %}
+
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          {{t.confirmation.certRef}}
+        </dt>
+        <dd class="govuk-summary-list__value">
+          ABC-DEF-2K9F1
+        </dd>
+      </div>
+    </dl>
+
+
+
+      <h2 class="govuk-heading-m">  What happens next  </h2>
+
+      <p>The certificates will be posted to the main applicant within 14 days.</p>
+      <p>If you would like your own certificates, you can <a href="">request one</a>.</p>
+      <h2 class="govuk-heading-m"> Would you like to add your name to another baby loss certificate?</h2>
+      
+      <form class="form" action="/doAnotherCert" method="post">
+
+        <div class="govuk-radios" data-module="govuk-radios">
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="doAnotherCert" name="doAnotherCert" type="radio" value="yes"
+              data-aria-controls="conditional-contact">
+            <label class="govuk-label govuk-radios__label" for="doAnotherCert">
+              Yes, I have a reference number for another certificate
+            </label>
+          </div>
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="yes">
+                You can continue and add your name to a certificate for another baby loss if you've received more than
+                one email.
+              </label>
+
+            </div>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="doAnotherCert-2" name="doAnotherCert" type="radio" value="no">
+            <label class="govuk-label govuk-radios__label" for="doAnotherCert-2">
+              No, I do not want to add my name to another certificate
+            </label>
+          </div>
+          <br>
+          <button class="govuk-button" data-module="govuk-button" type="submit">
+            Continue
+          </button>
+
+      </form>
+
+      <style>
+        .govuk-panel--confirmation {
+          color: #ffffff;
+          background: #1d70b8;
+          ;
+        }
+      </style>
+
+      {% endblock %}
