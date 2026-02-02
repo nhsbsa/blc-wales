@@ -143,10 +143,22 @@
           {% if data['languagePreference'] == "en" %}Baby's sex{% else %} Rhyw y babi {% endif %}
         </dt>
         <dd class="govuk-summary-list__value">
-          {% if data['baby-sex'] %} {{t.pages[data['baby-sex']]}} {% else %} - {% endif %}
+
+          {% if data['includeSex'] == "yes" %}
+                {% if data['baby-sex'] %} 
+                    {{t.pages[data['baby-sex']]}}
+                {% else %} 
+                -
+                {% endif %}
+          {% elseif data['includeSex'] == 'unknown' %}
+            Unknown
+          {% else %}
+          - 
+          {% endif %}
+          
         </dd>
         <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="/main-V1/1-cert/sex-of-baby">
+          <a class="govuk-link" href="/main-V1/1-cert/include-sex-of-baby">
             {{t.global.change}}<span class="govuk-visually-hidden"> name</span>
           </a>
         </dd>

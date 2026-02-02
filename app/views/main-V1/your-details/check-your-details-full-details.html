@@ -13,8 +13,23 @@
 {% set month = months[ data['date-of-birth-month'] | int ] %}
 {% set year = data['date-of-birth-year'] %}
 
-{% set dobFormatted = day + " " + month + " " + year %}
 
+
+{% if data['date-of-birth-day'] %}
+{% set dobFormatted = day + " " + month + " " + year %}
+{% else %}
+{% set dobFormatted = "27 March 2000" %}
+{% endif %}
+
+{% if data['p1FirstName'] %}
+  {% set fullname = data['p1FirstName'] + ' ' + data['p1LastName'] %}
+{% else %}
+  {% if data['relationshipToBaby'] == "mother" %}
+    {% set fullname = "Jane Doe"  %}
+    {% else %}
+  {% set fullname = "John Doe"  %}
+  {% endif %}
+{% endif %}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -70,7 +85,7 @@
               text: "Name"
             },
             value: {
-              text: data['p1FirstName'] + ' ' + data['p1LastName'] 
+              text: fullname
             },
             actions: {
               items: [
@@ -87,7 +102,7 @@
               text: "Date of birth"
             },
             value: {
-              text: dobFormatted
+              text: dobFormatted 
             },
             actions: {
               items: [
@@ -104,7 +119,7 @@
               text: "Postcode"
             },
             value: {
-              text: data['postcode']
+              text: data['postcode'] or 'CF10 1AA'
             },
             actions: {
               items: [

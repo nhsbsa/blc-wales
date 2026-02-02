@@ -110,27 +110,27 @@ router.post('/twin-losses', function(request, response) {
 router.post('/triplet-losses', function(request, response) {
     var method = request.session.data['triplet-loss']
     if (method == "single"){
-         response.redirect("/1-cert/date-of-loss")
+         response.redirect("/main-V1/1-cert/date-of-loss")
     }  else{
-        response.redirect("/2-certs/baby-1/date-of-loss")
+        response.redirect("/main-V1/2-certs/baby-1/date-of-loss")
     }
 })
 
 router.post('/2-certs/baby-1-include-sex', function(request, response) {
     var method = request.session.data['include-sex']
     if (method == "yes"){
-        response.redirect("/2-certs/baby-1/sex-of-baby")
+        response.redirect("/main-V1/2-certs/baby-1/sex-of-baby")
     }  else{
-        response.redirect("/2-certs/baby-1/name-of-baby")
+        response.redirect("/main-V1/2-certs/baby-1/name-of-baby")
     }
 })
 
 router.post('/2-certs/baby-2-include-sex', function(request, response) {
     var method = request.session.data['include-sex']
     if (method == "yes"){
-        response.redirect("/2-certs/baby-2/sex-of-baby")
+        response.redirect("/main-V1/2-certs/baby-2/sex-of-baby")
     }  else{
-        response.redirect("/2-certs/baby-2/name-of-baby")
+        response.redirect("/main-V1/2-certs/baby-2/name-of-baby")
     }
 })
 
@@ -212,7 +212,7 @@ router.post('/mainV1-number-of-babies-lost', function(request, response) {
 })
 
 router.post('/mainV1-baby-sex-choice-1-cert', function(request, response) {
-    var method = request.session.data['gender']
+    var method = request.session.data['includeSex']
     if (method == "yes"){
         response.redirect("/main-V1/1-cert/sex-of-baby")
     }  else{

@@ -29,7 +29,7 @@
               items: [
                 {
                   href: "/main-V1/eligibility/relation-to-baby",
-                  text: "Change",
+                  text: t.global.change,
                   visuallyHiddenText: "Question 2"
                 }
               ]
@@ -46,7 +46,7 @@
               items: [
                 {
                   href: "/main-V1/your-details/nhs-number",
-                  text: "Change",
+                  text: t.global.change,
                   visuallyHiddenText: "Question 2"
                 }
               ]
@@ -58,13 +58,13 @@
               text: "NHS number"
             },
             value: {
-              text: data['enterNhsNumber']
+              text: data['enterNhsNumber'] or "485 777 3456"
             },
             actions: {
               items: [
                 {
                   href: "/main-V1/your-details/enter-nhs-number",
-                  text: "Change",
+                  text: t.global.change,
                   visuallyHiddenText: "Question 3"
                 }
               ]
@@ -78,8 +78,6 @@
         <li>Check who you are</li>
         <li>Find your details from your NHS health records so we can send you a security code</li>
       </ul>
-
-
 
 
       {% else %}
@@ -126,7 +124,7 @@
               text: "Rhif GIG"
             },
             value: {
-              text: data['enterNhsNumber']
+              text: data['enterNhsNumber'] or "485 777 3456"
             },
             actions: {
               items: [
