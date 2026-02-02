@@ -18,7 +18,7 @@ href: "javascript:window.history.back()"
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds-from-desktop">
 
-        <h1 class="govuk-heading-l">{{t.global.details}}</h1>
+        <h1 class="govuk-heading-l">Your details</h1>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -40,7 +40,7 @@ href: "javascript:window.history.back()"
           {% if data['contact'] == "yes" %}
            <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              {{t.contact.emailAddress}}
+              Email address
             </dt>
             <dd class="govuk-summary-list__value">
               {{ data['contactByEmail'] }}
@@ -49,17 +49,13 @@ href: "javascript:window.history.back()"
            {% endif %}
         </dl>
 
-        {% if data['twins'] == 'true' %}
-        <h2 class="govuk-heading-m">Confirm the details on certificate 1</h2>
-        {% else %}
-        <h2 class="govuk-heading-m">Confirm the details on the certificate</h2>
-        {% endif %}
+        <h2 class="govuk-heading-m">Confirm the details on certificate 2</h2>
 
-        <h3 class="govuk-heading-s">{{t.pages.parent}} 1</h3>
+        <h3 class="govuk-heading-s">Parent 1</h3>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              {{t.check.theirName}}
+              Their name
             </dt>
             <dd class="govuk-summary-list__value">
               {% if data['first-name'] %}
@@ -72,7 +68,7 @@ href: "javascript:window.history.back()"
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              {{t.check.theirRelationship}}
+              Their relationship to your baby
             </dt>
             <dd class="govuk-summary-list__value">
               {% if data['relation-baby'] %}
@@ -84,14 +80,14 @@ href: "javascript:window.history.back()"
 
           </div>
           </dl>
-          <h3 class="govuk-heading-s">{{t.pages.parent}} 2</h3>
+          <h3 class="govuk-heading-s">Parent 2</h3>
 
           <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 
             <div class="govuk-summary-list__row">
 
               <dt class="govuk-summary-list__key">
-              {{t.check.yourName}}
+              Your name
               </dt>
               <dd class="govuk-summary-list__value">
 
@@ -106,7 +102,7 @@ href: "javascript:window.history.back()"
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                 {{t.check.yourRelationship}}
+                Your relationship to your baby
               </dt>
               <dd class="govuk-summary-list__value">
                 {% if data['parent-2'] %}
@@ -118,11 +114,11 @@ href: "javascript:window.history.back()"
 
             </div>
             </dl>
-            <h3 class="govuk-heading-s"> {{t.check.babyDetails}}</h3>
+            <h3 class="govuk-heading-s">Baby's details</h3>
             <dl class="govuk-summary-list govuk-!-margin-bottom-9">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-               {{t.check.babyName}}
+              Baby's name
             </dt>
             <dd class="govuk-summary-list__value">
               {% if data['baby-firstname'] %}
@@ -136,7 +132,7 @@ href: "javascript:window.history.back()"
 
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              {{t.check.babySex}}
+              Baby's sex
             </dt>
             <dd class="govuk-summary-list__value">
               {% if data['baby-gender'] %}
@@ -149,7 +145,7 @@ href: "javascript:window.history.back()"
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              {{t.check.dateOfLoss}}
+              Date of baby loss
             </dt>
             <dd class="govuk-summary-list__value">
               {% if data['dol-day'] %}
@@ -162,7 +158,7 @@ href: "javascript:window.history.back()"
           </div>
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              {{t.check.placeOfLoss}}
+              Place of baby loss
             </dt>
             <dd class="govuk-summary-list__value">
               {% if data['place'] %}
@@ -176,7 +172,7 @@ href: "javascript:window.history.back()"
 
 
         </dl>
-          <form class="form" action="/areDetailsCorrect" method="post">
+          <form class="form" action="/areDetailsCorrect-2" method="post">
             <div class="govuk-form-group">
               <fieldset class="govuk-fieldset" aria-describedby="areDetailsCorrect-hint">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
@@ -207,7 +203,7 @@ href: "javascript:window.history.back()"
 
 
           <button class="govuk-button" data-module="govuk-button" type="submit">
-            {{t.global.comtinue}}
+            Continue
           </button>
 
                   </form>

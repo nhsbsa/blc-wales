@@ -20,6 +20,30 @@
     }) }}
     {% endif %}
 
+  
+     {% if data['twins'] == "true" %}
+    <h2 class="govuk-heading-m govuk-!-margin-top-5">  Certificate reference numbers  </h2>
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          <!-- {{t.confirmation.certRef}} -->
+          {{t.confirmation.certificate}} 1
+        </dt>
+        <dd class="govuk-summary-list__value">
+          ABC-DEF-2K9F1
+        </dd>
+      </div>
+        <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          <!-- {{t.confirmation.certRef}} -->
+          {{t.confirmation.certificate}} 2
+        </dt>
+        <dd class="govuk-summary-list__value">
+          ABC-DEF-2K9F2
+        </dd>
+      </div>
+    </dl>
+     {% else %}
     <dl class="govuk-summary-list">
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
@@ -30,7 +54,9 @@
         </dd>
       </div>
     </dl>
+    {% endif %}
 
+    
 
 
       <h2 class="govuk-heading-m">  What happens next  </h2>
@@ -66,7 +92,7 @@
           </div>
           <br>
           <button class="govuk-button" data-module="govuk-button" type="submit">
-            Continue
+             {{t.global.continue}}
           </button>
 
       </form>

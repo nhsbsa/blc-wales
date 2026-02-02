@@ -300,9 +300,25 @@ router.post('/otherV1-confirm-post-address', function(request, response) {
 
 
 router.post('/areDetailsCorrect', function(request, response) {
-    var method = request.session.data['areDetailsCorrect']
-    if (method == "yes"){
-        response.redirect("/other-V1/confirmation/declaration")
+    var correct = request.session.data['areDetailsCorrect']
+    var isTwins = request.session.data['twins']
+
+    if (correct == "yes"){
+        if (isTwins == "true"){
+            response.redirect("/other-V1/confirmation/check-your-answers-twins")
+        } else {
+         response.redirect("/other-V1/confirmation/declaration")
+        }
+    } else {
+        response.redirect("/other-V1/confirmation/check-answers-details-incorrect")
+    }
+})
+
+router.post('/areDetailsCorrect-2', function(request, response) {
+    var correct = request.session.data['areDetailsCorrect']
+
+    if (correct == "yes"){
+         response.redirect("/other-V1/confirmation/declaration")
     } else {
         response.redirect("/other-V1/confirmation/check-answers-details-incorrect")
     }

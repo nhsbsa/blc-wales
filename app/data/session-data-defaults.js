@@ -10,5 +10,6 @@ module.exports = {
   translations,
   "en": require('../locales/en.json'),
   "cy": require('../locales/cy.json'),
-  "languagePreference": "en"
+  "languagePreference": "en",
+  'other-parent-twins': "false"
 }

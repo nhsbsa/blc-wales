@@ -30,11 +30,34 @@
     "male": "Male",
     "female": "Female"
   },
+  "check":{
+    "yourName": "Your name",
+    "theirName": "Their name",
+    "yourRelationship": "Your relationship to your baby",
+    "theirRelationship": "Their relationship to your baby",
+    "babyDetails": "Baby's details",
+    "babyName": "Baby's name",
+    "babySex": "Baby's sex",
+    "dateOfLoss":"Date of baby loss",
+    "placeOfLoss": "Place of baby loss",
+    "yourDetails":"Your details",
+    "checkDetails": "Check your details",
+    "agreeContinue":"Agree and continue",
+    "acceptContinue": "Accept and continue",
+    "change": "Change"
+  },
   "confirmation":{
     "requestPending": "Request pending",
+    "requestComplete": "Request complete",
     "applicationNumber": "Your application number",
-    "certRef": "Certificate reference number",
-    "certificate":"Certifcate"
+    "referenceNumber": "Your reference number",
+    "certRef": "Certificate reference number",    
+    "certificate": "Certificate"
+  },
+  "contact":{
+    "emailAddress": "Email address",
+    "enterEmailAddress": "Enter email address",
+    "ConfirmEmailAddress": "Confirm email address"
   }
 
   

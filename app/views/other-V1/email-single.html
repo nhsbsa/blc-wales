@@ -1,7 +1,11 @@
 {% extends "govuk-prototype-kit/layouts/unbranded.html" %}
 
+
+{% set twins = data['languagePreference'] or 'en' %}
+
+
 {% block pageTitle %}
-  Unbranded page template – {{ serviceName }} – GOV.UK Prototype Kit
+ {{ serviceName }} 
 {% endblock %}
 
 {% block content %}
@@ -15,7 +19,7 @@
 
   <p class="govuk-body">Use the link below if you would like your name on the certificates. You have 7 days to provide permission and confirm your details. You have until (date and time expiry).</p>
 
-  <p class="govuk-body"><a href="start-page">www.gov.uk/baby-loss-certificate/certificate-request</a></p>
+  <p class="govuk-body"><a href="start-page?twins=false">www.gov.uk/baby-loss-certificate/certificate-request</a></p>
 
   <p class="govuk-body">We’ll send you a reminder 3 days before the link expires.</p>
 

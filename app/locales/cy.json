@@ -29,10 +29,33 @@
     "male": "Gwryw",
     "female": "Benyw"
   },
+    "check":{
+    "yourName": "Eich enw",
+    "theirName": "Ei enw neu ei henw",
+    "yourRelationship": "Eich perthynas â’ch babi",
+    "theirRelationship": "Ei berthynas neu ei pherthynas â’ch babi",
+    "babyDetails": "Manylion am y babi",
+    "babyName": "Enw’r babi",
+    "babySex": "Rhyw y babi",
+    "dateOfLoss":"Dyddiad colli’r babi",
+    "placeOfLoss": "Man colli’r babi",
+    "details": "Eich manylion",
+    "checkDetails": "Gwiriwch eich manylion",
+    "agreeContinue":"Cytuno a pharhau",
+    "acceptContinue": "Derbyn a pharhau",
+    "change": "Newid"
+  },
    "confirmation":{
     "requestPending": "Request pending",
-    "applicationNumber": "Your application number",
+    "requestComplete": "Cais wedi’i gwblhau",
+    "applicationNumber": "Rhif eich cais",
+    "referenceNumber": "Eich cyfeirnod",
     "certRef": "Cyfeirnodau’r dystysgrif",
     "certificate":"Tystysgrif"
+  },
+   "contact":{
+    "emailAddress": "Cyfeiriad e-bost",
+    "enterEmailAddress": "Rhowch gyfeiriad e-bost",
+    "confirmEmailAddress": "Cadarnhewch y cyfeiriad e-bost"
   }
 }

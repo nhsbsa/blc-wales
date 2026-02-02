@@ -14,9 +14,9 @@ href: "javascript:window.history.back()"
   {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form class="form" method="post">
+      <form class="form" action="check-your-answers" method="post">
         <div class="govuk-form-group">
-          <span class="govuk-caption-l">Your details</span>
+          <span class="govuk-caption-l">{{t.global.details}}</span>
           <fieldset class="govuk-fieldset">
 
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -27,7 +27,7 @@ href: "javascript:window.history.back()"
 
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="email"
+                <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="yes"
                   data-aria-controls="conditional-contact">
                 <label class="govuk-label govuk-radios__label" for="contact">
                   Yes
@@ -36,23 +36,23 @@ href: "javascript:window.history.back()"
               <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
                 <div class="govuk-form-group">
                   <label class="govuk-label" for="contact-by-email">
-                    Email address
+                    {{t.contact.emailAddress}}
                   </label>
                   <input class="govuk-input govuk-!-width-one-half" id="contact-by-email" name="contactByEmail"
                     type="email" spellcheck="false" autocomplete="email">
                 </div>
                 <div class="govuk-form-group">
                   <label class="govuk-label" for="contact-by-email">
-                    Confirm email address
+                   {{t.contact.confirmEmailAddress}}
                   </label>
-                  <input class="govuk-input govuk-!-width-one-half" id="contact-by-email" name="contactByEmail"
+                  <input class="govuk-input govuk-!-width-one-half" id="contact-by-email" 
                     type="email" spellcheck="false" autocomplete="email">
                 </div>
     
               </div>
 
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="phone">
+                <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="no">
                 <label class="govuk-label govuk-radios__label" for="contact-2">
                   No
                 </label>
@@ -62,11 +62,9 @@ href: "javascript:window.history.back()"
 
       </div>
 
-      {{ govukButton({
-      text: "Continue",
-      href: "check-your-answers",
-      isStartButton: false
-      }) }}
+       <button class="govuk-button" data-module="govuk-button" type="submit">
+        {{t.global.continue}}
+      </button>
 
       </form>
     </div>
