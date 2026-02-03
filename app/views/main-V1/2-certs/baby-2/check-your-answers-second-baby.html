@@ -101,7 +101,7 @@
                  {% if data['languagePreference'] == "en" %}  Date of baby loss{% else %} Dyddiad colli’r babi {% endif %}
                 </dt>
                 <dd class="govuk-summary-list__value">
-                       {% if data['dol-day-2'] %}
+                       {% if data['dol-day-2'] or data['dol-month-2'] or data['dol-year-2'] %}
                       {{ data['dol-day-2'] }} <span class="cya-month">{{ data['dol-month-2'] }}</span> {{ data['dol-year-2'] }}
                       {% else %}
                       -
