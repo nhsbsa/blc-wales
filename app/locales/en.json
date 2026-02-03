@@ -57,7 +57,7 @@
   "contact":{
     "emailAddress": "Email address",
     "enterEmailAddress": "Enter email address",
-    "ConfirmEmailAddress": "Confirm email address"
+    "confirmEmailAddress": "Confirm email address"
   }
 
   

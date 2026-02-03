@@ -1,0 +1,137 @@
+{% extends "/main-V1/layouts/main.html" %}
+
+{% block pageTitle %}
+{{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: t.global.back,
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="/main-V1/3-certs/baby-3/place-of-loss" method="post">
+      <span class="govuk-caption-l">
+        {% if data['languagePreference'] == "en" %} Details on certificate 3 {% else %} Manylion ar dystysgrif 3 {%
+        endif %}
+      </span>
+      <fieldset class="govuk-fieldset">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+
+                {% if data['languagePreference'] == "en" %} Would you like the date of your baby loss on the
+                certificate?
+                {% else %} Hoffech chi gynnwys dyddiad colli eich babi ar y dystysgrif? {% endif %}
+
+              </h1>
+            </legend>
+
+            {% if data['languagePreference'] == "en" %}
+            <div class="govuk-inset-text"> You can enter a meaningful date if you do not know the exact date.
+              <br>This can be a partial date, such as a month and year, or year only.
+            </div>
+            <p> This section will be blank on the certificate if you select ‘No' or ‘I do not know the date of my baby
+              loss'. </p>
+
+            {% else %}
+
+            <div class="govuk-inset-text"> Gallwch roi dyddiad arwyddocaol os nad ydych chi’n gwybod yr union ddyddiad.
+              <br>This can be a partial date, such as a month and year, or year only.
+            </div>
+            <p> Bydd yr adran hon yn wag ar y dystysgrif os byddwch chi’n dewis ‘Na hoffwn’ neu ‘Nid wyf yn gwybod
+              dyddiad colli fy mabi’ </p>
+
+            {% endif %}
+
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="email"
+                  data-aria-controls="conditional-contact">
+                <label class="govuk-label govuk-radios__label" for="contact">
+                  {% if data['languagePreference'] == "en" %} Yes {% else %} Hoffwn{% endif %}
+                </label>
+              </div>
+              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+                <div class="govuk-form-group">
+                  <div class="govuk-fieldset__legend">
+                    {% if data['languagePreference'] == "en" %} Enter the date of your baby loss {% else %} Dyddiad
+                    colli’r babi {% endif %}
+                  </div>
+                  <div id="passport-issued-hint" class="govuk-hint">
+                    {{t.global.example}}, 27 3 2021
+                  </div>
+                  <div class="govuk-date-input" id="date-loss">
+                    <div class="govuk-date-input__item">
+                      <div class="govuk-form-group">
+                        <label class="govuk-label govuk-date-input__label" for="loss-date-day">
+                          {{t.pages.day}}
+                        </label>
+                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="loss-date-day-3"
+                          name="dol-day-3" type="text" inputmode="numeric" value="{{data['dol-day-3']}}">
+                      </div>
+                    </div>
+                    <div class="govuk-date-input__item">
+                      <div class="govuk-form-group">
+                        <label class="govuk-label govuk-date-input__label" for="loss-date-month">
+                          {{t.pages.month}}
+                        </label>
+                        <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="loss-date-month-3"
+                          name="dol-month-3" type="text" inputmode="numeric" value="{{data['dol-month-3']}}">
+                      </div>
+                    </div>
+                    <div class="govuk-date-input__item">
+                      <div class="govuk-form-group">
+                        <label class="govuk-label govuk-date-input__label" for="loss-date-year">
+                          {{t.pages.year}}
+
+                        </label>
+                        <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="loss-date-year-3"
+                          name="dol-year-3" type="text" inputmode="numeric" value="{{data['dol-year-3']}}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="contact-3" name="contact" type="radio" value="phone">
+                <label class="govuk-label govuk-radios__label" for="contact-3">
+                  {% if data['languagePreference'] == "en" %} No {% else %} Na hoffwn {% endif %}
+                </label>
+              </div>
+              <div class="govuk-radios__divider">
+                {% if data['languagePreference'] == "en" %} or {% else %} neu {% endif %}
+              </div>
+            </div>
+
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="baby-gender-version1" name="contact" type="radio" value="unknown">
+              <label class="govuk-label govuk-radios__label" for="unknown">
+
+                {% if data['languagePreference'] == "en" %} I do not know the date of my baby loss {% else %} Nid wyf yn
+                gwybod dyddiad colli fy mabi {% endif %}
+              </label>
+            </div>
+
+
+
+          </fieldset>
+        </div>
+
+        <button class="govuk-button" data-module="govuk-button">
+          {{t.global.continue}}
+        </button>
+    </form>
+  </div>
+</div>
+</div>
+<style>
+
+</style>
+{% endblock %}

@@ -8,17 +8,11 @@
 <div class="govuk-form-group">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-    {% if data['languagePreference'] == "en" %}
+
     {{ govukPanel({
-    titleText: "Request complete",
-    html: "Your application number<br><strong>J4R-8H5-2K9F1</strong>"
+    titleText: t.confirmation.requestComplete,
+    html: t.confirmation.applicationNumber + "<br><strong>J4R-8H5-2K9F1</strong>"
     }) }}
-    {% else %}
-    {{ govukPanel({
-    titleText: "Cais wedi’i gwblhau",
-    html: "Rhif eich cais<br><strong>J4R-8H5-2K9F1</strong>"
-    }) }}
-    {% endif %}
 
   
      {% if data['twins'] == "true" %}
@@ -62,7 +56,7 @@
       <h2 class="govuk-heading-m">  What happens next  </h2>
 
       <p>The certificates will be posted to the main applicant within 14 days.</p>
-      <p>If you would like your own certificates, you can <a href="">request one</a>.</p>
+      <p>If you would like your own certificate, you can <a href="https://blc-wales-f0100a391def.herokuapp.com/main-V1/start-page">request one</a>.</p>
       <h2 class="govuk-heading-m"> Would you like to add your name to another baby loss certificate?</h2>
       
       <form class="form" action="/doAnotherCert" method="post">

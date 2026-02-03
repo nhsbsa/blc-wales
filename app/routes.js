@@ -111,8 +111,10 @@ router.post('/triplet-losses', function(request, response) {
     var method = request.session.data['triplet-loss']
     if (method == "single"){
          response.redirect("/main-V1/1-cert/date-of-loss")
-    }  else{
+    }else if (method == "twin"){
         response.redirect("/main-V1/2-certs/baby-1/date-of-loss")
+    } else{
+        response.redirect("/main-V1/3-certs/baby-1/date-of-loss")
     }
 })
 
@@ -267,6 +269,7 @@ router.post('/mainV1-2-certs-baby-2-include-sex', function(request, response) {
 })
 
 
+
 router.post('/otherV1-know-nhs-number', function(request, response) {
     var knowNHSNum = request.session.data['knowNhsNumber']
   
@@ -343,6 +346,36 @@ router.post('/doAnotherCert', function(request, response) {
        response.redirect("/other-V1/confirmation/confirmation-page")
     }
 })
+
+
+router.post('/mainV1-3-certs-baby-1-include-sex', function(request, response) {
+    var method = request.session.data['include-sex']
+    if (method == "yes"){
+        response.redirect("/main-V1/3-certs/baby-1/sex-of-baby")
+    }  else{
+        response.redirect("/main-V1/3-certs/baby-1/name-of-baby")
+    }
+})
+
+router.post('/mainV1-3-certs-baby-2-include-sex', function(request, response) {
+    var method = request.session.data['include-sex']
+    if (method == "yes"){
+        response.redirect("/main-V1/3-certs/baby-2/sex-of-baby")
+    }  else{
+        response.redirect("/main-V1/3-certs/baby-2/name-of-baby")
+    }
+})
+
+
+router.post('/mainV1-3-certs-baby-3-include-sex', function(request, response) {
+    var method = request.session.data['include-sex']
+    if (method == "yes"){
+        response.redirect("/main-V1/3-certs/baby-3/sex-of-baby")
+    }  else{
+        response.redirect("/main-V1/3-certs/baby-3/name-of-baby")
+    }
+})
+
 
 
 

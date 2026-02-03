@@ -1,0 +1,69 @@
+{% extends "/main-V1/layouts/main.html" %}
+
+{% block pageTitle %}
+{{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: t.global.back,
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="/main-V1/3-certs/baby-3/name-of-baby" method="post">
+      <span class="govuk-caption-l"> {% if data['languagePreference'] == "en" %} Details on certificate 3 {% else %}
+        Manylion ar dystysgrif 3 {% endif %}
+      </span>
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+
+              {% if data['languagePreference'] == "en" %}
+              Baby's sex
+              {% else %}
+              Rhyw y babi
+              {% endif %}
+            </h1>
+          </legend>
+
+         
+            {{ govukRadios({
+            name: "baby-sex-3",
+            value: data['baby-sex-3'],
+            classes: "govuk-radios--inline",
+            fieldset: {
+            legend: {
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--l"
+            }
+            },
+            items: [
+            {
+            value: "male",
+            text: t.pages.male
+            },
+            {
+            value: "female",
+            text: t.pages.female
+            }
+            ]
+            }) }}
+        </fieldset>
+      </div>
+
+
+      <button class="govuk-button" data-module="govuk-button">
+        {{t.global.continue}}
+      </button>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

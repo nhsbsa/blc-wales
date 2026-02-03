@@ -1,0 +1,226 @@
+{% extends "/main-V1/layouts/main.html" %}
+
+{% block pageTitle %}
+  {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+ 
+{% endblock %}
+
+{% block content %}
+
+ 
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds-from-desktop">
+        {% if data['languagePreference'] == "en" %} 
+        <h1 class="govuk-heading-l">Check your answers</h1>
+        <h2 class="govuk-heading-m govuk-!-margin-bottom-6">Details on certificate 3</h2>
+            {% if data['addAnotherParent'] == "yes" %}
+              <h3 class="govuk-heading-s">Parent 1</h3>
+             {% else %}
+              <h3 class="govuk-heading-s">{{t.global.details}}</h3>
+            {% endif %}
+        {% else %}
+         <h1 class="govuk-heading-l">Gwiriwch eich atebion</h1>
+        <h2 class="govuk-heading-m govuk-!-margin-bottom-6">Manylion ar dystysgrif 3</h2>
+         {% if data['addAnotherParent'] == "yes" %}
+              <h3 class="govuk-heading-s">Rhiant 1</h3>
+             {% else %}
+              <h3 class="govuk-heading-s">{{t.global.details}}</h3>
+            {% endif %}
+        {% endif %}
+
+        
+        <dl class="govuk-summary-list govuk-!-margin-bottom-8">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              {% if data['languagePreference'] == "en" %}  Your name {% else %} Eich enw {% endif %}
+            </dt>
+            <dd class="govuk-summary-list__value">
+               {% if data['p1FirstName'] %}
+              {{data['p1FirstName']}} {{data['p1LastName'] }}
+              {% else %}
+              Jane Bloggs
+              {% endif %}
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">      
+              {% if data['languagePreference'] == "en" %} Your relationship to your baby {% else %} Eich perthynas â’ch babi {% endif %}
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['relationshipToBaby'] %}
+          {{ t.pages[data['relationshipToBaby']] }}
+          {% else %}
+          Example relation
+          {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="/main-V1/3-certs/baby-3/check-your-answers-third-baby">
+                {{t.global.change}}
+              </a>
+            </dd>
+          </div>
+          </dl>
+        {% if data['addAnotherParent'] == "yes" %}
+          <h3 class="govuk-heading-s">{% if data['languagePreference'] == "en" %} Parent 2{% else %} Rhiant 2{% endif %}</h3>
+          <dl class="govuk-summary-list govuk-!-margin-bottom-8">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+              {% if data['languagePreference'] == "en" %}  Their name {% else %} Ei enw neu ei henw {% endif %}
+              </dt>
+              <dd class="govuk-summary-list__value"> To be added once the other parent confirms their details  </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                 {% if data['languagePreference'] == "en" %} Their relationship to your baby {% else %} Ei berthynas neu ei pherthynas â’ch babi {% endif %}
+              </dt>
+              <dd class="govuk-summary-list__value">
+                {% if data['secondRelationshipToBaby'] %}
+                {{ t.pages[data['secondRelationshipToBaby']]}}
+                {% else %}
+                Father
+                {% endif %}
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/main-V1/3-certs/baby-3/check-your-answers-third-baby">
+                  {{t.global.change}}<span class="govuk-visually-hidden"> name</span>
+                 
+                </a>
+              </dd>
+            </div>
+            </dl>
+            {% endif %}
+         
+            <h3 class="govuk-heading-s">{% if data['languagePreference'] == "en" %} Baby's details {% else %} Manylion am y babi {% endif %}
+</h3>
+            <dl class="govuk-summary-list govuk-!-margin-bottom-8">
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                 {% if data['languagePreference'] == "en" %}  Date of baby loss{% else %} Dyddiad colli’r babi {% endif %}
+                </dt>
+                <dd class="govuk-summary-list__value">
+                       {% if data['dol-day-3'] %}
+                      {{ data['dol-day-3'] }} <span class="cya-month">{{ data['dol-month-3'] }}</span> {{ data['dol-year-3'] }}
+                      {% else %}
+                      -
+                      {% endif %}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="/main-V1/3-certs/baby-3/date-of-loss">
+                    {{t.global.change}}<span class="govuk-visually-hidden"> name</span>
+                  </a>
+                </dd>
+              </div>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                   {% if data['languagePreference'] == "en" %}Place of baby loss{% else %} Man colli’r babi {% endif %}
+                </dt>
+                <dd class="govuk-summary-list__value">
+                     {% if data['place-of-loss-3'] %} {{data['place-of-loss-3']}} {% else %} - {% endif %}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="govuk-link" href="/main-V1/3-certs/baby-3/place-of-loss">
+                    {{t.global.change}}<span class="govuk-visually-hidden"> name</span>
+                  </a>
+                </dd>
+              </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+         {% if data['languagePreference'] == "en" %}Baby's sex{% else %} Rhyw y babi {% endif %}
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {% if data['baby-sex-3'] %} {{t.pages[data['baby-sex-3']]}} {% else %} - {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="/main-V1/3-certs/baby-3/sex-of-baby">
+                {{t.global.change}}<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+          
+         
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              {% if data['languagePreference'] == "en" %}Baby's name{% else %} Enw’r babi  {% endif %}
+            </dt>
+            <dd class="govuk-summary-list__value">
+             {% if data['baby-name-3'] %}
+               {{data['baby-name-3'] }}
+              {% else %}
+              -
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="/main-V1/3-certs/baby-3/name-of-baby">
+                {{t.global.change}}<span class="govuk-visually-hidden"> name</span>
+              </a>
+            </dd>
+          </div>
+          </div>
+          
+          
+          </div>
+        </dl>
+        
+        <div class="govuk-checkboxes govuk-!-margin-bottom-5" data-module="govuk-checkboxes">
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="nationality" name="nationality" type="checkbox" value="british" aria-describedby="nationality-item-hint">
+            <label class="govuk-label govuk-checkboxes__label" for="nationality">
+             {% if data['languagePreference'] == "en" %}I confirm these details are correct{% else %} Rwy’n cadarnhau bod y manylion hyn yn gywir {% endif %} 
+            </label>
+          </div>
+        </div>
+        <form  method="post" novalidate>
+          <input type="hidden" name="answers-checked" value="true">
+          {{ govukButton({
+            text: t.global.acceptContinue,
+            href: "/main-V1/3-certs/email-updates",
+            isStartButton: false
+            }) }}
+        </form>
+       
+      </div>
+    </div>
+  </main>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+        $(document).ready(function() {
+            const months = {
+                "01": "January",
+                "02": "February",
+                "03": "March",
+                "04": "April",
+                "05": "May",
+                "06": "June",
+                "07": "July",
+                "08": "August",
+                "09": "September",
+                "10": "October",
+                "11": "November",
+                "12": "December",
+                "1": "January",
+                "2": "February",
+                "3": "March",
+                "4": "April",
+                "5": "May",
+                "6": "June",
+                "7": "July",
+                "8": "August",
+                "9": "September",   
+
+            };
+
+ 
+
+            $(".cya-month").text(function () {
+                const month = $(this).text();
+                console.log("month:", month);
+                console.log("months[month]:", months[month]);
+                return months[month];
+            });
+        });
+</script>
+{% endblock %}

@@ -9,17 +9,11 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-   {% if data['languagePreference'] == "en" %}
     {{ govukPanel({
-    titleText: "Request complete",
-    html: "Your reference number<br><strong>J4R-8H5-2K9F1</strong>"
+    titleText: t.confirmation.requestComplete,
+    html: t.confirmation.referenceNumber + "<br><strong>J4R-8H5-2K9F1</strong>"
     }) }}
-    {% else %}
-    {{ govukPanel({
-    titleText: "Cais wedi’i gwblhau",
-    html: "Your reference number<br><strong>J4R-8H5-2K9F1</strong>"
-    }) }}
-    {% endif %}
+
 
   {% if data['languagePreference'] == "en" %}
       <h3 class="govuk-heading-m">Support organisations</h3>
@@ -30,7 +24,7 @@
       <li><a href="https://www.arc-uk.org" target="_blank">Antenatal Results and Choices (ARC)</a></li>
       <li><a href="https://www.sayinggoodbye.org" target="_blank">Saying Goodbye</a></li>
       <li><a href="https://www.miscarriageassociation.org.uk" target="_blank"> Miscarriage Association</a></li>
-      <li><a href="https://www.petalscharity.org " target="_blank">Petals</a></li>
+      <!-- <li><a href="https://www.petalscharity.org " target="_blank">Petals</a></li> -->
        <li><a href="https://www.nhs.uk/mental-health/social-care-and-your-rights/how-to-access-mental-health-services/" target="_blank">
         NHS How to access mental health services</a></li>
     </ul>
@@ -47,7 +41,7 @@
       <li><a href="https://www.arc-uk.org" target="_blank">Antenatal Results and Choices (ARC)</a></li>
       <li><a href="https://www.sayinggoodbye.org" target="_blank">Saying Goodbye</a></li>
       <li><a href="https://www.miscarriageassociation.org.uk" target="_blank"> Miscarriage Association</a></li>
-      <li><a href="https://www.petalscharity.org " target="_blank">Petals</a></li>
+      <!-- <li><a href="https://www.petalscharity.org " target="_blank">Petals</a></li> -->
       <li><a href="https://www.nhs.uk/mental-health/social-care-and-your-rights/how-to-access-mental-health-services/" target="_blank">
           Sut i gael gwasanaethau iechyd meddwl - GIG</a></li>
     </ul>
