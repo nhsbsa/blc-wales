@@ -80,11 +80,12 @@ href: "/other-V1/reference-number"
             <li>llythyrau apwyntiadau</li>
             </ul>'
         }) }}
-        {{ govukDetails({
-        summaryText: "If the name on your GP record was not your name at the time of loss",
-        html: '<p>You can only request your certificate online using the name on your GP record.</p>
-              <p>You can <a href="contact">contact us to request a certificate with a different name</a>, for example a maiden name.</p>'
-        }) }}
+       {{ govukDetails({
+      summaryText: "Os yw'r enw ar eich cofnod meddyg teulu yn wahanol i'ch enw adeg y golled",
+      html: "<p>Dim ond ar-lein y gallwch ofyn am eich tystysgrif, gan ddefnyddio'r enw ar eich cofnod meddyg teulu.</p>
+      <p>Gallwch <a href='#'>gysylltu â ni i ofyn am dystysgrif gydag enw gwahanol</a>, er enghraifft enw cyn priodi.
+      </p>"
+      }) }}
         {{ govukRadios({
             name: "knowNhsNumber",
             value: data['knowNhsNumber'],
@@ -99,9 +100,6 @@ href: "/other-V1/reference-number"
                 }
             ]
             }) }}
-
-
-
             
       {% endif %}
 

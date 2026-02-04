@@ -1,6 +1,6 @@
 
 {
-  "serviceName": "Request a baby loss certificate",
+  "serviceName": "Gofyn am dystysgrif colli babi",
   "nav": {
     "language": "English",
     "currentLanguage": "Cymraeg"
@@ -13,7 +13,8 @@
     "agreeContinue":"Cytuno a pharhau",
     "acceptContinue": "Derbyn a pharhau",
     "change": "Newid",
-    "example": "Er enghraifft"
+    "example": "Er enghraifft",
+    "or": "neu"
   },
   "pages": {
     "day": "Diwrnod",

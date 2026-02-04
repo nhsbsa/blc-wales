@@ -70,7 +70,13 @@
               <dt class="govuk-summary-list__key">
               {% if data['languagePreference'] == "en" %}  Their name {% else %} Ei enw neu ei henw {% endif %}
               </dt>
-              <dd class="govuk-summary-list__value"> To be added once the other parent confirms their details  </dd>
+              <dd class="govuk-summary-list__value"> 
+                {% if data['languagePreference'] == "en" %}
+                To be added once the other parent confirms their details
+                {% else %}
+                I'w ychwanegu ar ôl i'r rhiant arall gadarnhau eu manylion
+                {% endif %}
+              </dd>
             </div>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">

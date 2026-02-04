@@ -42,7 +42,7 @@ href: "javascript:window.history.back()"
             {% else %}
 
             <div class="govuk-inset-text"> Gallwch roi dyddiad arwyddocaol os nad ydych chi’n gwybod yr union ddyddiad.
-              <br>This can be a partial date, such as a month and year, or year only.
+              <br>Gall hyn fod yn ddyddiad rhannol, fel mis a blwyddyn, neu flwyddyn yn unig.
             </div>
             <p> Bydd yr adran hon yn wag ar y dystysgrif os byddwch chi’n dewis ‘Na hoffwn’ neu ‘Nid wyf yn gwybod
               dyddiad colli fy mabi’ </p>
@@ -54,7 +54,7 @@ href: "javascript:window.history.back()"
                 <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="email"
                   data-aria-controls="conditional-contact">
                 <label class="govuk-label govuk-radios__label" for="contact">
-                  {% if data['languagePreference'] == "en" %} Yes {% else %} Hoffwn{% endif %}
+                  {% if data['languagePreference'] == "en" %} Yes {% else %} Hoffwn - Rhowch ddyddiad colli eich babi{% endif %}
                 </label>
               </div>
               <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">

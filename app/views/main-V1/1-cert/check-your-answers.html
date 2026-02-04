@@ -1,7 +1,7 @@
 {% extends "/main-V1/layouts/main.html" %}
 
 {% block pageTitle %}
-{{ serviceName }}
+{{ t.serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -75,7 +75,11 @@
           {% if data['languagePreference'] == "en" %} Their name {% else %} Ei enw neu ei henw {% endif %}
         </dt>
         <dd class="govuk-summary-list__value">
-          To be added once the other parent confirms their details
+           {% if data['languagePreference'] == "en" %}
+             To be added once the other parent confirms their details
+            {% else %}
+            I'w ychwanegu ar ôl i'r rhiant arall gadarnhau eu manylion
+            {% endif %}
         </dd>
 
       </div>
@@ -89,7 +93,7 @@
           {% if data['secondRelationshipToBaby'] %}
           {{ t.pages[data['secondRelationshipToBaby']]}}
           {% else %}
-          Father
+          -
           {% endif %}
 
         </dd>

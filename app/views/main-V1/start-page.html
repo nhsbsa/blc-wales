@@ -5,20 +5,20 @@
 {% endblock %}
 {% block beforeContent %}
 {{ govukBreadcrumbs({
-  items: [
-    {
-    text: "Home",
-    href: "#"
-    },
-    {
-    text: "Births, deaths, marriages and care",
-    href: "#"
-    },
-    {
-    text: "Having a child, parenting and adoption",
-    href: "#"
-    }
-  ]
+items: [
+{
+text: "Home",
+href: "#"
+},
+{
+text: "Births, deaths, marriages and care",
+href: "#"
+},
+{
+text: "Having a child, parenting and adoption",
+href: "#"
+}
+]
 }) }}
 
 {% endblock %}
@@ -29,28 +29,74 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-  <h1 class="govuk-heading-l">{{t.serviceName}}</h1>
+    <h1 class="govuk-heading-l">{{t.serviceName}}</h1>
 
 
-{% if data['languagePreference'] == "en" %}
-    <p>
-      You can get a certificate in memory of your baby if your pregnancy ends before 24 weeks (or 28 weeks if your pregnancy ended before 1 October 1992).</p>
-      <p> It’s free to get a certificate.</p>
+    {% if data['languagePreference'] == "en" %}
+    
+    <p> You can get a certificate in memory of your baby if your pregnancy ends before 24 weeks (or 28 weeks if your pregnancy ended before 1 October 1992).</p>
+    <p> It’s free to get a certificate.</p>
     <p>You do not need to request a certificate if you prefer not to. It’s optional.</p>
-    
-    <div class="govuk-inset-text">The certificate is not a legal document - for example you cannot use it to claim benefits. The certificate will not be added to your GP record.</div>
 
-    <p>If your pregnancy ends from 24 weeks onwards, you need to <a href="https://www.gov.uk/register-stillbirth">register a stillbirth</a> instead.</p>
+    <div class="govuk-inset-text">The certificate is not a legal document - for example you cannot use it to claim
+      benefits. The certificate will not be added to your GP record.</div>
+
+    <p>If your pregnancy ends from 24 weeks onwards, you need to <a
+        href="https://www.gov.uk/register-stillbirth">register a stillbirth</a> instead.</p>
+
+    {% else %}
+
+    <p> Gallwch gael tystysgrif er cof am eich babi os yw'ch beichiogrwydd yn dod i ben cyn 24 wythnos (neu 28 wythnos os daeth eich beichiogrwydd i ben cyn 1 Hydref 1992).</p>
+    <p> Does dim angen talu am dystysgrif.</p>
+    <p>Does dim angen ichi ofyn am dystysgrif os yw'n well gennych beidio. Mae’n ddewisol.</p>
+
+    <div class="govuk-inset-text">Nid dogfen gyfreithiol yw’r dystysgrif - er enghraifft, allwch chi ddim ei defnyddio i hawlio budd-daliadau. Ni fydd y dystysgrif yn cael ei hychwanegu at eich cofnod meddyg teulu.</div>
+
+    <p>Os yw'ch beichiogrwydd yn dod i ben o 24 wythnos ymlaen, mae angen ichi gofrestru <a
+        href="https://www.gov.uk/register-stillbirth">marw-enedigaeth</a> yn lle hynny.</p>
+
+
+    {% endif %}
+
+
+
+ <!-- ////////////////////////  BEFORE YOU START //////////////////////// -->
+  
+ {% if data['languagePreference'] == "en" %}
+
     <h2 class="govuk-heading-m">Before you start</h2>
-    
+
     <p>You'll need:</p>
     <ul class="govuk-list govuk-list--bullet">
-      <li>your NHS number or postcode registered with your GP - <a href="https://www.nhs.uk/nhs-services/online-services/find-nhs-number/">find your NHS number on the NHS website</a></li>
+      <li>your NHS number or postcode registered with your GP - <a
+          href="https://www.nhs.uk/nhs-services/online-services/find-nhs-number/">find your NHS number on the NHS
+          website</a></li>
       <li>the mobile phone number or email address registered with your GP</li>
       <li>permission from the other parent and their email address, if you want their name on the certificate</li>
     </ul>
-        <p>If the other parent has died, you’ll need to call the Baby loss certificate service.</p>
-    
+    <p>If the other parent has died, you’ll need to call the Baby loss certificate service.</p>
+
+    {% else %}
+
+    <h2 class="govuk-heading-m">Cyn dechrau</h2>
+
+    <p>Bydd angen ichi gael:  </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>eich rhif GIG neu god post sydd wedi'i gofrestru gyda'ch meddyg teulu - 
+        <a href="https://www.nhs.uk/nhs-services/online-services/find-nhs-number/">dewch o hyd i'ch rhif GIG ar wefan y GIG</a></li>
+      <li>y rhif ffôn symudol neu'r cyfeiriad e-bost sydd wedi'i gofrestru â'ch meddyg teulu</li>
+      <li>caniatâd gan y rhiant arall a'u cyfeiriad e-bost, os ydych am eu henwi ar y dystysgrif</li>
+    </ul>
+    <p>Os yw'r rhiant arall wedi marw, bydd angen ichi ffonio'r gwasanaeth tystysgrif colli babi.</p>
+
+
+    {% endif %}
+
+
+ <!-- ////////////////////////  REQUEST A CERTIFICATE //////////////////////// -->
+
+  {% if data['languagePreference'] == "en" %}
+
     <h2 class="govuk-heading-m">
       Request a certificate
     </h2>
@@ -58,67 +104,125 @@
     <ul class="govuk-list govuk-list--bullet">
       <li>you’ve lost a baby before 24 weeks of pregnancy (or 28 weeks before 1 October 1992)</li>
       <li>you’re one of the baby’s parents or surrogate</li>
-      <li>you’re at least 16 years old</li>  
+      <li>you’re at least 16 years old</li>
       <li>you live in England or Wales</li>
-      
+
     </ul>
     {{ govukButton({
-      text: "Start now",
-      href: "/main-V1/eligibility/enter-location-uk",
-      isStartButton: true
-      }) }}
-    <p>You can request a separate certificate for each baby if you’ve lost:
-      <ul class="govuk-list govuk-list--bullet">
-        <li>more than one pregnancy</li>
-      <li>more than one baby in a 1-cert pregnancy (like twins or triplets)</li></ul></p>
-   <p>Your certificate should arrive in the post within 14 days. If you do not receive it, you can request another certificate.</p>
-   
-   <h2 class="govuk-heading-m">Get help to request a certificate</h2>
-   <p>You cannot request the certificate online if either:
-    <ul class="govuk-list govuk-list--bullet"><li>you want your certificate in a different format</li>
-    <li>you have lost four or more babies in a 1-cert pregnancy</li></ul></p>
+    text: "Start now",
+    href: "/main-V1/eligibility/enter-location-uk",
+    isStartButton: true
+    }) }}
+
+{% else %}
+
+ <h2 class="govuk-heading-m">
+      Gofyn am dystysgrif
+    </h2>
+    <p>Gallwch ofyn am dystysgrif os yw'r canlynol i gyd yn berthnasol:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>rydych chi wedi colli babi cyn 24 wythnos o feichiogrwydd (neu 28 wythnos cyn 1 Hydref 1992)</li>
+      <li>rydych chi'n rhiant neu’n rhiant benthyg (surrogate) i’r babi</li>
+      <li>rydych chi'n 16 oed o leiaf</li>
+      <li>rydych chi'n byw yng Nghymru neu yn Lloegr</li>
+
+    </ul>
+    {{ govukButton({
+    text: "Dechrau nawr",
+    href: "/main-V1/eligibility/enter-location-uk",
+    isStartButton: true
+    }) }}
+
+{% endif %}
+
+ <!-- ////////////////////////  BELOW START BUTTON //////////////////////// -->
+
+ {% if data['languagePreference'] == "en" %}
+
+    <p>You can request a separate certificate for each baby if you’ve lost:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>more than one pregnancy</li>
+      <li>more than one baby in a 1-cert pregnancy (like twins or triplets)</li>
+    </ul>
+    <p>Your certificate should arrive in the post within 14 days. If you do not receive it, you can request another
+      certificate.</p>
+
+{% else %}
+
+  <p>Gallwch ofyn am dystysgrif ar wahân ar gyfer pob babi os ydych chi wedi colli:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>mwy nag un beichiogrwydd</li>
+      <li>mwy nag un babi mewn un beichiogrwydd (fel efeilliaid neu dripledi)</li>
+    </ul>
+    <p>Dylai eich tystysgrif gyrraedd drwy'r post o fewn 14 diwrnod. Os na fydd yn cyrraedd, gallwch ofyn am dystysgrif arall.</p>
+
+{% endif %}
+    
+
+<!-- ////////////////////////  GET HELP TO REQUEST //////////////////////// -->
+
+ {% if data['languagePreference'] == "en" %}
+    <h2 class="govuk-heading-m">Get help to request a certificate</h2>
+    <p>You cannot request the certificate online if either:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>you want your certificate in a different format</li>
+      <li>you have lost four or more babies in a 1-cert pregnancy</li>
+    </ul>
     <p>You’ll need to email or call the helpline.</p>
 
-   <div class="contact">
-    <p>Baby loss certificate service <br>
-    Email: <a href="mailto:babylosscertificate@nhsbsa.nhs.uk">babylosscertificate@nhsbsa.nhs.uk</a> <br>
-    Telephone: 0300 330 9445</p>
-    
-    <p>Monday to Friday, 9am to 5pm <br>
-    <a href="/call-charges">Find out about call charges</a></p>
+    <div class="contact">
+      <p>Baby loss certificate service <br>
+        Email: <a href="mailto:babylosscertificate@nhsbsa.nhs.uk">babylosscertificate@nhsbsa.nhs.uk</a> <br>
+        Telephone: 0300 330 9445</p>
+
+      <p>Monday to Friday, 9am to 5pm <br>
+        <a href="/call-charges">Find out about call charges</a>
+      </p>
+    </div>
+
+{% else %}
+ <h2 class="govuk-heading-m">Cael help i ofyn am dystysgrif</h2>
+    <p>Allwch chi ddim gofyn am y dystysgrif ar-lein:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>os ydych chi eisiau eich tystysgrif mewn fformat gwahanol, neu</li>
+      <li>os ydych chi wedi colli pedwar neu fwy o fabanod mewn un beichiogrwydd</li>
+    </ul>
+
+    <p>Bydd angen ichi anfon e-bost neu ffonio'r llinell gymorth. </p>
+
+    <div class="contact">
+      <p>Y gwasanaeth tystysgrif colli babi<br>
+        E-bost: <a href="mailto:babylosscertificate@nhsbsa.nhs.uk">babylosscertificate@nhsbsa.nhs.uk</a> <br>
+        Ffôn: 0300 330 9445</p>
+
+      <p>Dydd Llun i ddydd Gwener, 9am i 5pm<br>
+        <a href="/call-charges">Gwybodaeth am gost galwadau</a>
+      </p>
     </div>
 
 
-  {% else %}
-
-    <p>Insert Welsh here</p>
-   {{ govukButton({
-      text: "Start now",
-      href: "eligibility/enter-location-uk",
-      isStartButton: true
-      }) }}
-
-    {% endif %}
+{% endif %}
 
   </div>
 </div>
- 
+
 
 <style>
-.contact {
+  .contact {
     border-left: 1px solid #b1b4b6;
     padding-left: 15px;
     margin-bottom: 30px;
     margin-top: 30px;
-}
+  }
 
-user agent stylesheet
-div {
+  user agent stylesheet div {
     display: block;
-}
-.govspeak .contact, .gem-c-govspeak .contact {
-    position:relative
-}
+  }
+
+  .govspeak .contact,
+  .gem-c-govspeak .contact {
+    position: relative
+  }
 </style>
 
 {% endblock %}

@@ -6,15 +6,18 @@
 
 
 {% block content %}
+
 <div class="govuk-form-group">
+
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-l ">Blank sample certificate</h1>
-    <img src="https://www.request-a-baby-loss-certificate.service.gov.uk/blc-frontend/assets/images/blank-cert.jpg" alt="User icon"
-      style="height: 800px;">
+    <h1 class="govuk-heading-l ">{% if data['languagePreference'] == "en" %} Blank sample certificate{% else %}Tystysgrif enghreifftiol wag {% endif %}</h1>
+    <img src="/public/images/blank-cert-copy.jpg" alt="User icon" style="height: auto;width:100%;">
   </div>
+
   <div class="govuk-grid-column-one-third">
     <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
       <div class="govuk-body">
+        {% if data['languagePreference'] == "en" %} 
         <p>The baby loss certificate is an official document issued on behalf of the Secretary of State for Health and
           Social Care. It will be printed on watermarked paper.</p>
         <p>The wording on the certificate is as follows:</p>
@@ -33,6 +36,27 @@
         <p>Information: This certificate is produced following a self-declaration by the parent.</p>
         <p>This certificate cannot be used as evidence of identity and does not allow any entitlement to any services or
           benefits.</p>
+
+        {% else %}
+
+        <p>Mae'r dystysgrif colli babi yn ddogfen swyddogol a gaiff ei dyroddi ar ran Ysgrifennydd y Cabinet dros Iechyd a Gofal Cymdeithasol. Bydd yn cael ei hargraffu ar bapur dyfrnod.</p>
+        <p>Dyma’r geiriau ar y dystysgrif:</p>
+        <p>Certificate of baby loss under 24 weeks gestation.</p>
+        <p>Dyroddwyd ar ran Ysgrifennydd y Cabinet dros Iechyd a Gofal Cymdeithasol.</p>
+        <ul class="govuk-list govuk-list--number">
+          <li>Cyfeirnod y dystysgrif</li>
+          <li>Dyddiad dyroddi</li>
+          <li>Enw a chyfenw’r rhiant</li>
+          <li>Enw a chyfenw unrhyw riant arall</li>
+          <li>Enw’r babi (dewisol)</li>
+          <li>Rhyw (os yw’n hysbys)</li>
+          <li>Dyddiad y golled (os yw’n hysbys)</li>
+          <li>Man y golled (os yw’n hysbys)</li>
+        </ul>
+        <p>Gwybodaeth: Mae'r dystysgrif hon wedi'i chynhyrchu yn dilyn hunanddatganiad gan y rhiant.</p>
+        <p>Ni chaniateir defnyddio’r dystysgrif hon yn dystiolaeth o hunaniaeth ac nid yw’n darparu ar gyfer unrhyw hawl i wasanaethau neu fudd-daliadau.</p>
+
+          {% endif %}
       </div>
     </aside>
 

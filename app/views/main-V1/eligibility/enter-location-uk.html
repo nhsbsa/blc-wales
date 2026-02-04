@@ -33,12 +33,12 @@ href: "/main-V1/start-page"
           },
           items: [
             {
-              value: "england",
-              text: "England"
-            },
-            {
               value: "wales",
               text: "Wales"
+            },
+            {
+              value: "england",
+              text: "England"
             },
             {
               divider: "or"
@@ -53,7 +53,7 @@ href: "/main-V1/start-page"
         {% else %}
 
       <span class="govuk-caption-l">
-      Cadarnhewch eich cymhwystra:
+      Cadarnhau eich bod yn gymwys
       </span>
 
         {{ govukRadios({
@@ -61,26 +61,26 @@ href: "/main-V1/start-page"
           value: data['country-location'],
           fieldset: {
             legend: {
-              text: "Where do you live?",
+              text: "Ble ydych chi'n byw?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
           items: [
             {
-              value: "england",
-              text: "England"
-            },
-            {
               value: "wales",
-              text: "Wales"
+              text: "Cymru"
+            },
+           {
+              value: "england",
+              text: "Lloegr"
             },
             {
-              divider: "or"
+              divider: "neu"
             },
             {
               value: "other",
-              text: "Somewhere else"
+              text: "Yn rhywle arall"
             }
           ]
         }) }}

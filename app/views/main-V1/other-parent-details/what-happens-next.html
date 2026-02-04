@@ -1,73 +1,79 @@
 {% extends "/main-V1/layouts/main.html" %}
 
 {% block pageTitle %}
- {{ serviceName }}
+{{ t.serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
-  {{ govukBackLink({
-  text: t.global.back,
-  href: "/main-V1/other-parent-details/add-parent"
+{{ govukBackLink({
+text: t.global.back,
+href: "/main-V1/other-parent-details/add-parent"
 }) }}
 {% endblock %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <div class="govuk-form-group">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-form-group">
 
-    {% if data['languagePreference'] == "en" %} 
+      {% if data['languagePreference'] == "en" %}
 
 
-        <h1 class="govuk-heading-l">What happens next </h1>
-        <p>We’ll ask you for the other parent’s date of birth. This is because we need to match their details with their GP record, if they give permission for their name to be on the certificate.</p>
-       
-       {{ govukDetails({
-        summaryText: "If the name on their GP record was not their name at the time of loss",
-        html: "<p>You can only request a certificate using the name on their GP record.</p>
-              <p>You can <a href='https://pregnancy-loss-certificate.herokuapp.com/beta/v15/contact'>contact us to request a certificate with a different name</a>, for example a maiden name.</p>"
+      <h1 class="govuk-heading-l">What happens next </h1>
+      <p>We’ll ask you for the other parent’s date of birth. This is because we need to match their details with their
+        GP record, if they give permission for their name to be on the certificate.</p>
+
+      {{ govukDetails({
+      summaryText: "If the name on their GP record was not their name at the time of loss",
+      html: "<p>You can only request a certificate using the name on their GP record.</p>
+      <p>You can <a href='https://pregnancy-loss-certificate.herokuapp.com/beta/v15/contact'>contact us to request a
+          certificate with a different name</a>, for example a maiden name.</p>"
       }) }}
-      
-        <p class="govuk-inset-text">  If the date of birth you enter for the other parent does not match the date they enter, your request for a certificate will be cancelled. </p>
-        <p>The other parent will have up to 7 days to give permission before the request is complete.</p>
-        <p>If we get their permission, you'll then receive the certificate within 14 days.</p>
+
+      <p class="govuk-inset-text"> If the date of birth you enter for the other parent does not match the date they
+        enter, your request for a certificate will be cancelled. </p>
+      <p>The other parent will have up to 7 days to give permission before the request is complete.</p>
+      <p>If we get their permission, you'll then receive the certificate within 14 days.</p>
 
 
 
-     {% else %}
+      {% else %}
 
 
-        <h1 class="govuk-heading-l">Beth fydd yn digwydd nesaf</h1>
-        <p>Byddwn yn gofyn ichi am ddyddiad geni’r rhiant arall. Mae hyn oherwydd bod angen inni baru manylion rhieni eraill â’u cofnodion meddyg teulu, os ydynt yn rhoi eu caniatâd i gael eu henwi ar y dystysgrif.</p>
-       
-       {{ govukDetails({
-        summaryText: "If the name on their GP record was not their name at the time of loss",
-        html: "<p>You can only request a certificate using the name on their GP record.</p>
-              <p>You can <a href='https://pregnancy-loss-certificate.herokuapp.com/beta/v15/contact'>contact us to request a certificate with a different name</a>, for example a maiden name.</p>"
+      <h1 class="govuk-heading-l">Beth fydd yn digwydd nesaf</h1>
+      <p>Byddwn yn gofyn ichi am ddyddiad geni’r rhiant arall. Mae hyn oherwydd bod angen inni baru manylion rhieni
+        eraill â’u cofnodion meddyg teulu, os ydynt yn rhoi eu caniatâd i gael eu henwi ar y dystysgrif.</p>
+
+      {{ govukDetails({
+      summaryText: "Os nad yr enw ar eu cofnod meddyg teulu oedd eu henw ar adeg y golled",
+      html: "<p>Dim ond drwy ddefnyddio'r enw ar y cofnod meddyg teulu y gallwch ofyn am dystysgrif.</p>
+      <p>Gallwch <a href='https://pregnancy-loss-certificate.herokuapp.com/beta/v15/contact'>gysylltu â ni i ofyn am
+          dystysgrif gydag enw gwahanol</a>, er enghraifft enw cyn priodi.</p>"
       }) }}
-      
-        <p class="govuk-inset-text">  Os nad yw’r dyddiad geni rydych chi wedi’i roi ar gyfer y rhiant arall yn cyfateb i’r dyddiad y mae’n ei nodi, bydd eich cais am dystysgrif yn cael ei ddileu.</p>
-        <p>Bydd gan y rhiant arall hyd at 7 diwrnod i roi caniatâd cyn cwblhau’r cais.</p>
-        <p>Os ceir caniatâd y rhiant arall, byddwch wedyn yn cael y dystysgrif o fewn 14 o ddiwrnodau.</p>
+
+      <p class="govuk-inset-text"> Os nad yw’r dyddiad geni rydych chi wedi’i roi ar gyfer y rhiant arall yn cyfateb i’r
+        dyddiad y mae’n ei nodi, bydd eich cais am dystysgrif yn cael ei ddileu.</p>
+      <p>Bydd gan y rhiant arall hyd at 7 diwrnod i roi caniatâd cyn cwblhau’r cais.</p>
+      <p>Os ceir caniatâd y rhiant arall, byddwch wedyn yn cael y dystysgrif o fewn 14 o ddiwrnodau.</p>
 
 
 
 
-       {% endif %}
+      {% endif %}
 
 
 
-        {{ govukButton({
-          text: t.global.continue,
-          href: "/main-V1/other-parent-details/continue-if-no-response",
-          isStartButton: false
-          }) }}
+      {{ govukButton({
+      text: t.global.continue,
+      href: "/main-V1/other-parent-details/continue-if-no-response",
+      isStartButton: false
+      }) }}
 
 
 
 
-      </div>
-      </div>
     </div>
+  </div>
+</div>
 
 {% endblock %}

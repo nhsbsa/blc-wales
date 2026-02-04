@@ -65,10 +65,6 @@ href: "javascript:window.history.back()"
                 ]
               }) }}
             {% endif %}
-
-            
-
-     
       </fieldset>
     </div>
 
@@ -83,8 +79,12 @@ href: "javascript:window.history.back()"
         </span>
       </summary>
       <div class="govuk-details__text">
+        {% if data['languagePreference'] == "en" %} 
         You’ll need to contact your GP practice and ask them to update your details before you can request a
         certificate.
+      {% else %}
+        Bydd angen ichi gysylltu â'ch practis meddyg teulu a gofyn iddynt ddiweddaru eich manylion cyn y gallwch ofyn am dystysgrif.
+      {% endif%}
       </div>
     </details>
 
