@@ -1,0 +1,64 @@
+{% extends "/main-V1/layouts/main.html" %}
+
+{% block pageTitle %}
+– {{ t.serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: t.global.back,
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+<main id="content" role="main">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="gem-c-title">
+
+        <h1 class="govuk-heading-xl">
+          {% if data['languagePreference'] == "en" %}
+          Contact the Baby Loss Certificate Service
+          {% else %}
+          Cysylltwch â’r Gwasanaeth Tystysgrifau Colli Babi
+          {% endif %}
+        </h1>
+      </div>
+
+      <div class="gem-c-govspeak govuk-govspeak " data-module="govspeak" data-govspeak-module-started="true">
+
+        {% if data['languagePreference'] == "en" %}
+        <h2 class="govuk-heading-m">Telephone</h2>
+        <p>You can contact us Monday to Friday, 9am to 5pm:</p>
+        <ul class="govuk-list">
+          <li>Telephone: 0300 330 9445</li>
+          <li>Outside UK: +44 191 267 0884</li>
+        </ul>
+        <p><a href="">Find out about call charges</a></p>
+        <h3 class="govuk-heading-s">Email</h3>
+        <p>Email: <a href="">nhsbsa.babylosscertificate@nhsbsa.nhs.uk</a></p>
+        <p>We will reply to your email within 2 working days.</p>
+
+        {% else %}
+        <h2 class="govuk-heading-m">Rhif ffôn</h2>
+        <p>Gallwch gysylltu â ni o ddydd Llun i ddydd Gwener, 9am i 5pm:</p>
+        <ul class="govuk-list">
+          <li>Rhif ffôn: 0300 330 9445</li>
+          <li>Tu allan i'r DU: +44 191 267 0884</li>
+        </ul>
+        <p><a href="">Gwybodaeth am gostau galwadau</a></p>
+        <h3 class="govuk-heading-s">E-bost</h3>
+        <p>E-bost: <a href="">nhsbsa.babylosscertificate@nhsbsa.nhs.uk</a></p>
+        <p>Byddwn yn ymateb i'ch e-bost o fewn 2 ddiwrnod gwaith.</p>
+
+
+        {% endif %}
+
+      </div>
+
+
+</main>
+</div>
+{% endblock %}

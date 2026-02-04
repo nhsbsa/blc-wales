@@ -51,7 +51,7 @@
               text: "Relationship to baby"
             },
             value: {
-              text: data['relationshipToBaby'] | capitalise
+              text: t.pages[data['relationshipToBaby']] 
             },
             actions: {
               items: [
@@ -68,7 +68,7 @@
               text: "Do you know your NHS number?"
             },
             value: {
-              text: data['knowNhsNumber'] | capitalise
+              text: t.pages[data['knowNhsNumber']]
             },
             actions: {
               items: [
@@ -166,7 +166,7 @@
               text: "Ydych chi’n gwybod beth yw eich rhif GIG?"
             },
             value: {
-              text: data['knowNhsNumber'] | capitalise
+              text: t.pages[data['knowNhsNumber']]
             },
             actions: {
               items: [

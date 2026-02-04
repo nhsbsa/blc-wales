@@ -28,7 +28,9 @@
     "surrogate": "Rhiant benthyg",
     "noneOfThese": "Neu dim un o’r rhain",
     "male": "Gwryw",
-    "female": "Benyw"
+    "female": "Benyw",
+    "yes" : "Ydw",
+    "no": "Nac ydw"
   },
     "check":{
     "yourName": "Eich enw",

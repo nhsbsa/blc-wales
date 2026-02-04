@@ -29,7 +29,9 @@
     "surrogate": "Surrogate",
     "noneOfThese": "None of these",
     "male": "Male",
-    "female": "Female"
+    "female": "Female",
+    "yes" : "Yes",
+    "no": "No"
   },
   "check":{
     "yourName": "Your name",

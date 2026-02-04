@@ -43,9 +43,9 @@ href: "/main-V1/eligibility/relation-to-baby"
       }) }}
       {{ govukDetails({
       summaryText: "If the name on your GP record was not your name at the time of loss",
-      html: '<p>You can only request your certificate online using the name on your GP record.</p>
-      <p>You can <a href="#">contact us to request a certificate with a different name</a>, for example a maiden name.
-      </p>'
+      html: "<p>You can only request your certificate online using the name on your GP record.</p>
+      <p>You can <a href='/main-V1/contact'>contact us to request a certificate with a different name</a>, for example a maiden name.
+      </p>"
       }) }}
       {{ govukRadios({
       name: "knowNhsNumber",
@@ -89,7 +89,7 @@ href: "/main-V1/eligibility/relation-to-baby"
       {{ govukDetails({
       summaryText: "Os yw'r enw ar eich cofnod meddyg teulu yn wahanol i'ch enw adeg y golled",
       html: "<p>Dim ond ar-lein y gallwch ofyn am eich tystysgrif, gan ddefnyddio'r enw ar eich cofnod meddyg teulu.</p>
-      <p>Gallwch <a href='#'>gysylltu â ni i ofyn am dystysgrif gydag enw gwahanol</a>, er enghraifft enw cyn priodi.
+      <p>Gallwch <a href='/main-V1/contact'>gysylltu â ni i ofyn am dystysgrif gydag enw gwahanol</a>, er enghraifft enw cyn priodi.
       </p>"
       }) }}
 
@@ -98,11 +98,11 @@ href: "/main-V1/eligibility/relation-to-baby"
       value: data['knowNhsNumber'],
       items: [
       {
-      value: "ydw",
+      value: "yes",
       text: "Ydw, rwy’n gwybod fy rhif GIG"
       },
       {
-      value: "Nac ydw",
+      value: "no",
       text: "Nac ydw, parhau gan ddefnyddio fy enw llawn, fy nyddiad geni a’m cod post"
       }
       ]
