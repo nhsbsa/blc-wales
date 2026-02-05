@@ -10,11 +10,32 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-xl">Request a baby loss certificate</h1>
 
+    {% if data['languagePreference'] == "en" %}
+
+    <h1 class="govuk-heading-xl">Request a baby loss certificate</h1>
     <p>If a pregnancy ends before 24 weeks (or 28 weeks if a pregnancy ended before 1 October 1992), parents can get a
       certificate in memory of their baby.</p>
     <p>Parents do not have to request a certificate - it’s optional. It’s free to get a certificate.</p>
+
+    {% else %}
+
+    <h1 class="govuk-heading-xl">Gofyn am dystysgrif colli babi</h1>
+    <p>Os daw beichiogrwydd i ben cyn 24 wythnos (neu 28 wythnos os daeth beichiogrwydd i ben cyn 1 Hydref 1992), gall
+      rhieni gael tystysgrif er cof am eu babi.</p>
+    <p>Nid oes rhaid i rieni ofyn am dystysgrif - mae'n ddewisol. Mae cael tystysgrif yn rhad ac am ddim.</p>
+
+    {% endif %}
+
+
+
+
+      <!-- ------------------------ ------------------------ ------ -->
+    <!--//////////////.    WHY WE'RE CONTACTING YOU       //////////// -->
+     <!-- ------------------------ ------------------------ ------ -->
+
+    {% if data['languagePreference'] == "en" %}
+
     <h2 class="govuk-heading-l">Why we're contacting you</h2>
 
     <p>We've received a request for a baby loss certificate.</p>
@@ -31,10 +52,36 @@
       <li>respond within 7 days</li>
       <li>give permission to be named on the certificate</li>
     </ul>
+    {% else %}
 
+    <h2 class="govuk-heading-l">Pam rydym yn cysylltu â chi</h2>
+
+    <p>Rydym wedi derbyn cais am dystysgrif colli babi.</p>
+    <p>Mae'r prif ymgeisydd wedi eich enwi chi fel rhiant arall eu babi. Hoffent gynnwys eich enw ar eu tystysgrif.</p>
+    <p>Os hoffech i’ch enw fod ar eu tystysgrif, byddwn ni’n gofyn rhai cwestiynau i chi. Bydd gennych 7 diwrnod i roi
+      caniatâd a chadarnhau eich manylion.</p>
+    <p>Bydd un dystysgrif yn cael ei phostio at y prif ymgeisydd. Os hoffech chi gael eich tystysgrif eich hun, gallwch
+      <a href="https://blc-wales-f0100a391def.herokuapp.com/main-V1/start-page">ofyn am un</a>.</p>
+
+    <p>Gall y prif ymgeisydd barhau i ofyn am dystysgrif sy'n dangos ei henw/enw yn unig fel rhiant ei babi/fabi os na
+      fyddwch chi'n:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>ymateb o fewn 7 diwrnod</li>
+      <li>rhoi caniatâd i gael eich enwi ar y dystysgrif</li>
+    </ul>
+
+
+    {% endif %}
+
+
+      <!-- ------------------------ ------------------------ ------ -->
+    <!--//////////////.    ABOUT THE CERTIFICATE       //////////// -->
+     <!-- ------------------------ ------------------------ ------ -->
+
+    {% if data['languagePreference'] == "en" %}
 
     <h2 class="govuk-heading-l">About the certificate</h2>
-    
+
     <div class="govuk-inset-text">The certificate is not a legal document. For example, it cannot be used to claim
       benefits.</div>
     <p>It can show:</p>
@@ -47,6 +94,32 @@
       <li>baby's name</li>
     </ul>
     <p>The certificate will not be added to your GP record.</p>
+
+    {% else %}
+
+    <h2 class="govuk-heading-l">Ynglŷn â'r dystysgrif</h2>
+
+    <div class="govuk-inset-text">Nid yw'r dystysgrif yn ddogfen gyfreithiol. Er enghraifft, ni ellir ei ddefnyddio i hawlio budd-daliadau.</div>
+    <p>Gall ddangos:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>enw rhieni</li>
+      <li>perthynas â babi</li>
+      <li>dyddiad colli'r babi</li>
+      <li>lle colli babi</li>
+      <li>rhyw y babi</li>
+      <li>enw'r babi</li>
+    </ul>
+    <p>Ni fydd y dystysgrif yn cael ei hychwanegu at gofnod eich meddyg teulu.</p>
+
+
+
+    {% endif %}
+
+    <!-- ------------------------ ------------------------ ------ -->
+    <!--//////////////.    BEFORE YOU START        //////////// -->
+     <!-- ------------------------ ------------------------ ------ -->
+
+    {% if data['languagePreference'] == "en" %}
 
     <h2 class="govuk-heading-m">Before you start</h2>
 
@@ -63,12 +136,44 @@
     isStartButton: true
     }) }}
 
-
     <p>Parents can request a separate certificate for each baby if they’ve lost:</p>
     <ul class="govuk-list govuk-list--bullet">
       <li>more than one pregnancy</li>
       <li>more than one baby in a single pregnancy (twins or triplets)</li>
     </ul>
+
+    {% else %}
+
+
+    <h2 class="govuk-heading-m">Cyn i chi ddechrau</h2>
+
+    <p>Bydd angen:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>eich rhif GIG neu god post sydd wedi'i gofrestru â'ch meddyg teulu</li>
+      <li>y rhif ffôn symudol neu'r cyfeiriad e-bost sydd wedi'i gofrestru â'ch meddyg teulu</li>
+      <li>cyfeirnod y dystysgrif neu rif y cais yn eich e-bost</li>
+    </ul>
+
+    {{ govukButton({
+    text: "Dechreuwch nawr",
+    href: "reference-number",
+    isStartButton: true
+    }) }}
+
+    <p>Gall rhieni ofyn am dystysgrif ar wahân ar gyfer pob babi os ydynt wedi colli:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>mwy nag un beichiogrwydd</li>
+      <li>mwy nag un babi mewn un beichiogrwydd (efeilliaid neu dripledi)</li>
+    </ul>
+
+    {% endif %}
+
+
+     <!-- ------------------------ ------------------------ ------ -->
+    <!--//////////////.    GET HELP TO REQUEST CERT      //////////// -->
+     <!-- ------------------------ ------------------------ ------ -->
+
+    {% if data['languagePreference'] == "en" %}
 
 
     <h2 class="govuk-heading-m">Get help to request a certificate</h2>
@@ -90,6 +195,32 @@
       </p>
 
     </div>
+
+    {% else %}
+
+    <h2 class="govuk-heading-m">Cael cymorth i ofyn am dystysgrif</h2>
+    <p>Ni allwch ofyn am y dystysgrif ar-lein os:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>oedd gennych chi enw gwahanol ar adeg eich colled, fel enw cyn priodi</li>
+      <li>oes angen cymorth arnoch i ofyn am dystysgrif gyda gwasanaethau cyfieithu</li>
+    </ul>
+
+    <p>Os na allwch barhau ar-lein, anfonwch e-bost neu ffoniwch y llinell gymorth.</p>
+
+    <div class="contact">
+      <p>Gwasanaeth tystysgrif colli babi <br>
+        E-bost:   <a href="mailto:babylosscertificate@nhsbsa.nhs.uk">babylosscertificate@nhsbsa.nhs.uk</a> <br>
+        Teleffon: 0300 330 9445</p>
+
+      <p>Dydd Llun i ddydd Gwener, 9am i 5pm<br>
+      <a href="/call-charges">Dysgwch am gostau galwadau</a>
+      </p>
+
+    </div>
+
+
+
+    {% endif %}
 
 
   </div>

@@ -25,7 +25,6 @@ href: "/other-V1/reference-number"
         <h1 class="govuk-heading-l">Do you know your NHS number?</h1>
 
         <p>Telling us your NHS number will give us the best chance of matching you to your GP record.</p>
-       <p>This will help us identify you so we can send the certificate to the correct address.</p>
         <p>You do not need to know your NHS number to continue. If you do not know it, you can tell us your full name, date of birth and postcode instead.</p>
         {{ govukDetails({
         summaryText: "Where to find your NHS number",
@@ -42,7 +41,7 @@ href: "/other-V1/reference-number"
         {{ govukDetails({
         summaryText: "If the name on your GP record was not your name at the time of loss",
         html: '<p>You can only request your certificate online using the name on your GP record.</p>
-              <p>You can <a href="contact">contact us to request a certificate with a different name</a>, for example a maiden name.</p>'
+              <p>You can <a href="/other-V1/contact">contact us to request a certificate with a different name</a>, for example a maiden name.</p>'
         }) }}
         {{ govukRadios({
             name: "knowNhsNumber",
@@ -65,7 +64,6 @@ href: "/other-V1/reference-number"
         <span class="govuk-caption-l">{{t.global.details}}</span>
         <h1 class="govuk-heading-l">Ydych chi’n gwybod beth yw eich rhif GIG?</h1>
         <p>Bydd dweud eich rhif GIG wrthym yn rhoi’r cyfle gorau inni eich paru â’ch cofnod GIG.</p>
-        <p>This will help us identify you so we can send the certificate to the correct address.</p>
         <p>Nid oes angen ichi wybod beth yw eich rhif GIG i barhau. Os nad ydych chi’n ei wybod, gallwch yn hytrach, ddweud wrthym eich enw llawn, eich dyddiad geni a’ch cod post.</p>
         
         {{ govukDetails({
@@ -83,7 +81,7 @@ href: "/other-V1/reference-number"
        {{ govukDetails({
       summaryText: "Os yw'r enw ar eich cofnod meddyg teulu yn wahanol i'ch enw adeg y golled",
       html: "<p>Dim ond ar-lein y gallwch ofyn am eich tystysgrif, gan ddefnyddio'r enw ar eich cofnod meddyg teulu.</p>
-      <p>Gallwch <a href='#'>gysylltu â ni i ofyn am dystysgrif gydag enw gwahanol</a>, er enghraifft enw cyn priodi.
+      <p>Gallwch <a href='/other-V1/contact'>gysylltu â ni i ofyn am dystysgrif gydag enw gwahanol</a>, er enghraifft enw cyn priodi.
       </p>"
       }) }}
         {{ govukRadios({

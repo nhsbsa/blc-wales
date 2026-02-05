@@ -1,12 +1,43 @@
 {% extends "govuk-prototype-kit/layouts/unbranded.html" %}
 
 {% block pageTitle %}
-  Unbranded page template – {{ serviceName }} – GOV.UK Prototype Kit
+{{ serviceName }}
 {% endblock %}
 
-{% block content %}
-  <h1 class="govuk-heading-m">Subject: Baby loss certificate request</h1>
 
+{% block content %}
+
+
+{% if data['languagePreference'] == "en" %}
+
+
+<section aria-label="Service information" class="govuk-service-navigation hmrc-service-navigation--with-language-select"
+  data-module="govuk-service-navigation" data-govuk-service-navigation-init="">
+
+  <div class="govuk-width-container">
+    <div class="govuk-service-navigation__container">
+      <span class="govuk-service-navigation__service-name">
+         Subject: Baby loss certificate request
+      </span>
+    </div>
+    <nav class="hmrc-service-navigation-language-select" aria-label="Switcher iaith">
+     <ul class="hmrc-service-navigation-language-select__list">
+        <li class="hmrc-service-navigation-language-select__list-item">
+          <span aria-current="true">ENG</span>
+        </li>
+        <li class="hmrc-service-navigation-language-select__list-item">
+          <a href="?languagePreference=cy" hreflang="cy" lang="cy" rel="alternate"
+            class="govuk-link govuk-service-navigation__link">
+            CYM
+            <span class="govuk-visually-hidden"> – Newid yr iaith i’r Gymraeg</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+</section>
+<br>
   <p class="govuk-body">We're contacting you from the Baby loss certificate service.</p>
 
   <p class="govuk-body">Your application number is: 123</p>
@@ -33,4 +64,94 @@
 
   <p class="govuk-body">Find out about call charges at <a href="https://www.gov.uk/call-charges">https://www.gov.uk/call-charges</a></p>
 
+
+
+{% else %}
+
+
+<section aria-label="Service information" class="govuk-service-navigation hmrc-service-navigation--with-language-select"
+  data-module="govuk-service-navigation" data-govuk-service-navigation-init="">
+
+  <div class="govuk-width-container">
+    <div class="govuk-service-navigation__container">
+      <span class="govuk-service-navigation__service-name">
+        Pwnc: Cais am dystysgrif Colli babi
+      </span>
+    </div>
+    <nav class="hmrc-service-navigation-language-select" aria-label="Switcher iaith">
+      <ul class="hmrc-service-navigation-language-select__list">
+        <li class="hmrc-service-navigation-language-select__list-item">
+          <a href="?languagePreference=en" hreflang="en" lang="en" rel="alternate"
+            class="govuk-link govuk-service-navigation__link">
+            ENG
+            <span class="govuk-visually-hidden"> – Change the language to English</span>
+          </a>
+        </li>
+        <li class="hmrc-service-navigation-language-select__list-item">
+          <span aria-current="true">CYM</span>
+        </li>
+      </ul>
+    </nav>
+
+  </div>
+
+</section>
+
+
+<br>
+
+
+
+<p class="govuk-body">Rydym yn cysylltu â chi o'r gwasanaeth tystysgrif Colli babi.</p>
+
+<p class="govuk-body">Rhif eich cais yw: 123</p>
+
+<p class="govuk-body">Rydym wedi derbyn cais gan [enw] i ychwanegu eich enw at 2 dystysgrif colli babi.</p>
+
+<p class="govuk-body">Defnyddiwch y ddolen isod os hoffech i'ch enw fod ar y dystysgrif. Bydd angen i chi roi caniatâd ar gyfer pob un, ond gallwch wneud hyn mewn un cais. Mae gennych 7 diwrnod i roi
+  caniatâd a chadarnhau eich manylion. Mae gennych chi hyd [dyddiad ac amser dod i ben].</p>
+
+<p class="govuk-body"><a href="start-page?twins=true">www.gov.uk/baby-loss-certificate/certificate-request</a></p>
+
+<p class="govuk-body">Byddwn yn anfon nodyn atgoffa atoch 3 diwrnod cyn i'r ddolen ddod i ben.</p>
+
+<p class="govuk-body">Os dewiswch beidio ag ychwanegu eich enw, does dim angen i chi wneud dim ac ni fydd eich enw ar y
+  dystysgrif.</p>
+
+<h2 class="govuk-heading-s">Cysylltwch â ni</h2>
+
+<p class="govuk-body">Os oes gennych unrhyw ymholiadau am y tystysgrifau colli babi, cysylltwch â ni:</p>
+
+<p class="govuk-body">Dydd Llun i ddydd Gwener, 9am i 5pm:</p>
+
+<p class="govuk-body">Teleffon: 0300 330 9445</p>
+
+<p class="govuk-body">Y tu allan i'r DU: +44 191 267 0884</p>
+
+<p class="govuk-body">Dysgwch am gostau galwadau <a
+    href="https://www.gov.uk/call-charges">https://www.gov.uk/call-charges</a></p>
+
+
+
+{% endif %}
+
+
+<style>
+  .govuk-main-wrapper {
+    padding-top: 0px !important;
+  }
+  .hmrc-service-navigation--with-language-select .govuk-width-container{
+    align-items: center;
+  }
+  .govuk-template--rebranded .govuk-service-navigation{
+    background-color: #fff;
+  }
+  .govuk-template--rebranded .govuk-header__container{
+    padding-left: 15px !important;
+  }
+</style>
+
+
+
 {% endblock %}
+
