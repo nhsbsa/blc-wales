@@ -1,7 +1,7 @@
 {% extends "/other-V1/layouts/main.html" %}
 
 {% block pageTitle %}
-  {{ t.serviceName }}
+{{ t.serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -11,64 +11,76 @@ href: "javascript:window.history.back()"
 }) }}
 {% endblock %}
 
-  {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <form class="form" action="check-your-answers" method="post">
-        <div class="govuk-form-group">
-          <span class="govuk-caption-l">{{t.global.details}}</span>
-          <fieldset class="govuk-fieldset">
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="check-your-answers" method="post">
+      <div class="govuk-form-group">
+        <span class="govuk-caption-l">{{t.global.details}}</span>
+        <fieldset class="govuk-fieldset">
 
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 class="govuk-fieldset__heading">
-                Would you like a confirmation email about this request?
-              </h1>
-            </legend>
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              {% if data['languagePreference'] == "en" %}
+              Would you like a confirmation email about this request?
+              {% else %}
+              A hoffech chi gael e-bost cadarnhau am y cais hwn?
+              {% endif %}
+            </h1>
+          </legend>
 
-            <div class="govuk-radios" data-module="govuk-radios">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="yes"
-                  data-aria-controls="conditional-contact">
-                <label class="govuk-label govuk-radios__label" for="contact">
-                  Yes
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="yes"
+                data-aria-controls="conditional-contact">
+              <label class="govuk-label govuk-radios__label" for="contact">
+                {% if data['languagePreference'] == "en" %}
+                Yes
+                {% else %}
+                Hoffwn
+                {% endif %}
+              </label>
+            </div>
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="contact-by-email">
+                  {{t.contact.emailAddress}}
                 </label>
+                <input class="govuk-input govuk-!-width-one-half" id="contact-by-email" name="contactByEmail"
+                  type="email" spellcheck="false" autocomplete="email">
               </div>
-              <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
-                <div class="govuk-form-group">
-                  <label class="govuk-label" for="contact-by-email">
-                    {{t.contact.emailAddress}}
-                  </label>
-                  <input class="govuk-input govuk-!-width-one-half" id="contact-by-email" name="contactByEmail"
-                    type="email" spellcheck="false" autocomplete="email">
-                </div>
-                <div class="govuk-form-group">
-                  <label class="govuk-label" for="contact-by-email">
-                   {{t.contact.confirmEmailAddress}}
-                  </label>
-                  <input class="govuk-input govuk-!-width-one-half" id="contact-by-email" 
-                    type="email" spellcheck="false" autocomplete="email">
-                </div>
-    
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="contact-by-email">
+                  {{t.contact.confirmEmailAddress}}
+                </label>
+                <input class="govuk-input govuk-!-width-one-half" id="contact-by-email" type="email" spellcheck="false"
+                  autocomplete="email">
               </div>
 
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="no">
-                <label class="govuk-label govuk-radios__label" for="contact-2">
-                  No
-                </label>
-              </div>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="contact-2">
+                {% if data['languagePreference'] == "en" %}
+                No
+                {% else %}
+                Na
+                {% endif %}
+              </label>
+            </div>
 
         </fieldset>
 
       </div>
 
-       <button class="govuk-button" data-module="govuk-button" type="submit">
+      <button class="govuk-button" data-module="govuk-button" type="submit">
         {{t.global.continue}}
       </button>
 
-      </form>
-    </div>
+    </form>
   </div>
+</div>
 </div>
 
 

@@ -20,20 +20,32 @@ href: "/other-V1/confirmation/check-your-answers"
         <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
+              {% if data['languagePreference'] == "en" %}
               Do you want to cancel the request for a certificate?
+              {% else %}
+              Oes eisiau canslo'r cais am dystysgrif arnoch?
+              {% endif %}
             </h1>
           </legend>
           <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="cancelCert" name="cancelCert" type="radio" value="yes">
               <label class="govuk-label govuk-radios__label" for="cancelCert">
+                {% if data['languagePreference'] == "en" %}
                 Yes, I'd like to cancel the request for a certificate
+              {% else %}
+                Oes, hoffwn i ganslo'r cais am dystysgrif
+              {% endif %}
               </label>
             </div>
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="cancelCert-2" name="cancelCert" type="radio" value="no">
               <label class="govuk-label govuk-radios__label" for="cancelCert-2">
+                {% if data['languagePreference'] == "en" %}
                 No, I'd like to continue with the request for a certificate
+              {% else %}
+                Na, hoffwn barhau â'r cais am dystysgrif
+              {% endif %}
               </label>
             </div>
           </div>

@@ -23,8 +23,7 @@ href: "javascript:window.history.back()"
               <p>I declare that the information I have provided is true and correct.</p>
               <p>I certify that I have read, understood and agree to the  <a href="/other-V1/terms-of-use">Terms of Use and Privacy Policy</a>.</p>
               <p>I consent to my personal information provided in this application to be used to verify my identity.</p>
-              <!-- <p>I acknowledge the ‘Certificate of Baby Loss’ I receive is not a legal document.</p> -->
-              <p>I consent for my name to be included as a parent of the baby on the ‘Certificate of Baby Loss' applied for through this application.        
+              <p>I consent for my name to be included as a parent of the baby on the ‘Certificate of Baby Loss' applied for through this application.</p>    
             
                     <div class="govuk-form-group">
                           <div class="govuk-checkboxes" data-module="govuk-checkboxes">
@@ -36,36 +35,44 @@ href: "javascript:window.history.back()"
                                 </div>
                         </div>
                     </div>
+
+
+                     
+              {{ govukButton({
+              text: "Accept - send my request",
+              href: "confirmation-page-pending",
+              isStartButton: false
+              }) }}
             
               {% else %}
 
               <h1 class="govuk-heading-l">Datganiad</h1>
               
-              <p>Rwy’n cadarnhau bod yr wybodaeth yr wyf wedi’i rhoi yn wir ac yn gywir.</p>
-              <p>Rwy’n ardystio fy mod wedi darllen, deall a chytuno â’r <a href="#">Telerau Defnyddio a’r Polisi Preifatrwydd</a>.</p>
-              <p>Rwy’n cydsynio i’m gwybodaeth bersonol a ddarperir yn y cais hwn gael ei defnyddio i wirio fy hunaniaeth.</p>
-              <!-- <p>Rwy’n cydnabod nad yw’r ‘Tystysgrif colli babi’ y byddaf yn ei chael yn ddogfen gyfreithiol.</p> -->
-
-              <p>I consent for my name to be included as a parent of the baby on the ‘Certificate of Baby Loss' applied for through this application.
+              <p>Rwy'n datgan bod yr wybodaeth a ddarperais yn wir ac yn gywir.</p>
+              <p>Rwy'n ardystio fy mod wedi darllen, deall a chytuno i'r <a href="#">Telerau Defnyddio a’r Polisi Preifatrwydd</a>.</p>
+              <p>Rwy'n cydsynio i'r wybodaeth bersonol a ddarparwyd gennyf yn y cais hwn gael ei ddefnyddio i wirio fy hunaniaeth.</p>
+              <p>Rwy'n cydsynio i'm henw gael ei gynnwys fel rhiant y babi ar y 'Dystysgrif Colli Babi' y gwneir cais amdani drwy'r cais hwn.</p>
             
               <div class="govuk-form-group">
                     <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                           <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="carcasses">
                             <label class="govuk-label govuk-checkboxes__label" for="waste">
-                              Rwy’n cytuno ac yn cadarnhau
+                              Rwy'n cytuno ac yn cadarnhau
                             </label>
                           </div>
                   </div>
               </div>
 
-              {% endif %}
-              
+               
               {{ govukButton({
-              text: "Accept - send my request",
+              text: "Derbyn - anfon fy nghais",
               href: "confirmation-page-pending",
               isStartButton: false
               }) }}
+
+              {% endif %}
+             
         
         </form>
       </div>

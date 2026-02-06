@@ -1,7 +1,7 @@
 {% extends "/other-V1/layouts/main.html" %}
 
 {% block pageTitle %}
-  {{ t.serviceName }}
+{{ t.serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,244 +15,290 @@ href: "javascript:window.history.back()"
 {% block content %}
 
 
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds-from-desktop">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
 
-        <h1 class="govuk-heading-l">{{t.global.details}}</h1>
-        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Receive confirmation email
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {% if data['contact'] == "yes" %}
-              Yes
-             {% else %}
-              No
-             {% endif %}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="contact-email">
-                  {{t.global.change}}<span class="govuk-visually-hidden"> name</span>
-                </a>
-            </dd>
-          </div>
+    <h1 class="govuk-heading-l">{{t.global.details}}</h1>
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          {% if data['languagePreference'] == "en" %}
+          Receive confirmation email
+          {% else %}
+          Derbyn e-bost cadarnhau
+          {% endif %}
+
+        </dt>
+        <dd class="govuk-summary-list__value">
           {% if data['contact'] == "yes" %}
-           <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              {{t.contact.emailAddress}}
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['contactByEmail'] }}
-            </dd>
-          </div>
-           {% endif %}
-        </dl>
-
-        {% if data['twins'] == 'true' %}
-        <h2 class="govuk-heading-m">Confirm the details on certificate 1</h2>
-        {% else %}
-        <h2 class="govuk-heading-m">Confirm the details on the certificate</h2>
-        {% endif %}
-
-        <h3 class="govuk-heading-s">{{t.pages.parent}} 1</h3>
-        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              {{t.check.theirName}}
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {% if data['first-name'] %}
-              {{ data['first-name'] }}
-             {% else %}
-             Example name
-             {% endif %}
-            </dd>
-
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              {{t.check.theirRelationship}}
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {% if data['relation-baby'] %}
-              {{ data['relation-baby'] }}
-             {% else %}
-             Example relation
-             {% endif %}
-            </dd>
-
-          </div>
-          </dl>
-          <h3 class="govuk-heading-s">{{t.pages.parent}} 2</h3>
-
-          <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-
-            <div class="govuk-summary-list__row">
-
-              <dt class="govuk-summary-list__key">
-              {{t.check.yourName}}
-              </dt>
-              <dd class="govuk-summary-list__value">
-
-                  {% if data['parent2-firstname'] %}
-                  {{ data['parent2-firstname'] }} {{ data['parent2-lastname'] }}
-                  {% else %}
-                  Example name
-                  {% endif %}
-
-              </dd>
-
-            </div>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                 {{t.check.yourRelationship}}
-              </dt>
-              <dd class="govuk-summary-list__value">
-                {% if data['parent-2'] %}
-                {{ data['parent-2'] }}
-               {% else %}
-               Example relation
-               {% endif %}
-              </dd>
-
-            </div>
-            </dl>
-            <h3 class="govuk-heading-s"> {{t.check.babyDetails}}</h3>
-            <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-               {{t.check.babyName}}
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {% if data['baby-firstname'] %}
-               {{ data['baby-firstname'] }}
-              {% else %}
-              Example name
-              {% endif %}
-            </dd>
-
-          </div>
-
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              {{t.check.babySex}}
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {% if data['baby-gender'] %}
-              {{ data['baby-gender'] }}
-             {% else %}
-             Example sex
-             {% endif %}
-            </dd>
-
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              {{t.check.dateOfLoss}}
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {% if data['dol-day'] %}
-                    {{ data['dol-day'] }} <span class="cya-month">{{ data['dol-month'] }}</span> {{ data['dol-year'] }}
-                    {% else %}
-                  Example date of loss
-                  {% endif %}
-            </dd>
-
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              {{t.check.placeOfLoss}}
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {% if data['place'] %}
-              {{ data['place'] }}
-             {% else %}
-             Example place
-             {% endif %}
-            </dd>
-
-          </div>
-
-
-        </dl>
-          <form class="form" action="/areDetailsCorrect" method="post">
-            <div class="govuk-form-group">
-              <fieldset class="govuk-fieldset" aria-describedby="areDetailsCorrect-hint">
-                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                  <h1 class="govuk-fieldset__heading">
-                    Are these details correct?
-                  </h1>
-                </legend>
-                <div id="areDetailsCorrect-body" class="govuk-body">
-                  If the details are incorrect, the request for all certificates will be cancelled and the main applicant will
-                  need to start a new request.
-                </div>
-                <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
-                  <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="areDetailsCorrect-1" name="areDetailsCorrect" type="radio" value="yes">
-                    <label class="govuk-label govuk-radios__label" for="areDetailsCorrect-1">
-                      Yes
-                    </label>
-                  </div>
-                  <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="areDetailsCorrect-2" name="areDetailsCorrect" type="radio" value="no">
-                    <label class="govuk-label govuk-radios__label" for="areDetailsCorrect-2">
-                      No
-                    </label>
-                  </div>
-                </div>
-              </fieldset>
-            </div>
-
-
-          <button class="govuk-button" data-module="govuk-button" type="submit">
-            {{t.global.continue}}
-          </button>
-
-                  </form>
-            
-     
+          {% if data['languagePreference'] == "en" %}
+          Yes
+          {% else %}
+          Hoffwn
+          {% endif %}
+          {% else %}
+          {% if data['languagePreference'] == "en" %}
+          No
+          {% else %}
+          Na
+          {% endif %}
+          {% endif %}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="contact-email">
+            {{t.global.change}}<span class="govuk-visually-hidden"> name</span>
+          </a>
+        </dd>
       </div>
-      
+      {% if data['contact'] == "yes" %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          {{t.contact.emailAddress}}
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['contactByEmail'] }}
+        </dd>
+      </div>
+      {% endif %}
+    </dl>
+
+    {% if data['twins'] == 'true' %}
+    <h2 class="govuk-heading-m">
+      {% if data['languagePreference'] == "en" %}
+      Confirm the details on certificate 1
+      {% else %}
+      Cadarnhewch y manylion ar y dystysgrif 1
+      {% endif %}
+    </h2>
+
+    {% else %}
+    <h2 class="govuk-heading-m">
+      {% if data['languagePreference'] == "en" %}
+      Confirm the details on the certificate
+      {% else %}
+      Cadarnhewch y manylion ar y dystysgrif
+      {% endif %}
+    </h2>
+    {% endif %}
+
+    <h3 class="govuk-heading-s">{{t.pages.parent}} 1</h3>
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          {{t.check.theirName}}
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data['first-name'] %}
+          {{ data['first-name'] }}
+          {% else %}
+          Example name
+          {% endif %}
+        </dd>
+
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          {{t.check.theirRelationship}}
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data['relation-baby'] %}
+          {{ data['relation-baby'] }}
+          {% else %}
+          Example relation
+          {% endif %}
+        </dd>
+
+      </div>
+    </dl>
+    <h3 class="govuk-heading-s">{{t.pages.parent}} 2</h3>
+
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+      <div class="govuk-summary-list__row">
+
+        <dt class="govuk-summary-list__key">
+          {{t.check.yourName}}
+        </dt>
+        <dd class="govuk-summary-list__value">
+
+          {% if data['parent2-firstname'] %}
+          {{ data['parent2-firstname'] }} {{ data['parent2-lastname'] }}
+          {% else %}
+          Example name
+          {% endif %}
+
+        </dd>
+
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          {{t.check.yourRelationship}}
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data['parent-2'] %}
+          {{ data['parent-2'] }}
+          {% else %}
+          Example relation
+          {% endif %}
+        </dd>
+
+      </div>
+    </dl>
+    <h3 class="govuk-heading-s"> {{t.check.babyDetails}}</h3>
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          {{t.check.babyName}}
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data['baby-firstname'] %}
+           {{ data['baby-firstname'] }}
+          {% else %}
+          Example name
+          {% endif %}
+        </dd>
+
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          {{t.check.babySex}}
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data['baby-gender'] %}
+          {{ data['baby-gender'] }}
+          {% else %}
+          Example sex
+          {% endif %}
+        </dd>
+
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          {{t.check.dateOfLoss}}
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data['dol-day'] %}
+          {{ data['dol-day'] }} <span class="cya-month">{{ data['dol-month'] }}</span> {{ data['dol-year'] }}
+          {% else %}
+          Example date of loss
+          {% endif %}
+        </dd>
+
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          {{t.check.placeOfLoss}}
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data['place'] %}
+          {{ data['place'] }}
+          {% else %}
+          Example place
+          {% endif %}
+        </dd>
+
+      </div>
+
+
+    </dl>
+    <form class="form" action="/areDetailsCorrect" method="post">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="areDetailsCorrect-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading">
+              {% if data['languagePreference'] == "en" %}
+              Are these details correct?
+              {% else %}
+              Ydy'r manylion hyn yn gywir?
+              {% endif %}
+            </h1>
+          </legend>
+          <div id="areDetailsCorrect-body" class="govuk-body">
+          
+             {% if data['languagePreference'] == "en" %}
+                If the details are incorrect, the request for all certificates will be cancelled and the main applicant will
+            need to start a new request.
+              {% else %}
+              Os yw'r manylion yn anghywir, bydd y cais am bob tystysgrif yn cael ei ganslo a 
+bydd angen i'r prif ymgeisydd ddechrau cais newydd.
+              {% endif %}
+          </div>
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="areDetailsCorrect-1" name="areDetailsCorrect" type="radio"
+                value="yes">
+              <label class="govuk-label govuk-radios__label" for="areDetailsCorrect-1">
+                {% if data['languagePreference'] == "en" %}
+                Yes
+                {% else %}
+                Ydyn
+                {% endif %}
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="areDetailsCorrect-2" name="areDetailsCorrect" type="radio"
+                value="no">
+              <label class="govuk-label govuk-radios__label" for="areDetailsCorrect-2">
+                 {% if data['languagePreference'] == "en" %}
+                No
+                {% else %}
+                Nac ydyn
+                {% endif %}
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+
+      <button class="govuk-button" data-module="govuk-button" type="submit">
+        {{t.global.continue}}
+      </button>
+
+    </form>
+
+
+  </div>
+
 
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-        $(document).ready(function() {
-            const months = {
-                "01": "January",
-                "02": "February",
-                "03": "March",
-                "04": "April",
-                "05": "May",
-                "06": "June",
-                "07": "July",
-                "08": "August",
-                "09": "September",
-                "10": "October",
-                "11": "November",
-                "12": "December",
-                "1": "January",
-                "2": "February",
-                "3": "March",
-                "4": "April",
-                "5": "May",
-                "6": "June",
-                "7": "July",
-                "8": "August",
-                "9": "September",
+  $(document).ready(function () {
+    const months = {
+      "01": "January",
+      "02": "February",
+      "03": "March",
+      "04": "April",
+      "05": "May",
+      "06": "June",
+      "07": "July",
+      "08": "August",
+      "09": "September",
+      "10": "October",
+      "11": "November",
+      "12": "December",
+      "1": "January",
+      "2": "February",
+      "3": "March",
+      "4": "April",
+      "5": "May",
+      "6": "June",
+      "7": "July",
+      "8": "August",
+      "9": "September",
 
-            };
+    };
 
- 
 
-            $(".cya-month").text(function () {
-                const month = $(this).text();
-                console.log("month:", month);
-                console.log("months[month]:", months[month]);
-                return months[month];
-            });
-        });
+
+    $(".cya-month").text(function () {
+      const month = $(this).text();
+      console.log("month:", month);
+      console.log("months[month]:", months[month]);
+      return months[month];
+    });
+  });
 </script>
 {% endblock %}

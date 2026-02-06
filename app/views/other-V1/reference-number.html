@@ -20,17 +20,30 @@ href: "/other-V1/start-page"
       <fieldset class="govuk-fieldset">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
           <h1 class="govuk-fieldset__heading">
+            {% if data['languagePreference'] == "en" %}
             What is your certificate reference or application number?
+            {% else %}
+            Beth yw cyfeirnod eich tystysgrif neu rif eich cais?
+            {% endif %}
           </h1>
         </legend>
         <div class="govuk-form-group">
-          <p class="govuk-body">You can find your certificate reference or application number in your email.
+          <p class="govuk-body">
+            {% if data['languagePreference'] == "en" %}
+            You can find your certificate reference or application number in your email.
+            {% else %}
+            Gallwch ddod o hyd i gyfeirnod eich tystysgrif neu rif eich cais yn eich e-bost.
+            {% endif %}
           </p>
           <label class="govuk-label" for="email">
+             {% if data['languagePreference'] == "en" %}
             Enter certificate reference number or application number
+            {% else %}
+            Nodwch rif cyfeirnod y dystysgrif neu rif y cais
+            {% endif %}
           </label>
           <div id="csigAppReference-hint" class="govuk-hint">
-            {{t.global.example}}, J4R-8H5-2K9F1 or E6OP4-WQMHA-KJI4Y
+            {{t.global.example}}, J4R-8H5-2K9F1 {{t.global.or}} E6OP4-WQMHA-KJI4Y
           </div>
           <input class="govuk-input govuk-!-width-one-half" id="parent-ref" name="ref" type="text"
             aria-describedby="ref" aria-required="true">

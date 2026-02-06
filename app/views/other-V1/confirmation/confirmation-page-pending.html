@@ -9,56 +9,72 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-    {{ govukPanel({
-    titleText: t.confirmation.requestComplete,
-    html: t.confirmation.applicationNumber + "<br><strong>J4R-8H5-2K9F1</strong>"
-    }) }}
+      {{ govukPanel({
+      titleText: t.confirmation.requestComplete,
+      html: t.confirmation.applicationNumber + "<br><strong>J4R-8H5-2K9F1</strong>"
+      }) }}
 
-  
-     {% if data['twins'] == "true" %}
-    <h2 class="govuk-heading-m govuk-!-margin-top-5">  Certificate reference numbers  </h2>
-    <dl class="govuk-summary-list">
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          <!-- {{t.confirmation.certRef}} -->
-          {{t.confirmation.certificate}} 1
-        </dt>
-        <dd class="govuk-summary-list__value">
-          ABC-DEF-2K9F1
-        </dd>
-      </div>
+
+      {% if data['twins'] == "true" %}
+
+      <h2 class="govuk-heading-m govuk-!-margin-top-5">
+        {% if data['languagePreference'] == "en" %}
+        Certificate reference numbers
+        {% else %}
+        Rhifau cyfeirnod tystysgrif
+        {% endif %}
+      </h2>
+      <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          <!-- {{t.confirmation.certRef}} -->
-          {{t.confirmation.certificate}} 2
-        </dt>
-        <dd class="govuk-summary-list__value">
-          ABC-DEF-2K9F2
-        </dd>
-      </div>
-    </dl>
-     {% else %}
-    <dl class="govuk-summary-list">
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          {{t.confirmation.certRef}}
-        </dt>
-        <dd class="govuk-summary-list__value">
-          ABC-DEF-2K9F1
-        </dd>
-      </div>
-    </dl>
-    {% endif %}
+          <dt class="govuk-summary-list__key">
+            <!-- {{t.confirmation.certRef}} -->
+            {{t.confirmation.certificate}} 1
+          </dt>
+          <dd class="govuk-summary-list__value">
+            ABC-DEF-2K9F1
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <!-- {{t.confirmation.certRef}} -->
+            {{t.confirmation.certificate}} 2
+          </dt>
+          <dd class="govuk-summary-list__value">
+            ABC-DEF-2K9F2
+          </dd>
+        </div>
+      </dl>
+      {% else %}
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            {{t.confirmation.certRef}}
+          </dt>
+          <dd class="govuk-summary-list__value">
+            ABC-DEF-2K9F1
+          </dd>
+        </div>
+      </dl>
+      {% endif %}
 
-    
-
-
-      <h2 class="govuk-heading-m">  What happens next  </h2>
-
+      {% if data['languagePreference'] == "en" %}
+      <h2 class="govuk-heading-m"> What happens next </h2>
       <p>The certificates will be posted to the main applicant within 14 days.</p>
-      <p>If you would like your own certificate, you can <a href="https://blc-wales-f0100a391def.herokuapp.com/main-V1/start-page">request one</a>.</p>
+      <p>If you would like your own certificate, you can <a
+          href="https://blc-wales-f0100a391def.herokuapp.com/main-V1/start-page">request one</a>.</p>
+
       <h2 class="govuk-heading-m"> Would you like to add your name to another baby loss certificate?</h2>
-      
+
+      {% else %}
+      <h2 class="govuk-heading-m"> Beth sy’n digwydd nesaf</h2>
+      <p>Bydd y tystysgrifau'n cael eu postio at y prif ymgeisydd o fewn 14 diwrnod.</p>
+      <p>Os hoffech chi gael eich tystysgrifau eich hun, gallwch <a
+          href="https://blc-wales-f0100a391def.herokuapp.com/main-V1/start-page">ofyn am un</a>.</p>
+
+      <h2 class="govuk-heading-m"> Hoffech chi ychwanegu eich enw at dystysgrif colli babi arall?</h2>
+
+      {% endif %}
+
       <form class="form" action="/doAnotherCert" method="post">
 
         <div class="govuk-radios" data-module="govuk-radios">
@@ -66,14 +82,22 @@
             <input class="govuk-radios__input" id="doAnotherCert" name="doAnotherCert" type="radio" value="yes"
               data-aria-controls="conditional-contact">
             <label class="govuk-label govuk-radios__label" for="doAnotherCert">
+              {% if data['languagePreference'] == "en" %}
               Yes, I have a reference number for another certificate
+              {% else %}
+              Hoffwn, mae gen i rif cyfeirnod ar gyfer tystysgrif arall
+               {% endif %}
             </label>
           </div>
           <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
             <div class="govuk-form-group">
               <label class="govuk-label" for="yes">
-                You can continue and add your name to a certificate for another baby loss if you've received more than
+                {% if data['languagePreference'] == "en" %}
+               You can continue and add your name to a certificate for another baby loss if you've received more than
                 one email.
+              {% else %}
+              Gallwch barhau ac ychwanegu eich enw at dystysgrif ar gyfer colli babi arall os ydych chi wedi derbyn mwy nag un e-bost.
+               {% endif %}
               </label>
 
             </div>
@@ -81,21 +105,26 @@
           <div class="govuk-radios__item">
             <input class="govuk-radios__input" id="doAnotherCert-2" name="doAnotherCert" type="radio" value="no">
             <label class="govuk-label govuk-radios__label" for="doAnotherCert-2">
+            
+               {% if data['languagePreference'] == "en" %}
               No, I do not want to add my name to another certificate
+              {% else %}
+             Na, dydw i ddim am ychwanegu fy enw at dystysgrif arall
+               {% endif %}
             </label>
           </div>
           <br>
           <button class="govuk-button" data-module="govuk-button" type="submit">
-             {{t.global.continue}}
+            {{t.global.continue}}
           </button>
 
       </form>
 
-     <style>
+      <style>
         .govuk-panel--confirmation {
-         color: #ffffff;
+          color: #ffffff;
           background: #1d70b8;
-          
+
         }
       </style>
 
