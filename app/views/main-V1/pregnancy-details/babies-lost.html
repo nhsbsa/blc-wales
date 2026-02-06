@@ -61,6 +61,24 @@ href: "javascript:window.history.back()"
 
         </fieldset>
       </div>
+      {% if data['languagePreference'] == "en" %} 
+
+        {{ govukDetails({
+        summaryText: "What to do if your pregnancy was more than 3 babies",
+        html: "<p>You cannot apply online if you had a pregnancy of more than 3 babies.</p>
+              <p>You'll need to <a href='/main-V1/contact'>contact us to request your baby loss certificate</a>.</p>"
+        }) }}
+
+        {% else %} 
+
+           {{ govukDetails({
+        summaryText: "Beth i'w wneud os oedd eich beichiogrwydd yn fwy na 3 babi",
+        html: "<p>Ni allwch wneud cais ar-lein os cawsoch feichiogrwydd o fwy na 3 babi.</p>
+              <p>Bydd angen i chi <a href='/main-V1/contact'>gysylltu â ni i ofyn am eich tystysgrif colli babi</a>.</p>"
+        }) }}
+
+
+        {% endif %} 
 
       <button class="govuk-button" data-module="govuk-button" type="submit">
         {{t.global.continue}}

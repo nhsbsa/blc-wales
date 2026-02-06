@@ -4,22 +4,45 @@
 {{ serviceName }}
 {% endblock %}
 {% block beforeContent %}
-{{ govukBreadcrumbs({
-items: [
-{
-text: "Home",
-href: "#"
-},
-{
-text: "Births, deaths, marriages and care",
-href: "#"
-},
-{
-text: "Having a child, parenting and adoption",
-href: "#"
-}
-]
-}) }}
+ {% if data['languagePreference'] == "en" %}
+      {{ govukBreadcrumbs({
+      items: [
+      {
+      text: "Home",
+      href: "#"
+      },
+      {
+      text: "Births, deaths, marriages and care",
+      href: "#"
+      },
+      {
+      text: "Having a child, parenting and adoption",
+      href: "#"
+      }
+      ]
+      }) }}
+   {% else %}
+
+      {{ govukBreadcrumbs({
+      items: [
+      {
+      text: "Hafan",
+      href: "#"
+      },
+      {
+      text: "Genedigaethau, marwolaethau, priodasau a gofal",
+      href: "#"
+      },
+      {
+      text: "Cael plentyn, magu plentyn a mabwysiadu",
+      href: "#"
+      }
+      ]
+      }) }}
+
+
+
+    {% endif %}
 
 {% endblock %}
 

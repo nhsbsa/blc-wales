@@ -1,7 +1,7 @@
 {% extends "/main-V1/layouts/main.html" %}
 
 {% block pageTitle %}
-  Confirmation page template – {{ serviceName }} – GOV.UK Prototype Kit
+Confirmation page template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
@@ -9,40 +9,40 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-  
+
 
       {% if data['languagePreference'] == "en" %}
       {{ govukPanel({
       titleText: "Request pending",
       html: "Your application number<br><strong>J4R-8H5-2K9F1</strong>"
       }) }}
-     {% else %}
-    {{ govukPanel({
+      {% else %}
+      {{ govukPanel({
       titleText: "Cais yn yr arfaeth",
       html: "Rhif eich cais<br><strong>J4R-8H5-2K9F1</strong>"
       }) }}
-     {% endif %}
+      {% endif %}
 
       <h2 class="govuk-heading-m">
-              {{t.confirmation.certRef}}
-            </h2>
-   
+        {{t.confirmation.certRef}}s
+      </h2>
+
       <dl class="govuk-summary-list">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            {{t.confirmation.certificate}} 1 
+            {{t.confirmation.certificate}} 1
           </dt>
           <dd class="govuk-summary-list__value">
             ABC-DEF-2K9F1
-          </dd> 
+          </dd>
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            {{t.confirmation.certificate}} 2 
+            {{t.confirmation.certificate}} 2
           </dt>
           <dd class="govuk-summary-list__value">
             ZYC-DEF-2K9F1
-          </dd> 
+          </dd>
         </div>
       </dl>
 
@@ -50,11 +50,16 @@
 
       <h2 class="govuk-heading-m">What happens next </h2>
       <p>The other parent will have 7 days to give permission to be named on the certificates.</p>
-      <p>If we get their permission, you'll then receive the certificate within 14 days.</p>
+      
+       <div class="govuk-inset-text">
+        If they do not receive the email within a few minutes, they’ll need to check their spam or junk folder.
+      </div>
+      
+      <p>If we get their permission, you'll then receive the certificates within 14 days.</p>
       <h2 class="govuk-heading-m">If the other parent does not give permission</h2>
-      <p>You told us you’d still like to receive certificate that show only your name as a parent of your baby, if the
-        other parent does not give permission to be named on the certificate.</p>
-      <p>If they do not respond after 7 days, you’ll then receive the certificate within 14 days.</p>
+      <p>You told us you’d still like to receive certificates that show only your name as a parent of your baby, if the
+        other parent does not give permission to be named on the certificates.</p>
+      <p>If they do not respond after 7 days, you’ll then receive the certificates within 14 days.</p>
 
       <h2 class="govuk-heading-m"> Would you like to request a <br> certificate for another baby loss?</h2>
 
@@ -62,9 +67,15 @@
 
       <h2 class="govuk-heading-m">Beth fydd yn digwydd nesaf </h2>
       <p>Bydd gan y rhiant arall 7 diwrnod i roi caniatâd i gael ei enwi neu ei henwi ar y dystysgrif.</p>
+      
+      <div class="govuk-inset-text">
+        Os nad ydyn nhw'n derbyn yr e-bost o fewn ychydig funudau, bydd angen iddyn nhw wirio eu ffolder sbam neu ffolder sothach.      
+      </div>
+      
       <p>Os ceir caniatâd y rhiant arall, byddwch wedyn yn cael y dystysgrif o fewn 14 o ddiwrnodau.</p>
       <h2 class="govuk-heading-m">Os nad yw’r rhiant arall yn rhoi caniatâd</h2>
-      <p>Gwnaethoch ddweud wrthym, os nad yw’r rhiant arall yn rhoi caniatâd i gael ei enwi neu ei henwi ar y dystysgrif, yr hoffech gael tystysgrifau sy’n dangos dim ond eich enw chi fel rhiant eich babi.</p>
+      <p>Gwnaethoch ddweud wrthym, os nad yw’r rhiant arall yn rhoi caniatâd i gael ei enwi neu ei henwi ar y
+        dystysgrif, yr hoffech gael tystysgrifau sy’n dangos dim ond eich enw chi fel rhiant eich babi.</p>
       <p>Os nad yw’r rhiant arall yn ymateb ar ôl 7 diwrnod, yna byddwch yn cael tystysgrif o fewn 14 o ddiwrnodau.</p>
 
       <h2 class="govuk-heading-m"> Hoffech chi wneud cais am dystysgrif colli babi arall?</h2>
@@ -74,55 +85,59 @@
       <form class="form" action="/main-V1/2-certs/confirmation-complete" method="post">
 
         <div class="govuk-radios" data-module="govuk-radios">
-          
+
           <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="live-req-another" name="liverequestcertififcate" type="radio" value="yes" data-aria-controls="conditional-contact">
+            <input class="govuk-radios__input" id="live-req-another" name="liverequestcertififcate" type="radio"
+              value="yes" data-aria-controls="conditional-contact">
             <label class="govuk-label govuk-radios__label" for="yes">
-  {% if data['languagePreference'] == "en" %}
+              {% if data['languagePreference'] == "en" %}
               Yes, I'd like to request another certificate
               {% else %}
               Hoffwn wneud cais am dystysgrif arall.
-              {% endif %}            
+              {% endif %}
             </label>
           </div>
           <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
             <div class="govuk-form-group">
               <label class="govuk-label" for="contact-by-email">
-   {% if data['languagePreference'] == "en" %}
+                {% if data['languagePreference'] == "en" %}
                 You'll need to answer some questions again. This is because the next certificate is for another baby
                 loss.<br>
                 {% else %}
-                You'll need to answer some questions again. This is because the next certificate is for another baby
-                loss.<br>
-                {% endif %}              
+                Bydd angen i chi ateb rhai cwestiynau eto. Mae hyn oherwydd bod y dystysgrif nesaf ar gyfer colli babi
+                arall.
+                <br>
+                {% endif %}
               </label>
             </div>
           </div>
           <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="live-req-another" name="liverequestcertififcate" type="radio" value="no">
+            <input class="govuk-radios__input" id="live-req-another" name="liverequestcertififcate" type="radio"
+              value="no">
             <label class="govuk-label govuk-radios__label" for="no">
 
-                {% if data['languagePreference'] == "en" %}
+              {% if data['languagePreference'] == "en" %}
               No, I do not want to request another certificate
               {% else %}
-               Na hoffwn, nid wyf am wneud cais am dystysgrif arall.
-              {% endif %}            
+              Na hoffwn, nid wyf am wneud cais am dystysgrif arall.
+              {% endif %}
             </label>
           </div>
           <br>
           <button class="govuk-button" data-module="govuk-button" type="submit">
-             {{t.global.continue}}
+            {{t.global.continue}}
           </button>
 
         </div>
 
       </form>
 
-  <style>
-    .govuk-panel--confirmation {
-    color: #0b0c0c;
-    background: #f3f2f1;;
-}
-  </style>
+      <style>
+        .govuk-panel--confirmation {
+          color: #0b0c0c;
+          background: #f3f2f1;
+          ;
+        }
+      </style>
 
-{% endblock %}
+      {% endblock %}
