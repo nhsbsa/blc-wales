@@ -23,15 +23,21 @@ href: "/other-V1/confirmation/check-answers-details-incorrect"
     <h2 class="govuk-heading-m">Support organisations</h2>
     <p>The following organisations give support and advice:</p>
 
-    <ul class="govuk-list govuk-list--bullet">
-      <li><a href="https://www.sands.org.uk/" target="_blank">Sands</a></li>
-      <li><a href="https://www.tommys.org" target="_blank">Tommy's</a></li>
-      <li><a href="https://www.arc-uk.org" target="_blank">Antenatal Results and Choices (ARC)</a></li>
-      <li><a href="https://www.sayinggoodbye.org" target="_blank">Saying Goodbye</a></li>
-      <li><a href="https://www.miscarriageassociation.org.uk" target="_blank"> Miscarriage Association</a></li>
-      <!-- <li><a href="https://www.petalscharity.org " target="_blank">Petals</a></li> -->
-       <li><a href="https://www.nhs.uk/mental-health/social-care-and-your-rights/how-to-access-mental-health-services/" target="_blank">
-        NHS How to access mental health services</a></li>
+   <ul class="govuk-list govuk-list--bullet">
+      <li><a href="https://www.nhs.uk/mental-health/social-care-and-your-rights/how-to-access-mental-health-services/"
+          target="blank">NHS How
+          to access mental health services</a></li>
+      <li><a href="https://www.arc-uk.org" target="blank">Antenatal Results and Choices (ARC)</a></li>
+      <li><a href="https://www.daddyswithangels.org" target="blank">Daddy’s with Angels</a></li>
+      {% if data['country-location'] !== 'wales' %}
+      <li><a href="https://www.petalscharity.org/" target="blank">Petals</a></li>
+      {% endif%}
+      <li><a href="https://www.sands.org.uk/" target="blank">Sands</a></li>
+      <li><a href="https://www.sayinggoodbye.org" target="blank">Saying Goodbye</a></li>
+      <li><a href="https://ectopic.org.uk/" target="blank">The Ectopic Pregnancy Trust</a></li>
+      <li><a href="https://www.miscarriageassociation.org.uk" target="blank">The Miscarriage Association</a></li>
+      <li><a href="https://www.tommys.org" target="blank">Tommy's</a></li>
+      <li><a href="https://twinstrust.org/" target="blank">Twins Trust</a></li>
     </ul>
 
     {% else %}
@@ -40,16 +46,23 @@ href: "/other-V1/confirmation/check-answers-details-incorrect"
     <p class="govuk-body">Mae hyn oherwydd eich bod wedi dweud wrthym bod y manylion yn anghywir.</p>
      <h3 class="govuk-heading-m">Sefydliadau sy’n rhoi cymorth:</h3>
       <p>Mae’r sefydliadau a ganlyn yn rhoi cymorth a chyngor:</p>
-      <ul class="govuk-list govuk-list--bullet">
-      <li><a href="https://www.sands.org.uk/" target="_blank">Sands</a></li>
-      <li><a href="https://www.tommys.org" target="_blank">Tommy's</a></li>
-      <li><a href="https://www.arc-uk.org" target="_blank">Antenatal Results and Choices (ARC)</a></li>
-      <li><a href="https://www.sayinggoodbye.org" target="_blank">Saying Goodbye</a></li>
-      <li><a href="https://www.miscarriageassociation.org.uk" target="_blank"> Miscarriage Association</a></li>
-      <!-- <li><a href="https://www.petalscharity.org " target="_blank">Petals</a></li> -->
-      <li><a href="https://www.nhs.uk/mental-health/social-care-and-your-rights/how-to-access-mental-health-services/" target="_blank">
+     <ul class="govuk-list govuk-list--bullet">
+      <li><a href="https://www.nhs.uk/mental-health/social-care-and-your-rights/how-to-access-mental-health-services/"
+          target="_blank">
           Sut i gael gwasanaethau iechyd meddwl - GIG</a></li>
+      <li><a href="https://www.arc-uk.org" target="blank">Antenatal Results and Choices (ARC)</a></li>
+      <li><a href="https://www.daddyswithangels.org" target="blank">Daddy’s with Angels</a></li>
+      {% if data['country-location'] !== 'wales' %}
+      <li><a href="https://www.petalscharity.org/" target="blank">Petals</a></li>
+      {% endif%}
+      <li><a href="https://www.sands.org.uk/" target="blank">Sands</a></li>
+      <li><a href="https://www.sayinggoodbye.org" target="blank">Saying Goodbye</a></li>
+      <li><a href="https://ectopic.org.uk/" target="blank">The Ectopic Pregnancy Trust</a></li>
+      <li><a href="https://www.miscarriageassociation.org.uk" target="blank">The Miscarriage Association</a></li>
+      <li><a href="https://www.tommys.org" target="blank">Tommy's</a></li>
+      <li><a href="https://twinstrust.org/" target="blank">Twins Trust</a></li>
     </ul>
+
 
     {% endif %}
   </div>

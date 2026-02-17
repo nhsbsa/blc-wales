@@ -1,4 +1,4 @@
-{% extends "/main-V1/layouts/main.html" %}
+{% extends "/main-V1/layouts/main-no-switcher.html" %}
 
 {% block pageTitle %}
 {{ serviceName }}
@@ -51,7 +51,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-l">{{t.serviceName}}</h1>
+    <h1 class="govuk-heading-xl">{{t.serviceName}}</h1>
 
 
     {% if data['languagePreference'] == "en" %}
@@ -60,25 +60,28 @@
     <p> It’s free to get a certificate.</p>
     <p>You do not need to request a certificate if you prefer not to. It’s optional.</p>
 
-    <div class="govuk-inset-text">The certificate is not a legal document - for example you cannot use it to claim
-      benefits. The certificate will not be added to your GP record.</div>
+    <p>If your pregnancy ends from 24 weeks onwards, you need to <a href="https://www.gov.uk/register-stillbirth">register a stillbirth</a> instead.</p>
 
-    <p>If your pregnancy ends from 24 weeks onwards, you need to <a
-        href="https://www.gov.uk/register-stillbirth">register a stillbirth</a> instead.</p>
+    <div class="govuk-inset-text">
+      This service is also available <a href="?languagePreference=cy">in Welsh (Cymraeg)</a>.
+    </div>
 
     {% else %}
 
     <p> Gallwch gael tystysgrif er cof am eich babi os yw'ch beichiogrwydd yn dod i ben cyn 24 wythnos (neu 28 wythnos os daeth eich beichiogrwydd i ben cyn 1 Hydref 1992).</p>
     <p> Does dim angen talu am dystysgrif.</p>
     <p>Does dim angen ichi ofyn am dystysgrif os yw'n well gennych beidio. Mae’n ddewisol.</p>
-
-    <div class="govuk-inset-text">Nid dogfen gyfreithiol yw’r dystysgrif - er enghraifft, allwch chi ddim ei defnyddio i hawlio budd-daliadau. Ni fydd y dystysgrif yn cael ei hychwanegu at eich cofnod meddyg teulu.</div>
-
     <p>Os yw'ch beichiogrwydd yn dod i ben o 24 wythnos ymlaen, mae angen ichi gofrestru <a
         href="https://www.gov.uk/register-stillbirth">marw-enedigaeth</a> yn lle hynny.</p>
 
 
+       <div class="govuk-inset-text">
+      Mae’r gwasanaeth hwn hefyd ar gael <a href="?languagePreference=en">yn Saesneg (English)</a>.
+    </div>
+
     {% endif %}
+
+  
 
 
 
@@ -86,7 +89,7 @@
   
  {% if data['languagePreference'] == "en" %}
 
-    <h2 class="govuk-heading-m">Before you start</h2>
+    <h2 class="govuk-heading-l">Before you start</h2>
 
     <p>You'll need:</p>
     <ul class="govuk-list govuk-list--bullet">
@@ -100,7 +103,7 @@
 
     {% else %}
 
-    <h2 class="govuk-heading-m">Cyn dechrau</h2>
+    <h2 class="govuk-heading-l">Cyn dechrau</h2>
 
     <p>Bydd angen ichi gael:  </p>
     <ul class="govuk-list govuk-list--bullet">
@@ -119,7 +122,7 @@
 
   {% if data['languagePreference'] == "en" %}
 
-    <h2 class="govuk-heading-m">
+    <h2 class="govuk-heading-l">
       Request a certificate
     </h2>
     <p>You can ask for a certificate if all the following apply:</p>
@@ -130,6 +133,12 @@
       <li>you live in England or Wales</li>
 
     </ul>
+
+       <div class="govuk-inset-text">The certificate is not a legal document - for example you cannot use it to claim
+      benefits. The certificate will not be added to your GP record.</div>
+
+
+
     {{ govukButton({
     text: "Start now",
     href: "/main-V1/eligibility/enter-location-uk",
@@ -138,7 +147,7 @@
 
 {% else %}
 
- <h2 class="govuk-heading-m">
+ <h2 class="govuk-heading-l">
       Gofyn am dystysgrif
     </h2>
     <p>Gallwch ofyn am dystysgrif os yw'r canlynol i gyd yn berthnasol:</p>
@@ -149,6 +158,10 @@
       <li>rydych chi'n byw yng Nghymru neu yn Lloegr</li>
 
     </ul>
+
+    <div class="govuk-inset-text">Nid dogfen gyfreithiol yw’r dystysgrif - er enghraifft, allwch chi ddim ei defnyddio i hawlio budd-daliadau. Ni fydd y dystysgrif yn cael ei hychwanegu at eich cofnod meddyg teulu.</div>
+
+
     {{ govukButton({
     text: "Dechrau nawr",
     href: "/main-V1/eligibility/enter-location-uk",

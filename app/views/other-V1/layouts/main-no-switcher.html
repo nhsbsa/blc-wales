@@ -1,0 +1,19 @@
+{#
+For guidance on how to use layouts see:
+https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
+#}
+
+{% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+{%- from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation -%}
+{%- from "hmrc/components/service-navigation-language-select/macro.njk" import hmrcServiceNavigationLanguageSelect -%}
+
+
+{% set lang = data['languagePreference'] or 'en' %}
+{% set t = data.translations[lang] or data.translations.en %}
+
+
+{% block header %}
+    {{ govukHeader() }}
+
+{% endblock %}

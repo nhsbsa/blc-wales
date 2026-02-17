@@ -1,4 +1,4 @@
-{% extends "/other-V1/layouts/main.html" %}
+{% extends "/other-V1/layouts/main-no-switcher.html" %}
 
 {% block pageTitle %}
 {{ serviceName }}
@@ -18,6 +18,10 @@
       certificate in memory of their baby.</p>
     <p>Parents do not have to request a certificate - it’s optional. It’s free to get a certificate.</p>
 
+     <div class="govuk-inset-text">
+      This service is also available <a href="?languagePreference=cy">in Welsh (Cymraeg)</a>.
+    </div>
+
     {% else %}
 
     <h1 class="govuk-heading-xl">Gofyn am dystysgrif colli babi</h1>
@@ -25,8 +29,13 @@
       rhieni gael tystysgrif er cof am eu babi.</p>
     <p>Nid oes rhaid i rieni ofyn am dystysgrif - mae'n ddewisol. Mae cael tystysgrif yn rhad ac am ddim.</p>
 
+    <div class="govuk-inset-text">
+      Mae’r gwasanaeth hwn hefyd ar gael <a href="?languagePreference=en">yn Saesneg (English)</a>.
+    </div>
+
     {% endif %}
 
+      
 
 
 

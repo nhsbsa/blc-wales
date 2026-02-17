@@ -1,0 +1,26 @@
+{#
+For guidance on how to use layouts see:
+https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
+#}
+
+{% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
+
+{% set lang = data['languagePreference'] or 'en' %}
+{% set t = data.translations[lang] or data.translations.en %}
+
+
+{% block header %}
+<br>
+<div class="govuk-width-container">
+    <p class="govuk-body"><b>Cais am dystysgrif Colli babi | Baby loss certificate request</b></p>
+    <p class="govuk-body">From: babylosscertificate@nhsbsa.nhs.uk<br>
+    To: examplename@email.com</p>
+    </div>
+{{ govukHeader() }}
+
+
+<style>
+body{padding: 20px;} 
+footer{display: none !important;}
+</style>
+{% endblock %}
