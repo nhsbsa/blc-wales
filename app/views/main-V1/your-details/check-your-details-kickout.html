@@ -24,9 +24,11 @@ href: "/main-V1/verification/confirm-address"
     <p>The following organisations give support and advice:</p>
 
     <ul class="govuk-list govuk-list--bullet">
-      <li><a href="https://www.nhs.uk/mental-health/social-care-and-your-rights/how-to-access-mental-health-services/"
-          target="blank">NHS How
-          to access mental health services</a></li>
+      {% if data['country-location'] !== 'wales' %}
+      <li><a href="https://www.nhs.uk/mental-health/social-care-and-your-rights/how-to-access-mental-health-services/" target="blank">NHS How to access mental health services</a></li>
+       {% else %}
+        <li><a href="https://111.wales.nhs.uk/encyclopaedia/m/article/mentalhealthandwellbeing?locale=en&term=A" target="blank">NHS 111 Wales - Mental Health and Wellbeing</a></li>
+      {% endif%}
       <li><a href="https://www.arc-uk.org" target="blank">Antenatal Results and Choices (ARC)</a></li>
       <li><a href="https://www.daddyswithangels.org" target="blank">Daddy’s with Angels</a></li>
       {% if data['country-location'] !== 'wales' %}
@@ -46,10 +48,12 @@ href: "/main-V1/verification/confirm-address"
     <p class="govuk-body">Gallwch gysylltu â’ch practis meddyg teulu i gywiro’ch cyfeiriad.</p>
     <h2 class="govuk-heading-m">Sefydliadau sy’n rhoi cymorth </h2>
     <p>Mae’r sefydliadau a ganlyn yn rhoi cymorth a chyngor:</p>
-      <ul class="govuk-list govuk-list--bullet">
-      <li><a href="https://www.nhs.uk/mental-health/social-care-and-your-rights/how-to-access-mental-health-services/"
-          target="_blank">
-          Sut i gael gwasanaethau iechyd meddwl - GIG</a></li>
+    <ul class="govuk-list govuk-list--bullet">
+      {% if data['country-location'] !== 'wales' %}
+      <li><a href="https://www.nhs.uk/mental-health/social-care-and-your-rights/how-to-access-mental-health-services/" target="_blank"> Sut i gael gwasanaethau iechyd meddwl - GIG</a></li>
+       {% else %}
+      <li><a href="https://111.wales.nhs.uk/encyclopaedia/m/article/mentalhealthandwellbeing?locale=cy&term=A" target="blank">GIG 111 Cymru - Iechyd Meddwl a Lles</a></li>
+      {% endif %}
       <li><a href="https://www.arc-uk.org" target="blank">Antenatal Results and Choices (ARC)</a></li>
       <li><a href="https://www.daddyswithangels.org" target="blank">Daddy’s with Angels</a></li>
       {% if data['country-location'] !== 'wales' %}
